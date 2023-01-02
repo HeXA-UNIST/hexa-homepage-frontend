@@ -4,8 +4,11 @@ WORKDIR /app
 
 COPY ./package.json ./package-lock.json ./.eslintrc.json ./tsconfig.json ./
 
-RUN npm ci
+RUN npm install
+RUN npm install -g serve
 
 COPY . .
 
-CMD ["npm","run","start"]
+RUN npm run build   
+
+ENTRYPOINT [ "./node_modules/.bin/serve", "-s", "build" ]
