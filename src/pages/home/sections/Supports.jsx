@@ -1,5 +1,4 @@
-import React from "react";
-import "./contents.css";
+import "static/css/home/contents.css";
 
 function Supports() {
   return (

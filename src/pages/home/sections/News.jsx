@@ -1,17 +1,17 @@
-import React from "react";
+import "static/css/home/Banner.css";
 
-function Activities() {
+function News() {
   return (
     <div className="contents_section contents-area">
       <h1>
-        ACTIVITIES
+        NEWS
         <a href="home" target="_self">
           더보기(more)
         </a>
       </h1>
-      <h2>Hexa에서 진행하는 활동입니다</h2>
+      <h2>Hexa 회원들의 최신 소식입니다</h2>
     </div>
   );
 }
 
-export default Activities;
+export default News;
