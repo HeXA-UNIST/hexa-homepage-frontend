@@ -1,11 +1,15 @@
-import React, { useState } from "react";
-import "./Header.css";
+import { observer } from "mobx-react";
+import useStores from "hooks/storeHooks";
+
+import profileimg from "static/img/profile_img.jpg";
 import Banner from "./Banner";
-import profileimg from "./profile_img.jpg";
+
+import "static/css/home/Header.css";
 
 function Header() {
-  const [isLogined] = useState(true);
-  if (!isLogined) {
+  const { isLoggedIn } = useStores().loginStore;
+
+  if (!isLoggedIn) {
     return (
       <body>
         <div className="header">
@@ -71,4 +75,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default observer(Header);

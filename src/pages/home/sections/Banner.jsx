@@ -1,5 +1,4 @@
-import "./Banner.css";
-import React from "react";
+import "static/css/home/Banner.css";
 
 function Banner() {
   return (
