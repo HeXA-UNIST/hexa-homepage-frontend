@@ -28,7 +28,7 @@ a{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #000;
+    color: #fff;
     padding: 35px 100px 0;
 }
 .header h2{
@@ -64,11 +64,6 @@ a{
     object-fit: cover;
 }
 
-@media(max-width:1000px){
-    .header{
-        padding: 20px 50px;
-    }
-}
 @media (max-width:700px){
     .header{
         flex-direction: column;

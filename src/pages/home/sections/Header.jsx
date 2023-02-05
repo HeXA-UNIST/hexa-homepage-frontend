@@ -24,10 +24,10 @@ function Header() {
               <a href="test">회원</a>
             </li>
             <li>
-              <a href="test">서비스</a>
+              <a href="test">활동</a>
             </li>
             <li>
-              <a href="test">활동</a>
+              <a href="test">뉴스</a>
             </li>
             <li>
               <a href="login">로그인</a>
@@ -52,10 +52,10 @@ function Header() {
             <a href="test">회원</a>
           </li>
           <li>
-            <a href="test">서비스</a>
+            <a href="test">활동</a>
           </li>
           <li>
-            <a href="test">활동</a>
+            <a href="test">뉴스</a>
           </li>
           <li>
             <a href="test">게시판</a>
