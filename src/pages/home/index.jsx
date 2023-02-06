@@ -1,11 +1,9 @@
-import "./index.css";
-
-import Header from "./Header";
-import News from "./News";
-import Services from "./Services";
-import Activities from "./Activities";
-import Supports from "./Supports";
-import Footer from "./Footer";
+import Header from "@pages/home/sections/Header";
+import News from "@pages/home/sections/News";
+import Services from "@pages/home/sections/Services";
+import Activities from "@pages/home/sections/Activities";
+import Supports from "@pages/home/sections/Supports";
+import Footer from "@pages/home/sections/Footer";
 
 function Home() {
   return (
