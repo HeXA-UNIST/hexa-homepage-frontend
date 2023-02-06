@@ -18,11 +18,17 @@
     "sourceType": "module",
     "project": ["tsconfig.json"]
   },
-  "plugins": ["react", "@typescript-eslint", "react-hooks"],
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "import",
+    "@typescript-eslint",
+    "react-hooks"
+  ],
   "rules": {
     "react/jsx-filename-extension": [
       "warn",
-      { "extensions": [".jsx", ".tsx"] }
+      { "extensions": [".js", ".ts", ".jsx", ".tsx"] }
     ],
     "import/extensions": [
       "error",
