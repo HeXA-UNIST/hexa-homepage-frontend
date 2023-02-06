@@ -1,4 +1,5 @@
 {
+  "extends": "./tsconfig.paths.json",
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
@@ -14,7 +15,7 @@
     "target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
     // "lib": [],                                        /* Specify a set of bundled library declaration files that describe the target runtime environment. */
     "jsx": "react-jsx" /* Specify what JSX code is generated. */,
-    "experimentalDecorators": true,                   /* Enable experimental support for TC39 stage 2 draft decorators. */
+    "experimentalDecorators": true /* Enable experimental support for TC39 stage 2 draft decorators. */,
     // "emitDecoratorMetadata": true,                    /* Emit design-type metadata for decorated declarations in source files. */
     // "jsxFactory": "",                                 /* Specify the JSX factory function used when targeting React JSX emit, e.g. 'React.createElement' or 'h'. */
     // "jsxFragmentFactory": "",                         /* Specify the JSX Fragment reference used for fragments when targeting React JSX emit e.g. 'React.Fragment' or 'Fragment'. */
@@ -30,12 +31,15 @@
     // "moduleResolution": "node",                       /* Specify how TypeScript looks up a file from a given module specifier. */
     "baseUrl": "./src" /* Specify the base directory to resolve non-relative module names. */,
     "paths": {
-      "@page/*":["./src/pages/*"],
-      "@css/*" : ["./src/static/css/*"],
-      "@img/*" : ["./src/static/img/*"],
-      "@model/*" : ["./src/models/*"],
-      "@component/*" : ["./src/common/components/*"],
-    },                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
+      "@pages/*": ["./src/pages/*"],
+      "@services/*": ["./src/services/*"],
+      "@css/*": ["./src/static/css/*"],
+      "@img/*": ["./src/static/img/*"],
+      "@components/*": ["./src/common/components/*"],
+      "@hooks/*": ["./src/common/hooks/*"],
+      "@models/*": ["./src/common/models/*"],
+      "@stores/*": ["./src/common/stores/*"]
+    } /* Specify a set of entries that re-map imports to additional lookup locations. */,
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
     // "types": [],                                      /* Specify type package names to be included without being referenced in a source file. */
@@ -55,7 +59,7 @@
     // "emitDeclarationOnly": true,                      /* Only output d.ts files and not JavaScript files. */
     // "sourceMap": true,                                /* Create source map files for emitted JavaScript files. */
     // "outFile": "./",                                  /* Specify a file that bundles all outputs into one JavaScript file. If 'declaration' is true, also designates a file that bundles all .d.ts output. */
-    "outDir": "dist",                                   /* Specify an output folder for all emitted files. */
+    "outDir": "dist" /* Specify an output folder for all emitted files. */,
     // "removeComments": true,                           /* Disable emitting comments. */
     // "noEmit": true,                                   /* Disable emitting files from a compilation. */
     // "importHelpers": true,                            /* Allow importing helper functions from tslib once per project, instead of including them per-file. */

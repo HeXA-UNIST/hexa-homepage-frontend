@@ -1,5 +1,5 @@
 import { Paper } from "@mui/material";
-import "static/css/home/Banner.css";
+import "@css/home/Banner.css";
 
 function Item({ item }) {
   return (

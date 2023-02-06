@@ -1,10 +1,10 @@
 import { observer } from "mobx-react";
-import useStores from "hooks/storeHooks";
+import useStores from "@hooks/storeHooks";
 
-import profileimg from "static/img/profile_img.jpg";
+import profileimg from "@img/profile_img.jpg";
 import Banner from "./Banner";
 
-import "static/css/home/Header.css";
+import "@css/home/Header.css";
 
 function Header() {
   const { isLoggedIn } = useStores().loginStore;

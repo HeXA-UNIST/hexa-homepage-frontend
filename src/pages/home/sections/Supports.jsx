@@ -1,5 +1,5 @@
-import "static/css/home/contents.css";
-import "static/css/home/supports.css";
+import "@css/home/contents.css";
+import "@css/home/supports.css";
 
 function Supports() {
   return (

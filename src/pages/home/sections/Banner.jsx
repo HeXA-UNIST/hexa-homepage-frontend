@@ -1,5 +1,5 @@
-import "static/css/home/Banner.css";
-import Carousel from "pages/home/carousels/Carousel";
+import "@css/home/Banner.css";
+import Carousel from "@pages/home/carousels/Carousel";
 
 function Banner() {
   return (

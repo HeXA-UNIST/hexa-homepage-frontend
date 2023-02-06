@@ -1,4 +1,4 @@
-import Album from "pages/home/albums/Album";
+import Album from "@pages/home/albums/Album";
 
 function Activities() {
   return (

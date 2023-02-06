@@ -1,4 +1,4 @@
-import "static/css/home/Banner.css";
+import "@css/home/Banner.css";
 
 function News() {
   return (
