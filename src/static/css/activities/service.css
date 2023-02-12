@@ -1,0 +1,29 @@
+.serviceContent{
+margin-top: 1%;   
+display: flex;
+padding-left: 100px;
+padding-right: 100px;
+}
+
+.serviceContent img{
+    width : 300px;
+    height : auto;
+}
+
+.serviceArea{
+    text-align: left;
+    padding-left: 100px;
+padding-right: 100px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.serviceButton{
+    border-radius: 6%;
+    width: 200px;
+    height: 50px;
+    color: black;
+    background-color: #fff;
+    border-color: gray;
+    font-size: 20px;
+  }

@@ -1,0 +1,28 @@
+.serviceContainer{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 3%;
+}
+
+.window {
+    background: coral;
+    width :1400px;
+    height: 1000px;
+    overflow: hidden;
+}
+
+.flexbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img{
+    width: 1400px;
+    height: 1000px;
+    object-fit: contain;
+    flex: none;
+}
