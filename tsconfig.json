@@ -31,14 +31,15 @@
     // "moduleResolution": "node",                       /* Specify how TypeScript looks up a file from a given module specifier. */
     "baseUrl": "./src" /* Specify the base directory to resolve non-relative module names. */,
     "paths": {
-      "@pages/*": ["./src/pages/*"],
-      "@services/*": ["./src/services/*"],
-      "@css/*": ["./src/static/css/*"],
-      "@img/*": ["./src/static/img/*"],
-      "@components/*": ["./src/common/components/*"],
-      "@hooks/*": ["./src/common/hooks/*"],
-      "@models/*": ["./src/common/models/*"],
-      "@stores/*": ["./src/common/stores/*"]
+      "@pages/*": ["./pages/*"],
+      "@services/*": ["./services/*"],
+      "@css/*": ["./static/css/*"],
+      "@img/*": ["./static/img/*"],
+      "@constants" : ["./common/constants/web_constants.ts"],
+      "@components/*": ["./common/components/*"],
+      "@hooks/*": ["./common/hooks/*"],
+      "@models/*": ["./common/models/*"],
+      "@stores/*": ["./common/stores/*"]
     } /* Specify a set of entries that re-map imports to additional lookup locations. */,
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */

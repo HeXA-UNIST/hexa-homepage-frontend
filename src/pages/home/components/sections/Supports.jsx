@@ -24,7 +24,6 @@ function Supports() {
           </div>
         </div>
         <div className="item">
-          {" "}
           <div className="box">
             <img
               className="profile"
@@ -34,7 +33,6 @@ function Supports() {
           </div>
         </div>
         <div className="item">
-          {" "}
           <div className="box">
             <img
               className="profile"
@@ -44,7 +42,6 @@ function Supports() {
           </div>
         </div>
         <div className="item">
-          {" "}
           <div className="box">
             <img
               className="profile"
@@ -54,7 +51,6 @@ function Supports() {
           </div>
         </div>
         <div className="item">
-          {" "}
           <div className="box">
             <img
               className="profile"
