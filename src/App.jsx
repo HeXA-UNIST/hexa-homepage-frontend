@@ -7,6 +7,7 @@ import LoginStore from "common/stores/LoginStore";
 
 import LoginPage from "pages/login";
 import Home from "pages/home";
+import Activities from "pages/activities";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/activities" element={<Activities />} />
             <Route path="/*" element={<Home />} />
           </Routes>
         </BrowserRouter>
