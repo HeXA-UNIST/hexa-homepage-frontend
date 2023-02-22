@@ -1,9 +1,9 @@
 import axios from "axios";
 import WebConstants from "@constants";
-import IMainPageData from "@models/mainpage/IMainPageData";
+import MainPageData from "@models/mainpage/MainPageData";
 
 export default class MainPageRepository {
-  public static async getMainPageData(): Promise<IMainPageData> {
+  public static async getMainPageData(): Promise<MainPageData> {
     const option = {
       url: `${WebConstants.API_URL}/mainpage/data`,
       method: "GET",
@@ -13,11 +13,11 @@ export default class MainPageRepository {
       },
     };
     const fakeResponse = await MainPageRepository.fakeData();
-    return IMainPageData.fromJson(fakeResponse);
+    return MainPageData.fromJson(fakeResponse);
 
     try {
       const response = await axios(option);
-      return IMainPageData.fromJson(response.data);
+      return MainPageData.fromJson(response.data);
     } catch (error) {
       console.log(error);
       throw error;

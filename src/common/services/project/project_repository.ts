@@ -1,7 +1,7 @@
 import axios from "axios";
 import WebConstants from "@constants";
-import IProject from "@models/project/IProject";
-import IProjectsQueryResult from "@models/project/IProjectsQueryResult";
+import Project from "@models/project/Project";
+import ProjectsQueryResult from "@models/project/ProjectsQueryResult";
 
 export interface ProjectQueryParams {
   searchText?: string;
@@ -24,7 +24,7 @@ export default class ProjectRepository {
     year,
     pageNum = 10,
     page,
-  }: ProjectQueryParams): Promise<IProjectsQueryResult> {
+  }: ProjectQueryParams): Promise<ProjectsQueryResult> {
     const params = {
       searchText,
       status,
@@ -40,19 +40,19 @@ export default class ProjectRepository {
         `${WebConstants.API_URL}/project/query`,
         { params }
       );
-      return IProjectsQueryResult.fromJson(response.data);
+      return ProjectsQueryResult.fromJson(response.data);
     } catch (error) {
       console.log(error);
       throw error;
     }
   }
 
-  public static async getProjectById(id: number): Promise<IProject> {
+  public static async getProjectById(id: number): Promise<Project> {
     try {
       const response = await axios.get(
         `${WebConstants.API_URL}/project?id=${id}`
       );
-      return IProject.fromJson(response.data);
+      return Project.fromJson(response.data);
     } catch (error) {
       console.log(error);
       throw error;

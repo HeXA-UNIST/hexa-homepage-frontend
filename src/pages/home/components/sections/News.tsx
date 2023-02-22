@@ -1,10 +1,10 @@
 import "@css/home/Banner.css";
-import IMainPageNewsItem from "@models/mainpage/IMainPageNewsItem";
+import MainPageNewsItem from "@models/mainpage/MainPageNewsItem";
 
 interface NewsProps {
-  newsList: IMainPageNewsItem[];
+  newsList: MainPageNewsItem[];
 }
-function NewsItem({ news }: { news: IMainPageNewsItem }) {
+function NewsItem({ news }: { news: MainPageNewsItem }) {
   const { newsType, title, date } = news;
 
   return (

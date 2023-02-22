@@ -1,4 +1,4 @@
-import IMainPageData from "@models/mainpage/IMainPageData";
+import MainPageData from "@models/mainpage/MainPageData";
 import MainPageRepository from "common/services/mainpage/mainpage_repository";
 import { action, makeObservable, observable } from "mobx";
 
@@ -13,11 +13,11 @@ export class HomeViewModel {
   status: HomeStatus;
 
   @observable
-  mainPageData: IMainPageData;
+  mainPageData: MainPageData;
 
   constructor() {
     this.status = HomeStatus.Loading;
-    this.mainPageData = IMainPageData.empty();
+    this.mainPageData = MainPageData.empty();
 
     makeObservable(this);
 

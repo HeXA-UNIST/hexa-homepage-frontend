@@ -1,6 +1,6 @@
 import axios from "axios";
 import WebConstants from "@constants";
-import ISeminarsQueryResult from "@models/seminar/ISeminarsQueryResult";
+import SeminarsQueryResult from "@models/seminar/SeminarsQueryResult";
 
 export interface SeminarQueryParams {
   searchText?: string;
@@ -15,7 +15,7 @@ export default class SeminarRepository {
     year,
     pageNum = 10,
     page,
-  }: SeminarQueryParams): Promise<ISeminarsQueryResult> {
+  }: SeminarQueryParams): Promise<SeminarsQueryResult> {
     const params = {
       searchText,
       year,
@@ -27,7 +27,7 @@ export default class SeminarRepository {
         `${WebConstants.API_URL}/seminar/query`,
         { params }
       );
-      return ISeminarsQueryResult.fromJson(response.data);
+      return SeminarsQueryResult.fromJson(response.data);
     } catch (error) {
       console.log(error);
       throw error;
