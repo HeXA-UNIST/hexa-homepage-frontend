@@ -1,4 +1,4 @@
-import IMainPageData from "@models/mainpage/IMainPageData";
+import IMainPageData from "@models/mainpage/MainPageData";
 import MainPageRepository from "common/services/mainpage/mainpage_repository";
 import { action, makeObservable, observable } from "mobx";
 
