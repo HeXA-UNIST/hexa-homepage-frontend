@@ -6,6 +6,7 @@
       "@services/*": ["./src/services/*"],
       "@css/*": ["./src/static/css/*"],
       "@img/*": ["./src/static/img/*"],
+      "@constants" : ["./src/common/constants/web_constants.ts"],
       "@components/*": ["./src/common/components/*"],
       "@hooks/*": ["./src/common/hooks/*"],
       "@models/*": ["./src/common/models/*"],

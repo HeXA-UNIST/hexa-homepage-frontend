@@ -2,9 +2,8 @@ import { observer } from "mobx-react";
 import useStores from "@hooks/storeHooks";
 
 import profileimg from "@img/profile_img.jpg";
-import Banner from "./Banner";
 
-import "@css/home/Header.css";
+import "@css/app/Header.css";
 
 function Header() {
   const { isLoggedIn } = useStores().loginStore;
@@ -24,7 +23,7 @@ function Header() {
               <a href="test">회원</a>
             </li>
             <li>
-              <a href="test">활동</a>
+              <a href="activities">활동</a>
             </li>
             <li>
               <a href="test">뉴스</a>
@@ -34,7 +33,6 @@ function Header() {
             </li>
           </nav>
         </div>
-        <Banner />
       </body>
     );
   }
@@ -70,7 +68,6 @@ function Header() {
           </li>
         </nav>
       </div>
-      <Banner />
     </body>
   );
 }

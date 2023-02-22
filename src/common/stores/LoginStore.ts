@@ -1,5 +1,5 @@
-import IUser from "common/models/IUser";
 import { observable, action, computed } from "mobx";
+import IUser from "@models/authentication/IUser";
 
 class LoginStore {
   @observable isLoggedIn = false;

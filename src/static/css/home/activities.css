@@ -1,0 +1,16 @@
+.activity{
+    text-align: left;
+}
+
+.activity .box {
+    width: 100%;
+    height: 100%; 
+    border-radius: 2%;
+    overflow: hidden;
+}
+
+.activity .profile {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
