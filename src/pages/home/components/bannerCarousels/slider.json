@@ -1,0 +1,19 @@
+
+
+[
+    {
+        "id":1,
+        "image":"images/background.jpg",
+        "title":"hello"
+    },
+    {   
+        "id":2,
+        "image":"images/background3.jpg",
+        "title":"hello1"
+    },
+    {
+        "id":3,
+        "image":"images/background.jpg",
+        "title":"hello2"
+    }
+]
