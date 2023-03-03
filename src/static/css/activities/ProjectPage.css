@@ -1,0 +1,29 @@
+.project-page__title {
+  text-align: start;
+  margin-bottom: 34px;
+}
+
+.project-page__title h2 {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.project-page__title span {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.project-page__query-form {
+  margin-bottom: 34px;
+}
+
+.project-page__project-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.project-page__project-list .project-card {
+  margin-bottom: 32px;
+}

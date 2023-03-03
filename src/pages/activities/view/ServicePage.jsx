@@ -54,7 +54,7 @@ const serviceList = [
   },
 ];
 
-function Service() {
+function ServicePage() {
   const services = serviceList.map((service) => (
     <div className="serviceContent">
       <img src={service.image} alt=" " />
@@ -88,4 +88,4 @@ function Service() {
   );
 }
 
-export default Service;
+export default ServicePage;
