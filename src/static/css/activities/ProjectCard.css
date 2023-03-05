@@ -1,5 +1,5 @@
 .project-card {
-  width: 524px;
+  width: 540px;
   height: 194px;
   background: #ffffff;
   display: flex;
@@ -26,7 +26,8 @@
 
 .project-card__content__title {
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 600;
+  margin-bottom: 16px;
 }
 
 .project-card__content__discription {

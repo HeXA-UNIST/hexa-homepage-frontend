@@ -12,8 +12,7 @@ import Banner from "@pages/home/components/sections/Banner";
 function HomeView({ viewModel }: { viewModel: HomeViewModel }) {
   return (
     <div>
-      <div>{viewModel.status}</div>
-      <Header />
+      <Header transparent />
       <Banner />
       <News newsList={viewModel.mainPageData.newsList} />
       <Services />

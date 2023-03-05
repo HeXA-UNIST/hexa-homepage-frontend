@@ -1,16 +1,50 @@
+import { useEffect, useState } from "react";
+
 import { observer } from "mobx-react";
 import useStores from "@hooks/storeHooks";
 
 import profileimg from "@img/profile_img.jpg";
 
-import "@css/app/Header.css";
 import ContentArea from "@components/ContentArea";
+import { useMediaQuery } from "react-responsive";
 
-function Header() {
+import "@css/app/Header.css";
+
+const useScrollPosition = () => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    const updatePosition = () => {
+      setScrollPosition(window.pageYOffset);
+    };
+    window.addEventListener("scroll", updatePosition);
+    updatePosition();
+    return () => window.removeEventListener("scroll", updatePosition);
+  }, []);
+
+  return scrollPosition;
+};
+
+function Header({ transparent = false }: { transparent?: boolean }) {
+  const scrollPosition = useScrollPosition();
+  const isMobile = useMediaQuery({
+    query: "(max-width: 700px)",
+  });
+
   const { isLoggedIn } = useStores().loginStore;
 
+  const height = scrollPosition === 0 || isMobile ? "133px" : "83px";
+
   return (
-    <div className="header-area">
+    <div
+      className="header-area"
+      style={{
+        height,
+        position: transparent ? "fixed" : "sticky",
+        backgroundColor:
+          scrollPosition === 0 && transparent ? "transparent" : undefined,
+      }}
+    >
       <ContentArea>
         <div className="header-area__content">
           <h2>
@@ -24,7 +58,7 @@ function Header() {
               <a href="test">회원</a>
             </li>
             <li>
-              <a href="test">활동</a>
+              <a href="activities">활동</a>
             </li>
             <li>
               <a href="test">뉴스</a>
@@ -54,5 +88,9 @@ function Header() {
     </div>
   );
 }
+
+Header.defaultProps = {
+  transparent: false,
+};
 
 export default observer(Header);
