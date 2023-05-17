@@ -1,38 +1,29 @@
-import IMainPageData from "@models/mainpage/MainPageData";
-import MainPageRepository from "common/services/mainpage/mainpage_repository";
+import ProjectPageViewModel from "@pages/activities/vm/project_page_view_model";
 import { action, makeObservable, observable } from "mobx";
 
-export enum ActivityStatus {
-  Loading = "Loading",
-  Failed = "Failed",
-  Success = "Success",
+export enum ActivityMode {
+  Project = "Project",
+  Seminar = "Seminar",
+  Service = "Service",
 }
 
 export class ActivityViewModel {
   @observable
-  status: ActivityStatus;
+  mode: ActivityMode;
 
   @observable
-  mainPageData: IMainPageData;
+  projectPageState: ProjectPageViewModel;
 
   constructor() {
-    this.status = ActivityStatus.Loading;
-    this.mainPageData = IMainPageData.empty();
+    this.mode = ActivityMode.Project;
+    this.projectPageState = new ProjectPageViewModel();
 
     makeObservable(this);
-
-    this.load();
   }
 
-  @action
-  async load() {
-    try {
-      const mainPage = await MainPageRepository.getMainPageData();
 
-      this.status = ActivityStatus.Success;
-      this.mainPageData = mainPage;
-    } catch (error) {
-      this.status = ActivityStatus.Failed;
-    }
+  @action
+  setMode(mode: ActivityMode) {
+    this.mode = mode;
   }
 }
