@@ -8,7 +8,7 @@ function leftPad(value: number) {
 
 export function toStringByFormatting(source: Date, delimiter = '-') {
     const year = source.getFullYear();
-    const month = leftPad(source.getMonth() + 1);
+    const month = leftPad(source.getMonth());
     const day = leftPad(source.getDate());
 
     return [year, month, day].join(delimiter);

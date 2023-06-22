@@ -1,8 +1,10 @@
-import "@css/activities/"
+
 
 function SearchBox() {
     return(
-        <div></div>
+        <div className="searchBox">
+            대충 서치 박스
+        </div>
     );
 }
 

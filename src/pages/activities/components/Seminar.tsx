@@ -1,6 +1,7 @@
 import "@css/activities/seminar.css";
 import searchBox from "./Search";
 import { toStringByFormatting } from "../../../util/index";
+
 const seminarList = [
     {
         id: 1,
@@ -9,7 +10,7 @@ const seminarList = [
         download: '/download/seminar/Seminar PPT.pdf',
         pdfName: 'Seminar PPT.pdf',
         organizer: '김선욱',
-        seminarDate: new Date()
+        seminarDate: new Date(2023, 6, 22)
     },
     {
         id: 2,
@@ -18,7 +19,7 @@ const seminarList = [
         download: '/download/seminar/Seminar PPT.pdf',
         pdfName: 'Seminar PPT.pdf',
         organizer: '김선욱',
-        seminarDate: new Date()
+        seminarDate: new Date(2023, 6, 22)
     },
     {
         id: 3,
@@ -27,7 +28,7 @@ const seminarList = [
         download: '/download/seminar/Seminar PPT.pdf',
         pdfName: 'Seminar PPT.pdf',
         organizer: '김선욱',
-        seminarDate: new Date()
+        seminarDate: new Date(2023, 6, 22)
     },
     {
         id: 4,
@@ -36,15 +37,15 @@ const seminarList = [
         download: '/download/seminar/Seminar PPT.pdf',
         pdfName: 'Seminar PPT.pdf',
         organizer: '김선욱',
-        seminarDate: new Date()
+        seminarDate: new Date(2023, 6, 22)
     },
 ];
 
 
 function PdfDownload(pdfName: string, link: string){
     return (
-        <a href={link} className="download-wrap">
-
+        <a href={link} className="downloadBtn">
+            {pdfName}
         </a>
     );
 }
@@ -60,15 +61,12 @@ function Seminar() {
                 </div>
                 <div className="seminarRight">
                     <div className="organizer">{seminar.organizer}</div>
-                    <div className="seminarDate">{toStringByFormatting(seminar.date)}</div>
+                    <div className="seminarDate">{toStringByFormatting(seminar.seminarDate)}</div>
                 </div>
                 
             </div>
         </div>
     ));
-
-
-
 
     return (
         <div>
