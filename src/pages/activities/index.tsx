@@ -4,6 +4,7 @@ import "@css/activities/activities.css";
 
 function Activity() {
   const viewModel = new ActivityViewModel();
+  console.log(viewModel.projectPageState.queryResult.projects);
   return <ActivityView viewModel={viewModel} />;
 }
 

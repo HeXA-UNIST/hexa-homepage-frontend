@@ -69,8 +69,9 @@ function ProjectPage({
 }: {
   projectPageViewModel: ProjectPageViewModel;
 }) {
+    
   projectPageViewModel.fetchProjects();
-
+    
   return (
     <ContentArea>
       <TitlePart />

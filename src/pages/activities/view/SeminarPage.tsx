@@ -1,5 +1,10 @@
 import ContentArea from "@components/ContentArea";
+import SearchBox from "@components/SearchBox";
+import { observer } from "mobx-react";
+
 import "@css/activities/SeminarPage.css";
+import SeminarPageViewModel from "@pages/activities/vm/seminar_page_view_model";
+import SeminarCard from "@pages/activities/components/SeminarCard";
 
 function TitlePart() {
   return (
@@ -10,12 +15,66 @@ function TitlePart() {
   );
 }
 
-function SeminarPage() {
-  return (
-    <ContentArea>
-      <TitlePart />
-    </ContentArea>
+const QueryFormPart = observer(
+    ({
+      seminarPageViewModel,
+    }: {
+      seminarPageViewModel: SeminarPageViewModel;
+    }) => {
+      const { seminarQueryOptions } = seminarPageViewModel;
+  
+      return (
+        <div className="seminar-page__query-form">
+          <div>
+            <SearchBox
+              style={{
+                width: "100%",
+              }}
+              value={seminarQueryOptions.searchText}
+              onChange={(text) => {
+                seminarPageViewModel.setSearchText(text);
+                seminarPageViewModel.fetchSeminars();
+              }}
+              placeholder="검색 (예: BUS HeXA, tag:서비스)"
+            />
+          </div>
+        </div>
+      );
+    }
   );
-}
+  
+  const SeminarListPart = observer(
+    ({
+      seminarPageViewModel,
+    }: {
+      seminarPageViewModel: SeminarPageViewModel;
+    }) => {
+      const { queryResult } = seminarPageViewModel;
+        
+      return (
+        <div className="seminar-page__seminar-list">
+          {queryResult.seminars.map((seminar) => (
+            <SeminarCard key={seminar.seminarId} seminar={seminar} />
+          ))}
+        </div>
+      );
+    }
+  );
+
+function SeminarPage({
+    seminarPageViewModel,
+  }: {
+    seminarPageViewModel: SeminarPageViewModel;
+  }) {
+    seminarPageViewModel.fetchSeminars();
+    // console.log(seminarPageViewModel.queryResult.seminars);
+    return (
+      <ContentArea>
+        <TitlePart />
+        <QueryFormPart seminarPageViewModel={seminarPageViewModel} />
+        <SeminarListPart seminarPageViewModel={seminarPageViewModel} />
+      </ContentArea>
+    );
+  }
 
 export default SeminarPage;

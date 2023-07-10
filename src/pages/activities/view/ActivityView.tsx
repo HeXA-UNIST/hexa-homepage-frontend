@@ -13,12 +13,15 @@ import ProjectPage from "@pages/activities/view/ProjectPage";
 import SeminarPage from "@pages/activities/view/SeminarPage";
 
 function ActivityView({ viewModel }: { viewModel: ActivityViewModel }) {
+    // console.log(viewModel.projectPageState.queryResult.projects);
   const activityContents = {
     [ActivityMode.Service]: <ServicePage />,
     [ActivityMode.Project]: (
       <ProjectPage projectPageViewModel={viewModel.projectPageState} />
     ),
-    [ActivityMode.Seminar]: <SeminarPage />,
+    [ActivityMode.Seminar]: (
+        <SeminarPage seminarPageViewModel={viewModel.seminarPageState} />
+    ),
   };
 
   return (
