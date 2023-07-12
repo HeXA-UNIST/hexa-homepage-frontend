@@ -1,0 +1,146 @@
+.footer-area {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 20px;
+  background: linear-gradient(270deg, #222222 0%, #3b2d74 100%);
+  position: relative;
+}
+.footer-area__center-content {
+  width: 100%;
+  height: 100%;
+  height: 330px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.footer-area__content {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.footer-area__left-content {
+  display: flex;
+  flex: 1;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+
+.footer-area__content__logo {
+  color: #FFF;
+  font-family: Orbitron;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+.footer-area__content__text {
+  margin-top: 8px;
+  color: #FFF;
+  font-family: Noto Sans KR;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -0.176px;
+  text-align: left;
+}
+
+.top_button {
+  position: relative;
+  padding-left: 92%;
+}
+
+.top_button img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+.footer-area__right-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.footer-area__right-content h2 {
+  text-transform: uppercase;
+  color: white;
+}
+
+.footer-area__right-content p {
+  font-size: clamp(1rem, 1.2vw, 1.5rem);
+  color: white;
+  text-align: left;
+}
+
+.footer-area__right-content nav {
+  color: white;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+}
+
+.footer-area__right-content nav li {
+  margin: 0 15px;
+}
+
+.footer-area__right-content nav li:first-child {
+  margin-left: 0;
+}
+
+.footer-area__right-content nav li:last-child {
+  margin-left: 0;
+}
+
+.box {
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.profile {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 700px) {
+  .footer-area {
+    width: 100%;
+    height: 210px;
+    margin: 0;
+    background: linear-gradient(to right, darkblue, black);
+
+    position: relative;
+  }
+
+  .footer {
+    flex-direction: column;
+  }
+
+  .footer h2 {
+    margin-bottom: 15px;
+  }
+
+  .footer nav li {
+    margin: 0 7px;
+  }
+
+  .footer p {
+    font-size: 12px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+
+  .logo {
+    display: none;
+  }
+}
