@@ -1,7 +1,7 @@
 import axios from "axios";
 import WebConstants from "@constants";
 import Seminar from "@models/seminar/Seminar";
-import SeminarsQueryResult from "@models/seminar/SeminarsQueryResult";
+import SeminarsQueryResult, { SeminarsQueryType } from "@models/seminar/SeminarsQueryResult";
 
 export interface SeminarQueryParams {
   searchText?: string;
@@ -50,7 +50,7 @@ export default class SeminarRepository {
     }
   }
   
-  private static async fakeQueryData() {
+  private static async fakeQueryData(): Promise<SeminarsQueryType> {
     await new Promise((resolve) => {
       setTimeout(resolve, 1000);
     });
@@ -64,9 +64,7 @@ export default class SeminarRepository {
           writerUserName: "Hong",
           writerName: "홍길동",
           content: "Hexa에서 진행한 2022 첫 세미나입니다. 관련 파일은 아래에 첨부하였습니다.",
-          attachments: [],
-          page: 0,
-          maxPage: 10
+          attachment: [],
         },
         {
             seminarId: 1,
@@ -76,9 +74,7 @@ export default class SeminarRepository {
             writerUserName: "Hong",
             writerName: "홍길동",
             content: "Hexa에서 진행한 2022 첫 세미나입니다. 관련 파일은 아래에 첨부하였습니다.",
-            attachments: [],
-            page: 0,
-            maxPage: 10
+            attachment: [],
         },
         {
           seminarId: 2,
@@ -88,9 +84,7 @@ export default class SeminarRepository {
           writerUserName: "Hong",
           writerName: "홍길동",
           content: "Hexa에서 진행한 2022 첫 세미나입니다. 관련 파일은 아래에 첨부하였습니다.",
-          attachments: [],
-          page: 0,
-          maxPage: 10
+          attachment: [],
         },
       ],
       page: 0,

@@ -33,7 +33,7 @@ class SeminarPageViewModel {
 
     this.seminarQueryOptions = {
       searchText: "",
-      year: "2022",
+      year: "",
       pageNum: 10,
       pageIndex: 0,
     };

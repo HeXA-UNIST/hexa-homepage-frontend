@@ -23,7 +23,6 @@ function ActivityView({ viewModel }: { viewModel: ActivityViewModel }) {
         <SeminarPage seminarPageViewModel={viewModel.seminarPageState} />
     ),
   };
-
   return (
     <div>
       <Header />

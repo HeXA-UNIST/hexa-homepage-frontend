@@ -67,7 +67,7 @@ function SeminarPage({
     seminarPageViewModel: SeminarPageViewModel;
   }) {
     seminarPageViewModel.fetchSeminars();
-    // console.log(seminarPageViewModel.queryResult.seminars);
+    
     return (
       <ContentArea>
         <TitlePart />

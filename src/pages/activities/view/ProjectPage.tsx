@@ -53,7 +53,6 @@ const ProjectListPart = observer(
     projectPageViewModel: ProjectPageViewModel;
   }) => {
     const { queryResult } = projectPageViewModel;
-
     return (
       <div className="project-page__project-list">
         {queryResult.projects.map((project) => (
