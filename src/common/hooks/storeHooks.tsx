@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { MobXProviderContext } from "mobx-react";
-import LoginStore from "common/stores/LoginStore";
+import LoginStore from "@stores/AuthenticationStore";
 
 const useStores = () =>
   useContext(MobXProviderContext) as {
