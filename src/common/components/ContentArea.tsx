@@ -1,14 +1,23 @@
 const ContentAreaWidth = 1080;
 const ContentAreaPadding = 20;
 
-function ContentArea({ children }: { children: React.ReactNode }) {
+type ContentAreaProps = {
+  children: React.ReactNode;
+  maximizeHeight?: boolean;
+};
+
+function ContentArea({
+  children,
+  maximizeHeight = false
+}: ContentAreaProps) {
   return (
     <div
       style={{
         width: "100%",
         display: "flex",
         flexDirection: "row",
-        justifyContent: "center"
+        justifyContent: "center",
+        height: maximizeHeight ? "100%" : "auto"
       }}
     >
       <div
@@ -21,6 +30,7 @@ function ContentArea({ children }: { children: React.ReactNode }) {
           marginLeft: `${ContentAreaPadding}px`,
           marginRight: `${ContentAreaPadding}px`,
           boxSizing: "border-box",
+          height: maximizeHeight ? "100%" : "auto"
         }}
       >
         {children}
@@ -28,5 +38,9 @@ function ContentArea({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
+
+ContentArea.defaultProps = {
+  maximizeHeight: false
+};
 
 export default ContentArea;
