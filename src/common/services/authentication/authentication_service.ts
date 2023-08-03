@@ -2,7 +2,8 @@ import WebConstants from "@constants";
 import IUser from "@models/authentication/IUser";
 
 class AuthenticationService {
-  static async login(username: string, password: string) {
+  // eslint-disable-next-line class-methods-use-this
+  async login(username: string, password: string) {
     try {
       const response = await fetch(`${WebConstants.API_URL}/login`, {
         method: "POST",
@@ -25,7 +26,8 @@ class AuthenticationService {
   }
 
   // 로그인된 사용자의 정보를 가져오는 메서드
-  static async getUserInfo(token:string) : Promise<IUser>{
+  // eslint-disable-next-line class-methods-use-this
+  async getUserInfo(token:string) : Promise<IUser>{
     try {
       const response = await fetch(`${WebConstants.API_URL}/user`, {
         method: "GET",

@@ -11,6 +11,11 @@ class AuthenticationStore {
   }
 
   @computed
+  get isLoggedIn() {
+    return this.token !== null;
+  }
+
+  @computed
   get userName() {
     return this.userData ? this.userData.name : "";
   }
@@ -29,6 +34,8 @@ class AuthenticationStore {
     localStorage.removeItem("token");
   };
 }
+
+export { AuthenticationStore };
 
 const authenticationStore = new AuthenticationStore();
 export default authenticationStore;

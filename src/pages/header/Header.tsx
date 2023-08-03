@@ -31,7 +31,7 @@ function Header({ transparent = false }: { transparent?: boolean }) {
     query: "(max-width: 700px)",
   });
 
-  const { isLoggedIn } = useStores().loginStore;
+  const { isLoggedIn } = useStores().authenticationStore;
 
   const height = scrollPosition === 0 || isMobile ? "133px" : "83px";
 
