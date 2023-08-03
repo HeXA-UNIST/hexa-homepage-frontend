@@ -1,81 +1,11 @@
 import ContentArea from "@components/ContentArea";
+import { observer } from "mobx-react";
+
 import "@css/activities/ServicePage.css";
+import ServicePageViewModel from "@pages/activities/vm/service_page_view_model";
+import ServiceCard from "@pages/activities/components/ServiceCard";
 
-interface Service {
-  id: number;
-  name: string;
-  image: string;
-  introduction: string;
-  link: string | null;
-  github: string | null;
-}
 
-const serviceList: Service[] = [
-  {
-    id: 1,
-    name: "BUS HeXA",
-    image: "images/sample1.png",
-    introduction:
-      "BUS HeXA는 UNIST-울산 버스 배차간격 및 시간 정보 제공 서비스입니다. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    link: "./home",
-    github: "./home",
-  },
-  {
-    id: 2,
-    name: "Blackboard Extension",
-    image: "images/sample1.png",
-    introduction: "Blackboard Extension은 블랙보드 확장 프로그램입니다.",
-    link: "./home",
-    github: "./home",
-  },
-];
-
-function ServiceItem({ service }: { service: Service }) {
-  const handleOnClickLink = () => {
-    if (service.link) {
-      window.open(service.link);
-    }
-  };
-
-  const handleOnClickGithub = () => {
-    if (service.github) {
-      window.open(service.github);
-    }
-  };
-
-  return (
-    <div className="service-page__item">
-      <img src={service.image} alt=" " />
-      <div className="service-page__item__content">
-        <div className="service-page__item__content__title">{service.name}</div>
-        <div className="service-page__item__content__introduction">
-          {service.introduction}
-        </div>
-        <div className="service-page__item__content__buttons">
-          {service.link && (
-            <button
-              type="button"
-              className="service-page__item__content__button"
-              onClick={handleOnClickLink}
-            >
-              사용해보기 →
-            </button>
-          )}
-
-          {service.github && (
-            <button
-              type="button"
-              className="service-page__item__content__button"
-              onClick={handleOnClickGithub}
-            >
-              Github →
-            </button>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function TitlePart() {
   return (
@@ -86,17 +16,37 @@ function TitlePart() {
   );
 }
 
-function ServicePage() {
-  return (
-    <ContentArea>
-      <TitlePart />
-      <div className="service-page__list">
-        {serviceList.map((service) => (
-          <ServiceItem key={service.id} service={service} />
-        ))}
-      </div>
-    </ContentArea>
+const ServiceListPart = observer(
+    ({
+      servicePageViewModel,
+    }: {
+      servicePageViewModel: ServicePageViewModel;
+    }) => {
+      const { queryResult } = servicePageViewModel;
+        
+      return (
+        <div className="service-page__service-list">
+          {queryResult.services.map((service) => (
+            <ServiceCard key={service.serviceId} service={service} />
+          ))}
+        </div>
+      );
+    }
   );
-}
+
+function ServicePage({
+    servicePageViewModel,
+  }: {
+    servicePageViewModel: ServicePageViewModel;
+  }) {
+    servicePageViewModel.fetchServices();
+    
+    return (
+      <ContentArea>
+        <TitlePart />
+        <ServiceListPart servicePageViewModel={servicePageViewModel} />
+      </ContentArea>
+    );
+  }
 
 export default ServicePage;

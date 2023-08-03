@@ -1,5 +1,16 @@
 import SeminarAttachment from "@models/seminar/SeminarAttachment";
 
+export interface SeminarType{
+    seminarId: number;
+    title: string;
+    date: string;
+    writerUserId: number;
+    writerUserName: string;
+    writerName: string;
+    content: string;
+    attachment: SeminarAttachment[];
+}
+
 export default class Seminar {
   seminarId: number;
 
@@ -17,10 +28,6 @@ export default class Seminar {
 
   attachment: SeminarAttachment[];
 
-  page: number;
-
-  maxPage: number;
-
   constructor({
     seminarId,
     title,
@@ -30,20 +37,7 @@ export default class Seminar {
     writerName,
     content,
     attachment,
-    page,
-    maxPage,
-  }: {
-    seminarId: number;
-    title: string;
-    date: string;
-    writerUserId: number;
-    writerUserName: string;
-    writerName: string;
-    content: string;
-    attachment: SeminarAttachment[];
-    page: number;
-    maxPage: number;
-  }) {
+  }: SeminarType) {
     this.seminarId = seminarId;
     this.title = title;
     this.date = date;
@@ -52,11 +46,9 @@ export default class Seminar {
     this.writerName = writerName;
     this.content = content;
     this.attachment = attachment;
-    this.page = page;
-    this.maxPage = maxPage;
   }
 
-  static fromJson(json: { [key: string]: any }) {
+  static fromJson(json: SeminarType) {
     return new Seminar({
       seminarId: json.seminarId,
       title: json.title,
@@ -67,9 +59,7 @@ export default class Seminar {
       content: json.content,
       attachment: json.attachment.map((item: any) =>
         SeminarAttachment.fromJson(item)
-      ),
-      page: json.page,
-      maxPage: json.maxPage,
+      )
     });
   }
 
@@ -82,9 +72,7 @@ export default class Seminar {
       writerUserName: "",
       writerName: "",
       content: "",
-      attachment: [],
-      page: 0,
-      maxPage: 0,
+      attachment: []
     });
   }
 }

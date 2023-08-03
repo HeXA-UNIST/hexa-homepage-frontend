@@ -1,10 +1,10 @@
 import "@css/home/Banner.css";
-import Carousel from "@pages/home/components/carousels/Carousel";
+import BannerSlides from "@pages/home/components/carousels/BannerSlides";
 
 function Banner() {
   return (
     <div className="banner-area">
-      <Carousel />;
+      <BannerSlides />;
     </div>
   );
 }
