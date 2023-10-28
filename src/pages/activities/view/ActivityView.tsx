@@ -4,8 +4,8 @@ import {
   ActivityViewModel,
 } from "@pages/activities/vm/activity_view_model";
 
-import Footer from "@pages/footer/Footer";
-import Header from "@pages/header/Header";
+import Footer from "@components/footer/Footer";
+import Header from "@components/header/Header";
 import ModeSelectArea from "@pages/activities/components/ModeSelectArea";
 
 import ServicePage from "@pages/activities/view/ServicePage";

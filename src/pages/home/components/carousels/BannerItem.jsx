@@ -1,5 +1,5 @@
 import ContentArea from "@components/ContentArea";
-import "@css/home/Banner.css";
+import "@css/home/Main.css";
 
 function BannerItem({ item }) {
   return (

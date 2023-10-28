@@ -1,3 +1,11 @@
+
+export interface IMainPageNewsItem{
+    newsId: number;
+    newsType: string;
+    title: string;
+    date: string;
+}
+
 export default class MainPageNewsItem {
   newsId: number;
 
@@ -12,19 +20,14 @@ export default class MainPageNewsItem {
     newsType,
     title,
     date,
-  }: {
-    newsId: number;
-    newsType: string;
-    title: string;
-    date: string;
-  }) {
+  }: IMainPageNewsItem) {
     this.newsId = newsId;
     this.newsType = newsType;
     this.title = title;
     this.date = date;
   }
 
-  static fromJson(json: { [key: string]: any }) {
+  static fromJson(json: IMainPageNewsItem) {
     return new MainPageNewsItem({
       newsId: json.newsId,
       newsType: json.newsType,

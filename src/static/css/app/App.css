@@ -1,5 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap");
 
+
+:root{
+    --background-color: #141414;
+    --component-color: #383838;
+    --component-transparent-color: #43434380;
+    --component-up-color: #5A5A5A82;
+    --component-down-color: #373737;
+}
+
+
+
 .App {
   text-align: center;
   font-family: "Noto Sans KR", sans-serif;
