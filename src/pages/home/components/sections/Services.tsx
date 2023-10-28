@@ -1,4 +1,4 @@
-import Carousel from "@pages/home/components/serviceCarousels/Carousel";
+// import Carousel from "@pages/home/components/serviceCarousels/Carousel";
 import "@css/home/Services.css";
 import ContentArea from "@components/ContentArea";
 

@@ -12,6 +12,7 @@ export interface IMainPageData {
 
 export default class MainPageData {
     newsList: MainPageNewsItem[];
+    
     serviceList: MainPageServiceItem[];
 
     constructor({ newsList, serviceList }: IMainPageData) {

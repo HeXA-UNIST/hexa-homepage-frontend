@@ -1,3 +1,5 @@
+
+import "@css/tailwind.css";
 import "@css/app/App.css";
 import "@css/app/Hexa.css";
 

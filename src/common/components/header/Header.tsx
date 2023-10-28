@@ -46,7 +46,7 @@ function Header({ transparent = false }: { transparent?: boolean }) {
       }}
     >
       <ContentArea>
-        <div className="header-area__content">
+        <div className="header-area__content bg-red-600">
           <h2>
             <a href="home">Hexa</a>
           </h2>

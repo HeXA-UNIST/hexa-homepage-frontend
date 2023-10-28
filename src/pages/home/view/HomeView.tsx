@@ -4,7 +4,7 @@ import { HomeViewModel } from "@pages/home/vm/home_view_model";
 import Header from "@components/header/Header";
 import Footer from "@components/footer/Footer";
 
-import Introduction from "../components/sections/Introduction";
+import Introduction from "@pages/home/components/sections/Introduction";
 import News from "@pages/home/components/sections/News";
 import Services from "@pages/home/components/sections/Services";
 import Activities from "@pages/home/components/sections/Activities";
