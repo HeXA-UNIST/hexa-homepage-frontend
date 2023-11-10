@@ -52,23 +52,27 @@ export default class MainPageRepository {
       serviceList: [
         {
             serviceId: 0,
-            thumbnail: "bob",
-            title: "밥먹어U"
+            thumbnail: "images/babService.svg",
+            title: "밥먹어U",
+            subTitle: "유니스트의 학식 정보를 알려주는 서비스"
         },
         {
             serviceId: 1,
-            thumbnail: "bob",
-            title: "밥먹어U"
+            thumbnail: "images/babService.svg",
+            title: "밥먹어U",
+            subTitle: "유니스트의 학식 정보를 알려주는 서비스"
         },
         {
             serviceId: 0,
-            thumbnail: "bob",
-            title: "밥먹어U"
+            thumbnail: "images/babService.svg",
+            title: "밥먹어U",
+            subTitle: "유니스트의 학식 정보를 알려주는 서비스"
         },
         {
             serviceId: 1,
-            thumbnail: "bob",
-            title: "밥먹어U"
+            thumbnail: "images/babService.svg",
+            title: "밥먹어U",
+            subTitle: "유니스트의 학식 정보를 알려주는 서비스"
         }
       ]
     };
