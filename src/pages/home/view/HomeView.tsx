@@ -14,7 +14,7 @@ import Main from "@pages/home/components/sections/Main";
 function HomeView({ viewModel }: { viewModel: HomeViewModel }) {
   return (
     <div>
-      <Header transparent />
+      <Header />
       <Main />
       <Introduction />
       <News newsList={viewModel.mainPageData.newsList} />
