@@ -1,6 +1,6 @@
 import axios from "axios";
 import WebConstants from "@constants";
-import MainPageData from "@models/mainpage/MainPageData";
+import MainPageData, { IMainPageData } from "@models/mainpage/MainPageData";
 
 export default class MainPageRepository {
   public static async getMainPageData(): Promise<MainPageData> {
@@ -24,7 +24,7 @@ export default class MainPageRepository {
     }
   }
 
-  private static async fakeData() {
+  private static async fakeData(): Promise<IMainPageData> {
     await new Promise((resolve) => {
       setTimeout(resolve, 1000);
     });
@@ -49,6 +49,32 @@ export default class MainPageRepository {
           date: "2020-01-03",
         },
       ],
+      serviceList: [
+        {
+            serviceId: 0,
+            thumbnail: "images/babService.svg",
+            title: "밥먹어U",
+            subTitle: "유니스트의 학식 정보를 알려주는 서비스"
+        },
+        {
+            serviceId: 1,
+            thumbnail: "images/babService.svg",
+            title: "밥먹어U",
+            subTitle: "유니스트의 학식 정보를 알려주는 서비스"
+        },
+        {
+            serviceId: 0,
+            thumbnail: "images/babService.svg",
+            title: "밥먹어U",
+            subTitle: "유니스트의 학식 정보를 알려주는 서비스"
+        },
+        {
+            serviceId: 1,
+            thumbnail: "images/babService.svg",
+            title: "밥먹어U",
+            subTitle: "유니스트의 학식 정보를 알려주는 서비스"
+        }
+      ]
     };
   }
 }

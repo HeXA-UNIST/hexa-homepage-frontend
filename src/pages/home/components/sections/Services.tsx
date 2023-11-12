@@ -1,0 +1,62 @@
+// import Carousel from "@pages/home/components/serviceCarousels/Carousel";
+import "@css/home/Services.css";
+import MainPageServiceItem from "@models/mainpage/MainPageServiceItem";
+import ContentFrame from "../content";
+
+interface ServiceProps {
+    serviceList: MainPageServiceItem[];
+}
+
+function ServiceItem({ service }: { service: MainPageServiceItem }) {
+    const { thumbnail, title, subTitle } = service;
+
+    return (
+        <a
+            href="home"
+            className="flex flex-col min-w-min h-96 bg-neutral-800 rounded-3xl p-8 text-left font-bold"
+            style={{
+                width: "22rem",
+            }}
+        >
+            <div className="flex justify-center items-center bg-emerald-500 rounded-2xl h-40 mb-4">
+                <img className="" src={thumbnail} alt="" />
+            </div>
+            <div className="text-white text-4xl mb-3">{title}</div>
+            <div className="text-zinc-500 text-2xl">{subTitle}</div>
+        </a>
+    );
+}
+function Services({ serviceList }: ServiceProps) {
+    return (
+        <div className="services-area">
+            <ContentFrame
+                title="서비스"
+                subTitle="HeXA는 UNIST 학생들의 삶의 편의를 증진시킬 수 있는 서비스를 제작하고 있어요"
+                icon="🧭"
+            >
+                <div
+                    className="flex flex-wrap justify-between content-between"
+                    style={{
+                        height: "50rem",
+                    }}
+                >
+                    {serviceList.map((service) => (
+                        <ServiceItem
+                            key={service.serviceId}
+                            service={service}
+                        />
+                    ))}
+                </div>
+                <div className="flex justify-center">
+                    <div className="flex justify-center items-center text-3xl text-white font-bold bg-neutral-800 rounded-full w-64 h-24">
+                        <a className="mb-2" href="/service">
+                            +더보기
+                        </a>
+                    </div>
+                </div>
+            </ContentFrame>
+        </div>
+    );
+}
+
+export default Services;

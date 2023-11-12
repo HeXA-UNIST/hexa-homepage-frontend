@@ -1,0 +1,83 @@
+.activities-area {
+    margin-top: 80px;
+}
+
+.activity-area__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+
+.activities-area__content__title {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 16px;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 150%;
+    letter-spacing: -0.88px;
+}
+
+.activities-area__content__title a {
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.activities-area__content__subtitle {
+    font-size: 24px;
+    font-weight: 500;
+    color: #757575;
+    line-height: 150%;
+    letter-spacing: -0.456px;
+    text-align: left;
+}
+
+.activities-area__content__tile {
+    display: flex;
+    margin-top: 34px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    align-items: flex-start;
+}
+
+.album-item {
+    flex: 0 0 48%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+
+.album-item img {
+    border-radius: 20px;
+}
+
+
+.album-item__title {
+    margin-top: 10px;
+    color: #1E1E1E;
+    font-family: Noto Sans KR;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    letter-spacing: -0.608px;
+}
+
+.album-item__subtitle {
+    color: #1E1E1E;
+    font-family: Noto Sans KR;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: -0.456px;
+    text-align: left;
+}
