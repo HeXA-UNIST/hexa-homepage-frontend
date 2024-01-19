@@ -28,9 +28,9 @@ function News({ newsList }: NewsProps) {
     return (
         <div className="news-area">
             <ContentFrame
-                title="뉴스"
-                subTitle="HeXA의 최신 소식을 알아보세요."
-                icon="📄"
+                title="HeXA의 최신 소식"
+                subTitle="대회수상, 신입부원 모집 등 주요 소식을 살펴보세요!"
+                // icon="📄"
             >
                 <div className="flex flex-row">
                     {newsList.map((news) => (

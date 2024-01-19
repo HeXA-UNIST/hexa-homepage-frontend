@@ -7,7 +7,7 @@ function Supports() {
             <ContentFrame
                 title="지원"
                 subTitle="HeXA에는 다양한 곳으로부터 지원받고 있어요."
-                icon="💎"
+                // icon="💎"
             >
                 <div className="flex flex-warp flex-row justify-between">
                     <div className="w-36 h-36">

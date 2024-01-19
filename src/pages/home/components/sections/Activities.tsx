@@ -28,9 +28,9 @@ function Activities() {
     return (
         <div className="activities-area">
             <ContentFrame
-                title="활동"
-                subTitle="HeXA에서는 매학기 동아리원이 모여 활동을 기획하고 진행해요."
-                icon="💡"
+                title="주요 활동"
+                subTitle="HEXA는 매 학기 특별한 활동을 진행하고 있습니다."
+                // icon="💡"
             >
                 <div className="flex flex-wrap justify-evenly content-evenly items-start font-bold" style={{
                     height:"65rem"
