@@ -1252,6 +1252,10 @@ html {
   z-index: 30;
 }
 
+.z-50 {
+  z-index: 50;
+}
+
 .mb-10 {
   margin-bottom: 2.5rem;
 }
@@ -1316,10 +1320,6 @@ html {
   margin-top: 2.5rem;
 }
 
-.mt-20 {
-  margin-top: 5rem;
-}
-
 .mt-28 {
   margin-top: 7rem;
 }
@@ -1330,6 +1330,10 @@ html {
 
 .mt-5 {
   margin-top: 1.25rem;
+}
+
+.mb-20 {
+  margin-bottom: 5rem;
 }
 
 .block {
@@ -1446,12 +1450,12 @@ html {
   max-width: 42rem;
 }
 
-.max-w-full {
-  max-width: 100%;
+.max-w-\[18rem\] {
+  max-width: 18rem;
 }
 
-.max-w-lg {
-  max-width: 32rem;
+.max-w-full {
+  max-width: 100%;
 }
 
 .grow {
@@ -1602,6 +1606,10 @@ html {
   padding: 0.5rem;
 }
 
+.p-3 {
+  padding: 0.75rem;
+}
+
 .p-4 {
   padding: 1rem;
 }
@@ -1633,6 +1641,34 @@ html {
 
 .pr-6 {
   padding-right: 1.5rem;
+}
+
+.pt-80 {
+  padding-top: 20rem;
+}
+
+.pb-20 {
+  padding-bottom: 5rem;
+}
+
+.pt-96 {
+  padding-top: 24rem;
+}
+
+.pt-\[500px\] {
+  padding-top: 500px;
+}
+
+.pt-\[100\%\] {
+  padding-top: 100%;
+}
+
+.pt-\[600px\] {
+  padding-top: 600px;
+}
+
+.pt-\[540px\] {
+  padding-top: 540px;
 }
 
 .text-left {
@@ -1667,9 +1703,9 @@ html {
   line-height: 1;
 }
 
-.text-8xl {
-  font-size: 6rem;
-  line-height: 1;
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .text-lg {
@@ -1749,10 +1785,6 @@ html {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.ease-in {
-  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
-}
-
 .hover\:bg-neutral-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(64 64 64 / var(--tw-bg-opacity));
@@ -1792,23 +1824,21 @@ html {
   --tw-space-x-reverse: 1;
 }
 
-@media (prefers-color-scheme: dark) {
-  .dark\:bg-gray-800\/30 {
-    background-color: rgb(31 41 55 / 0.3);
-  }
+:is(.dark .dark\:bg-gray-800\/30) {
+  background-color: rgb(31 41 55 / 0.3);
+}
 
-  .dark\:text-gray-800 {
-    --tw-text-opacity: 1;
-    color: rgb(31 41 55 / var(--tw-text-opacity));
-  }
+:is(.dark .dark\:text-gray-800) {
+  --tw-text-opacity: 1;
+  color: rgb(31 41 55 / var(--tw-text-opacity));
+}
 
-  .group:hover .dark\:group-hover\:bg-gray-800\/60 {
-    background-color: rgb(31 41 55 / 0.6);
-  }
+:is(.dark .group:hover .dark\:group-hover\:bg-gray-800\/60) {
+  background-color: rgb(31 41 55 / 0.6);
+}
 
-  .group:focus .dark\:group-focus\:ring-gray-800\/70 {
-    --tw-ring-color: rgb(31 41 55 / 0.7);
-  }
+:is(.dark .group:focus .dark\:group-focus\:ring-gray-800\/70) {
+  --tw-ring-color: rgb(31 41 55 / 0.7);
 }
 
 @media (min-width: 768px) {

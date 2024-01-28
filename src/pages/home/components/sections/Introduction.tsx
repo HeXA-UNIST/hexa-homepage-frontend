@@ -1,4 +1,4 @@
-import ContentFrame from "../content";
+// import ContentFrame from "../content";
 import "@css/home/Introduction.css";
 
 function Introduction() {

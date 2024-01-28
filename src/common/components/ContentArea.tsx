@@ -26,7 +26,11 @@ function ContentArea({
         >
             <div
                 style={{
-                    flexBasis: `${ContentAreaWidth + (fullWidth?0:ContentAreaPadding) * 2}px`,
+                    flexBasis: `${
+                        fullWidth
+                            ? "100%"
+                            : `${(ContentAreaWidth + ContentAreaPadding * 2)}px`
+                    }`,
                     flexGrow: 0,
                     flexShrink: 1,
                     minWidth: "0px",
@@ -35,7 +39,7 @@ function ContentArea({
                     marginRight: fullWidth ? "0px" : `${ContentAreaPadding}px`,
                     boxSizing: "border-box",
                     height: maximizeHeight ? "100%" : "auto",
-                    transition: 'all 0.3s ease-in'
+                    transition: "all 0.5s ease",
                 }}
             >
                 {children}
@@ -46,7 +50,7 @@ function ContentArea({
 
 ContentArea.defaultProps = {
     maximizeHeight: false,
-    fullWidth: false
+    fullWidth: false,
 };
 
 export default ContentArea;

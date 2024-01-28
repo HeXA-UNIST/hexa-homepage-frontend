@@ -41,100 +41,99 @@ function Header(/* { transparent = false }: { transparent?: boolean } */) {
     //   const height = scrollPosition === 0 ? "74px" : "114px";
 
     return (
-        <div
-            className="header-area"
-        >
-            <ContentArea fullWidth={!scrolling}>
-                <div
-                    className="mt-10 mb-10 w-full"
-                    style={{
-                        position: scrolling ? "fixed" : "sticky",
-                        backgroundColor: scrolling
-                            ? "var(--component-transparent-color)"
-                            : undefined,
-                        transition: "all 0.3s ease-in",
-                    }}
-                >
+        <div className="header-area">
+            <div className="fixed top-0 left-0 w-full z-50">
+                <ContentArea fullWidth={scrolling}>
                     <div
-                        className="flex flex-row items-center p-6 bg-neutral-800 rounded-xl font-bold text-xl text-gray-200"
+                        className={`w-full ${scrolling?"":"mt-10 rounded-xl"}`}
                         style={{
-                            height: "74px",
-                            borderRadius: "20px",
+                            // position: scrolling ? "fixed" : "sticky",
+                            // left: scrolling ? "0" : "auto",
+                            backgroundColor: scrolling
+                                ? "rgb(38 38 38 / var(--tw-bg-opacity))"
+                                : "var(--component-transparent-color)",
+                            transition: "all 0.5s ease",
                         }}
                     >
-                        <a className="flex flex-row items-center" href="home">
-                            <div className="mr-4">
-                                <img src="images/icon/hexaLogo.svg" alt="" />
-                            </div>
-                            <div className="">HeXA</div>
-                        </a>
-                        <div className="ml-auto max-w-2xl flex justify-evenly">
-                            <div className="flex justify-center items-center w-32">
-                                <a
-                                    className="max-w-full pl-3 pr-3 rounded-xl transition hover:bg-neutral-700 p-2"
-                                    href="/introduction"
-                                >
-                                    동아리 소개
-                                </a>
-                            </div>
-                            <div className="flex justify-center items-center w-32">
-                                <a
-                                    className="max-w-full pl-6 pr-6 rounded-xl transition hover:bg-neutral-700 p-2"
-                                    href="/introduction"
-                                >
-                                    뉴스
-                                </a>
-                            </div>
-                            <div className="flex justify-center items-center w-32">
-                                <a
-                                    className="max-w-full pl-6 pr-6 rounded-xl transition hover:bg-neutral-700 p-2"
-                                    href="/introduction"
-                                >
-                                    서비스
-                                </a>
-                            </div>
-                            <div className="flex justify-center items-center w-32">
-                                <a
-                                    className="max-w-full pl-6 pr-6 rounded-xl transition hover:bg-neutral-700 p-2"
-                                    href="/introduction"
-                                >
-                                    활동
-                                </a>
-                            </div>
-                            {isLoggedIn ? (
-                                [
-                                    <div className="flex justify-center items-center w-32">
-                                        <a
-                                            className="max-w-full pl-6 pr-6 rounded-xl transition hover:bg-neutral-700 p-2"
-                                            href="test"
-                                        >
-                                            마이페이지
-                                        </a>
-                                    </div>,
-                                    <div>
-                                        <div className="box">
-                                            <img
-                                                className="profile"
-                                                src={profileimg}
-                                                alt="face"
-                                            />
-                                        </div>
-                                    </div>,
-                                ]
-                            ) : (
+                        <div
+                            className="flex flex-row items-center p-6 rounded-xl font-bold text-xl text-gray-200"
+                            style={{
+                                height: "74px",
+                                borderRadius: "20px",
+                            }}
+                        >
+                            <a
+                                className="flex flex-row items-center"
+                                href="home"
+                            >
+                                <div className="mr-4">
+                                    <img
+                                        src="images/icon/hexaLogo.svg"
+                                        alt=""
+                                    />
+                                </div>
+                                <div className="">HeXA</div>
+                            </a>
+                            <div className="ml-auto max-w-2xl flex justify-evenly">
                                 <div className="flex justify-center items-center w-32">
                                     <a
                                         className="max-w-full pl-6 pr-6 rounded-xl transition hover:bg-neutral-700 p-2"
-                                        href="login"
+                                        href="/projects"
                                     >
-                                        로그인
+                                        프로젝트
                                     </a>
                                 </div>
-                            )}
+                                <div className="flex justify-center items-center w-32">
+                                    <a
+                                        className="max-w-full pl-6 pr-6 rounded-xl transition hover:bg-neutral-700 p-2"
+                                        href="/sevices"
+                                    >
+                                        서비스
+                                    </a>
+                                </div>
+                                <div className="flex justify-center items-center w-32">
+                                    <a
+                                        className="max-w-full pl-6 pr-6 rounded-xl transition hover:bg-neutral-700 p-2"
+                                        href="/notice"
+                                    >
+                                        게시판
+                                    </a>
+                                </div>
+                                {isLoggedIn ? (
+                                    [
+                                        <div className="flex justify-center items-center w-32">
+                                            <a
+                                                className="max-w-full pl-6 pr-6 rounded-xl transition hover:bg-neutral-700 p-2"
+                                                href="test"
+                                            >
+                                                마이페이지
+                                            </a>
+                                        </div>,
+                                        <div>
+                                            <div className="box">
+                                                <img
+                                                    className="profile"
+                                                    src={profileimg}
+                                                    alt="face"
+                                                />
+                                            </div>
+                                        </div>,
+                                    ]
+                                ) : (
+                                    <div className="flex justify-center items-center w-32">
+                                        <a
+                                            className="max-w-full pl-6 pr-6 rounded-xl transition hover:bg-neutral-700 p-2"
+                                            href="login"
+                                        >
+                                            로그인
+                                        </a>
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </div>
-                </div>
-            </ContentArea>
+                </ContentArea>
+            </div>
         </div>
     );
 }
