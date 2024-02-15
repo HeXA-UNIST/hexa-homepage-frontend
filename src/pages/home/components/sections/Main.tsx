@@ -18,7 +18,7 @@ function Main() {
             <ContentArea>
                 <div className="flex flex-row font-bold text-white justify-between mb-40">
                     <div className="max-w-[18rem]">
-                        <div className="max-w-full text-base bg-neutral-800 rounded-full p-3 mb-4">
+                        <div className="max-w-full text-base bg-neutral-800 rounded-full p-3 mb-2">
                             유니스트 유일무이 해킹 동아리
                         </div>
                         <div className="text-6xl mb-4 leading-tight">

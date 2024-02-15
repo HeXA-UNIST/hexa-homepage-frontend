@@ -45,7 +45,9 @@ function Header(/* { transparent = false }: { transparent?: boolean } */) {
             <div className="fixed top-0 left-0 w-full z-50">
                 <ContentArea fullWidth={scrolling}>
                     <div
-                        className={`w-full ${scrolling?"":"mt-10 rounded-xl"}`}
+                        className={`w-full ${
+                            scrolling ? "" : "mt-8 rounded-xl"
+                        }`}
                         style={{
                             // position: scrolling ? "fixed" : "sticky",
                             // left: scrolling ? "0" : "auto",
@@ -55,58 +57,64 @@ function Header(/* { transparent = false }: { transparent?: boolean } */) {
                             transition: "all 0.5s ease",
                         }}
                     >
-                        <div
-                            className="flex flex-row items-center p-6 rounded-xl font-bold text-xl text-gray-200"
-                            style={{
-                                height: "74px",
-                                borderRadius: "20px",
-                            }}
-                        >
+                        <div className="flex flex-row items-center h-16 p-4 rounded-lg font-medium text-base text-gray-200">
                             <a
                                 className="flex flex-row items-center"
                                 href="home"
                             >
-                                <div className="mr-4">
+                                <div className="ml-1 mr-3">
                                     <img
                                         src="images/icon/hexaLogo.svg"
                                         alt=""
                                     />
                                 </div>
-                                <div className="">HeXA</div>
+                                <div className=" text-xl font-bold mb-[3px]">HeXA</div>
                             </a>
-                            <div className="ml-auto max-w-2xl flex justify-evenly">
+                            <div className="flex flex-grow-[1] ml-10">
                                 <div className="flex justify-center items-center w-32">
                                     <a
-                                        className="max-w-full pl-6 pr-6 rounded-xl transition hover:bg-neutral-700 p-2"
+                                        className="max-w-full pl-8 pr-8 rounded-lg transition bg-zinc-900 bg-opacity-0 hover:bg-opacity-70 p-2"
                                         href="/projects"
                                     >
-                                        프로젝트
+                                        <div className="mb-[3px]">프로젝트</div>
                                     </a>
                                 </div>
                                 <div className="flex justify-center items-center w-32">
                                     <a
-                                        className="max-w-full pl-6 pr-6 rounded-xl transition hover:bg-neutral-700 p-2"
+                                        className="max-w-full pl-8 pr-8 rounded-lg transition bg-zinc-900 bg-opacity-0 hover:bg-opacity-70 p-2"
                                         href="/sevices"
                                     >
-                                        서비스
+                                        <div className="mb-[3px]">서비스</div>
                                     </a>
                                 </div>
                                 <div className="flex justify-center items-center w-32">
                                     <a
-                                        className="max-w-full pl-6 pr-6 rounded-xl transition hover:bg-neutral-700 p-2"
+                                        className="max-w-full pl-8 pr-8 rounded-lg transition bg-zinc-900 bg-opacity-0 hover:bg-opacity-70 p-2"
                                         href="/notice"
                                     >
-                                        게시판
+                                        <div className="mb-[3px]">소식</div>
                                     </a>
                                 </div>
+                                <div className="flex justify-center items-center w-32">
+                                    <a
+                                        className="max-w-full pl-8 pr-8 rounded-lg transition bg-zinc-900 bg-opacity-0 hover:bg-opacity-70 p-2"
+                                        href="/notice"
+                                    >
+                                        <div className="mb-[3px]">세미나</div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="ml-auto max-w-2xl flex justify-evenly flex-grow-0">
                                 {isLoggedIn ? (
                                     [
                                         <div className="flex justify-center items-center w-32">
                                             <a
-                                                className="max-w-full pl-6 pr-6 rounded-xl transition hover:bg-neutral-700 p-2"
+                                                className="max-w-full pl-8 pr-8 rounded-lg transition bg-zinc-900 bg-opacity-0 hover:bg-opacity-70 p-2"
                                                 href="test"
                                             >
-                                                마이페이지
+                                                <div className="mb-[3px]">
+                                                    마이페이지
+                                                </div>
                                             </a>
                                         </div>,
                                         <div>
@@ -122,10 +130,12 @@ function Header(/* { transparent = false }: { transparent?: boolean } */) {
                                 ) : (
                                     <div className="flex justify-center items-center w-32">
                                         <a
-                                            className="max-w-full pl-6 pr-6 rounded-xl transition hover:bg-neutral-700 p-2"
+                                            className="max-w-full pl-8 pr-8 rounded-lg transition bg-zinc-900 bg-opacity-0 hover:bg-opacity-70 p-2"
                                             href="login"
                                         >
-                                            로그인
+                                            <div className="mb-[3px]">
+                                                로그인
+                                            </div>
                                         </a>
                                     </div>
                                 )}

@@ -10,7 +10,7 @@ import LoginStore from "common/stores/LoginStore";
 
 
 import HomePage from "pages/home";
-import IntroductionPage from "@pages/introduction";
+// import IntroductionPage from "@pages/introduction";
 import ProjectPage from "@pages/project";
 import ServicePage from "@pages/service";
 import NoticePage from "@pages/notice";

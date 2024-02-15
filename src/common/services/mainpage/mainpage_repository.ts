@@ -1,9 +1,10 @@
-import axios from "axios";
-import WebConstants from "@constants";
+// import axios from "axios";
+// import WebConstants from "@constants";
 import MainPageData, { IMainPageData } from "@models/mainpage/MainPageData";
 
 export default class MainPageRepository {
   public static async getMainPageData(): Promise<MainPageData> {
+    /*
     const option = {
       url: `${WebConstants.API_URL}/mainpage/data`,
       method: "GET",
@@ -12,16 +13,17 @@ export default class MainPageRepository {
         "Content-Type": "application/json",
       },
     };
+    */
     const fakeResponse = await MainPageRepository.fakeData();
     return MainPageData.fromJson(fakeResponse);
 
-    try {
-      const response = await axios(option);
-      return MainPageData.fromJson(response.data);
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
+    // try {
+    //   const response = await axios(option);
+    //   return MainPageData.fromJson(response.data);
+    // } catch (error) {
+    // //   console.log(error);
+    //   throw error;
+    // }
   }
 
   private static async fakeData(): Promise<IMainPageData> {
