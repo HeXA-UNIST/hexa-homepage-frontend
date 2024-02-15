@@ -1,5 +1,5 @@
 import HomeView from "@pages/home/view/HomeView";
-import { HomeViewModel } from "@pages/home/vm/home_view_model";
+import { HomeViewModel } from "@pages/home/vm/HomeViewModel";
 
 function Home() {
   const viewModel = new HomeViewModel();

@@ -39,7 +39,8 @@
       "@components/*": ["./common/components/*"],
       "@hooks/*": ["./common/hooks/*"],
       "@models/*": ["./common/models/*"],
-      "@stores/*": ["./common/stores/*"]
+      "@stores/*": ["./common/stores/*"],
+      "@util/*": ["./util/*"]
     } /* Specify a set of entries that re-map imports to additional lookup locations. */,
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */

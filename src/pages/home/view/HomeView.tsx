@@ -1,5 +1,5 @@
 import { observer } from "mobx-react";
-import { HomeViewModel } from "@pages/home/vm/home_view_model";
+import { HomeViewModel } from "@pages/home/vm/HomeViewModel";
 
 import Header from "@components/header/Header";
 import Footer from "@components/footer/Footer";
@@ -18,7 +18,7 @@ function HomeView({ viewModel }: { viewModel: HomeViewModel }) {
       <Main />
       <Introduction />
       <News newsList={viewModel.mainPageData.newsList} />
-      <Services serviceList={viewModel.mainPageData.serviceList}/> 
+      <Services serviceList={viewModel.mainPageData.serviceList} />
       <Activities />
       <Supports />
       <Footer />

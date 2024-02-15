@@ -13,7 +13,8 @@ import HomePage from "pages/home";
 // import IntroductionPage from "@pages/introduction";
 import ProjectPage from "@pages/project";
 import ServicePage from "@pages/service";
-import NoticePage from "@pages/notice";
+import NewsPage from "@pages/news";
+import SeminarPage from "@pages/seminar";
 // import Activities from "pages/activities";
 import LoginPage from "@pages/login";
 
@@ -27,7 +28,8 @@ function App() {
             {/* <Route path="/introduction" element={<IntroductionPage />} /> */}
             <Route path="/projects" element={<ProjectPage />} />
             <Route path="/services" element={<ServicePage />} />
-            <Route path="/notice" element={<NoticePage />} />
+            <Route path="/news" element={<NewsPage />} />
+            <Route path="/seminars" element={<SeminarPage />} />
             <Route path="/login" element={<LoginPage />} />
             {/* <Route path="/activities" element={<Activities />} /> */}
             <Route path="/*" element={<HomePage />} />

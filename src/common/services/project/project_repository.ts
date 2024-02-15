@@ -9,7 +9,7 @@ export interface ProjectQueryParams {
   sort: "asc" | "desc";
   includeTechStack?: string[];
   excludeTechStack?: string[];
-  year: string;
+  year: number;
   pageNum?: number;
   page: number;
 }

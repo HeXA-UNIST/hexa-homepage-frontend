@@ -90,7 +90,7 @@ function Header(/* { transparent = false }: { transparent?: boolean } */) {
                                 <div className="flex justify-center items-center w-32">
                                     <a
                                         className="max-w-full pl-8 pr-8 rounded-lg transition bg-zinc-900 bg-opacity-0 hover:bg-opacity-70 p-2"
-                                        href="/notice"
+                                        href="/news"
                                     >
                                         <div className="mb-[3px]">소식</div>
                                     </a>
@@ -98,7 +98,7 @@ function Header(/* { transparent = false }: { transparent?: boolean } */) {
                                 <div className="flex justify-center items-center w-32">
                                     <a
                                         className="max-w-full pl-8 pr-8 rounded-lg transition bg-zinc-900 bg-opacity-0 hover:bg-opacity-70 p-2"
-                                        href="/notice"
+                                        href="/seminars"
                                     >
                                         <div className="mb-[3px]">세미나</div>
                                     </a>

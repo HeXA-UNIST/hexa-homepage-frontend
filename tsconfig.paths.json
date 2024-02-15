@@ -10,7 +10,8 @@
       "@components/*": ["./src/common/components/*"],
       "@hooks/*": ["./src/common/hooks/*"],
       "@models/*": ["./src/common/models/*"],
-      "@stores/*": ["./src/common/stores/*"]
+      "@stores/*": ["./src/common/stores/*"],
+      "@util/*": ["./src/util/*"]
     }
   }
 }

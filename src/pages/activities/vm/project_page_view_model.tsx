@@ -25,7 +25,7 @@ class ProjectPageViewModel {
     sort: "asc" | "desc";
     includeTechStack: string[];
     excludeTechStack: string[];
-    year: string;
+    year: number;
     pageNum: number;
     pageIndex: number;
   };
@@ -41,7 +41,7 @@ class ProjectPageViewModel {
       sort: "desc",
       includeTechStack: [],
       excludeTechStack: [],
-      year: "",
+      year: 2023,
       pageNum: 10,
       pageIndex: 0,
     };
@@ -113,7 +113,7 @@ class ProjectPageViewModel {
     this.projectQueryOptions.excludeTechStack = excludeTechStack;
   }
 
-  setYear(year: string) {
+  setYear(year: number) {
     this.projectQueryOptions.year = year;
   }
 
