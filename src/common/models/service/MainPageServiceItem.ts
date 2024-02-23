@@ -20,13 +20,4 @@ export default class MainPageServiceItem {
         this.title = title;
         this.subTitle = subTitle;
     }
-
-    static fromJson(json: IMainPageServiceItem) {
-        return new MainPageServiceItem({
-            serviceId: json.serviceId,
-            thumbnail: json.thumbnail,
-            title: json.title,
-            subTitle: json.subTitle
-        });
-    }
 }

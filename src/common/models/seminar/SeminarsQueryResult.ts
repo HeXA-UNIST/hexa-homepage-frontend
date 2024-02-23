@@ -23,19 +23,11 @@ export default class SeminarsQueryResult {
     page: number;
     maxPage: number;
   }) {
-    this.seminars = seminars;
+    this.seminars = seminars.map((item: any) => new Seminar(item));
     this.page = page;
     this.maxPage = maxPage;
   }
 
-  static fromJson(json: SeminarsQueryType) {
-    console.log(json);
-    return new SeminarsQueryResult({
-      seminars: json.seminars.map((item: any) => Seminar.fromJson(item)),
-      page: json.page,
-      maxPage: json.maxPage,
-    });
-  }
 
   static empty() {
     return new SeminarsQueryResult({

@@ -15,7 +15,7 @@ export default class MainPageRepository {
     };
     */
     const fakeResponse = await MainPageRepository.fakeData();
-    return MainPageData.fromJson(fakeResponse);
+    return new MainPageData(fakeResponse);
 
     // try {
     //   const response = await axios(option);

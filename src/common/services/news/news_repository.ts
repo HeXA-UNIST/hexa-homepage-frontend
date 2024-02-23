@@ -1,22 +1,22 @@
 import axios from "axios";
 import WebConstants from "@constants";
-import Seminar from "@models/seminar/Seminar";
-import SeminarsQueryResult, { SeminarsQueryType } from "@models/seminar/SeminarsQueryResult";
+import News from "@models/news/News";
+import NewsQueryResult, { NewsQueryType } from "@models/news/NewsQueryResult";
 
-export interface SeminarQueryParams {
+export interface NewsQueryParams {
   searchText?: string;
   year: string;
   pageNum?: number;
   page: number;
 }
 
-export default class SeminarRepository {
-  public static async querySeminars({
+export default class NewsRepository {
+  public static async queryNews({
     searchText = "",
     year,
     pageNum = 10,
     page,
-  }: SeminarQueryParams): Promise<SeminarsQueryResult> {
+  }: NewsQueryParams): Promise<NewsQueryResult> {
     const params = {
       searchText,
       year,
@@ -24,41 +24,41 @@ export default class SeminarRepository {
       page,
     };
 
-    const fakeResponse = await SeminarRepository.fakeQueryData();
-    return SeminarsQueryResult.fromJson(fakeResponse);
+    const fakeResponse = await NewsRepository.fakeQueryData();
+    return new NewsQueryResult(fakeResponse);
     try {
       const response = await axios.get(
-        `${WebConstants.API_URL}/seminar/query`,
+        `${WebConstants.API_URL}/News/query`,
         { params }
       );
-      return SeminarsQueryResult.fromJson(response.data);
+      return NewsQueryResult.fromJson(response.data);
     } catch (error) {
       console.log(error);
       throw error;
     }
   }
 
-  public static async getSeminarById(id: number): Promise<Seminar> {
+  public static async getNewsById(id: number): Promise<News> {
     try {
       const response = await axios.get(
-        `${WebConstants.API_URL}/seminar?id=${id}`
+        `${WebConstants.API_URL}/news?id=${id}`
       );
-      return Seminar.fromJson(response.data);
+      return News.fromJson(response.data);
     } catch (error) {
       console.log(error);
       throw error;
     }
   }
   
-  private static async fakeQueryData(): Promise<SeminarsQueryType> {
+  private static async fakeQueryData(): Promise<NewsQueryType> {
     await new Promise((resolve) => {
       setTimeout(resolve, 1000);
     });
     return {
-      seminars: [
+      news: [
         {
-          seminarId: 0,
-          title: "2022 Seminar 1",
+          NewsId: 0,
+          title: "2022 News 1",
           date: "2022.01.04",
           writerUserId: 111,
           writerUserName: "Hong",
@@ -66,13 +66,13 @@ export default class SeminarRepository {
           content: "Hexa에서 진행한 2022 첫 세미나입니다. 관련 파일은 아래에 첨부하였습니다.",
           attachment: [{
             url: "/download거시기",
-            name: "SeminarPPT.pdf",
+            name: "NewsPPT.pdf",
             size: "1.3MB"
           }],
         },
         {
-            seminarId: 1,
-            title: "2022 Seminar 1",
+            NewsId: 1,
+            title: "2022 News 1",
             date: "2022.01.04",
             writerUserId: 222,
             writerUserName: "Hong",
@@ -81,8 +81,8 @@ export default class SeminarRepository {
             attachment: [],
         },
         {
-          seminarId: 2,
-          title: "2022 Seminar 1",
+          NewsId: 2,
+          title: "2022 News 1",
           date: "2022.01.04",
           writerUserId: 333,
           writerUserName: "Hong",
@@ -97,8 +97,8 @@ export default class SeminarRepository {
   }
 
   static empty() {
-    return new SeminarsQueryResult({
-      seminars: [],
+    return new NewssQueryResult({
+      Newss: [],
       page: 0,
       maxPage: 0,
     });

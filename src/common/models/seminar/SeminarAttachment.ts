@@ -1,3 +1,9 @@
+export interface ISeminarAttachment{
+    url: string;
+    name: string;
+    size: string;
+}
+
 export default class SeminarAttachment {
   url: string;
 
@@ -9,21 +15,10 @@ export default class SeminarAttachment {
     url,
     name,
     size,
-  }: {
-    url: string;
-    name: string;
-    size: string;
-  }) {
+  }: ISeminarAttachment) {
     this.url = url;
     this.name = name;
     this.size = size;
   }
 
-  static fromJson(json: { [key: string]: any }) {
-    return new SeminarAttachment({
-      url: json.url,
-      name: json.name,
-      size: json.size,
-    });
-  }
 }

@@ -1,3 +1,10 @@
+export interface IProjectMember{
+    userId: number;
+    userName: string;
+    name: string;
+    profileUrl: string;
+}
+
 export default class ProjectMember {
   userId: number;
 
@@ -12,24 +19,10 @@ export default class ProjectMember {
     userName,
     name,
     profileUrl,
-  }: {
-    userId: number;
-    userName: string;
-    name: string;
-    profileUrl: string;
-  }) {
+  }: IProjectMember) {
     this.userId = userId;
     this.userName = userName;
     this.name = name;
     this.profileUrl = profileUrl;
-  }
-
-  static fromJson(json: { [key: string]: any }) {
-    return new ProjectMember({
-      userId: json.userId,
-      userName: json.userName,
-      name: json.name,
-      profileUrl: json.profileUrl,
-    });
   }
 }

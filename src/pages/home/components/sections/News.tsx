@@ -1,11 +1,11 @@
 import "@css/home/News.css";
-import MainPageNewsItem from "@models/mainpage/MainPageNewsItem";
+import NewsSummary from "@models/news/NewsSummary";
 import ContentFrame from "../content";
 
 interface NewsProps {
-    newsList: MainPageNewsItem[];
+    newsList: NewsSummary[];
 }
-function NewsItem({ news }: { news: MainPageNewsItem }) {
+function NewsSummary({ news }: { news: NewsSummary }) {
     const { newsType, title, date } = news;
 
     return (
@@ -34,7 +34,7 @@ function News({ newsList }: NewsProps) {
             >
                 <div className="flex flex-row">
                     {newsList.map((news) => (
-                        <NewsItem key={news.newsId} news={news} />
+                        <NewsSummary key={news.newsId} news={news} />
                     ))}
                 </div>
             </ContentFrame>

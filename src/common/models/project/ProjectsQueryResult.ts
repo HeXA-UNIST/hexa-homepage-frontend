@@ -1,4 +1,4 @@
-import Project from "./Project";
+import Project, {IProject} from "./Project";
 
 export default class ProjectsQueryResult {
   projects: Project[];
@@ -16,17 +16,9 @@ export default class ProjectsQueryResult {
     page: number;
     maxPage: number;
   }) {
-    this.projects = projects;
+    this.projects = projects.map((item: IProject) => new Project(item));
     this.page = page;
     this.maxPage = maxPage;
-  }
-
-  static fromJson(json: { [key: string]: any }) {
-    return new ProjectsQueryResult({
-      projects: json.projects.map((item: any) => Project.fromJson(item)),
-      page: json.page,
-      maxPage: json.maxPage,
-    });
   }
 
   static empty() {

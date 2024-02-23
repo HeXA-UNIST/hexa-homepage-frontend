@@ -23,18 +23,9 @@ export default class ServicesQueryResult {
     page: number;
     maxPage: number;
   }) {
-    this.services = services;
+    this.services = services.map((item: any) => new Service(item));
     this.page = page;
     this.maxPage = maxPage;
-  }
-
-  static fromJson(json: ServicesQueryType) {
-    console.log(json);
-    return new ServicesQueryResult({
-      services: json.services.map((item: any) => Service.fromJson(item)),
-      page: json.page,
-      maxPage: json.maxPage,
-    });
   }
 
   static empty() {

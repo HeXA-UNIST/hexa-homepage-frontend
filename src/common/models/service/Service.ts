@@ -37,16 +37,6 @@ export default class Service {
     this.github = github;
   }
 
-  static fromJson(json: ServiceType) {
-    return new Service({
-      serviceId: json.serviceId,
-      name: json.name,
-      image: json.image,
-      introduction: json.introduction,
-      link: json.link,
-      github: json.github
-    });
-  }
 
   static empty() {
     return new Service({
