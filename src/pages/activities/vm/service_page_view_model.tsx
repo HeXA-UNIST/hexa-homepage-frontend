@@ -1,16 +1,11 @@
 import ServicesQueryResult from "@models/service/ServicesQueryResult";
 import ServiceRepository from "common/services/service/service_repository";
 import { makeObservable, observable } from "mobx";
-
-export enum ServicePageStatus {
-  Loading = "Loading",
-  Loaded = "Loaded",
-  Error = "Error",
-}
+import { PageStatus } from "@util/index";
 
 class ServicePageViewModel {
   @observable
-  status: ServicePageStatus;
+  status: PageStatus;
 
   @observable
   errorMessage: string;
@@ -18,45 +13,45 @@ class ServicePageViewModel {
   @observable
   queryResult: ServicesQueryResult;
 
-  /*
-  @observable
-  serviceQueryOptions: {
-    searchText: string;
-    year: string;
-    pageNum: number;
-    pageIndex: number;
-  };
-  */
+  
+//   @observable
+//   serviceQueryOptions: {
+//     searchText: string;
+//     year: string;
+//     pageNum: number;
+//     pageIndex: number;
+//   };
+  
 
   constructor() {
-    this.status = ServicePageStatus.Loading;
+    this.status = PageStatus.Loading;
     this.errorMessage = "";
     this.queryResult = ServicesQueryResult.empty();
-    /*
-    this.serviceQueryOptions = {
-      searchText: "",
-      year: "",
-      pageNum: 10,
-      pageIndex: 0,
-    };
-    */
+    
+    // this.serviceQueryOptions = {
+    //   searchText: "",
+    //   year: "",
+    //   pageNum: 10,
+    //   pageIndex: 0,
+    // };
+    
 
     makeObservable(this);
   }
 
   setLoading() {
-    this.status = ServicePageStatus.Loading;
+    this.status = PageStatus.Loading;
     this.errorMessage = "";
   }
 
-  setLoaded(queryResult: ServicesQueryResult) {
-    this.status = ServicePageStatus.Loaded;
+  setSuccess(queryResult: ServicesQueryResult) {
+    this.status = PageStatus.Success;
     this.errorMessage = "";
     this.queryResult = queryResult;
   }
 
-  setError(errorMessage: string) {
-    this.status = ServicePageStatus.Error;
+  setFailed(errorMessage: string) {
+    this.status = PageStatus.Failed;
     this.errorMessage = errorMessage;
   }
 
@@ -75,9 +70,9 @@ class ServicePageViewModel {
         page: this.serviceQueryOptions.pageIndex,
       }
       */);
-      this.setLoaded(queryResult);
+      this.setSuccess(queryResult);
     } catch (e: any) {
-      this.setError(e.message);
+      this.setFailed(e.message);
     }
   }
   /*

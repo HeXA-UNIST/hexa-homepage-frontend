@@ -6,29 +6,33 @@ import {
 
 import Footer from "@components/footer/Footer";
 import Header from "@components/header/Header";
-import ModeSelectArea from "@pages/activities/components/ModeSelectArea";
+import Submain from "@components/subMain/SubMain";
 
-import ServicePage from "@pages/activities/view/ServicePage";
-import ProjectPage from "@pages/activities/view/ProjectPage";
-import SeminarPage from "@pages/activities/view/SeminarPage";
+import ServiceView from "@pages/activities/view/ServiceView";
+import ProjectView from "@pages/activities/view/ProjectView";
+import SeminarView from "@pages/activities/view/SeminarView";
+import NewsView from "@pages/activities/view/NewsView";
 
 function ActivityView({ viewModel }: { viewModel: ActivityViewModel }) {
     // console.log(viewModel.projectPageState.queryResult.projects);
   const activityContents = {
     [ActivityMode.Service]: (
-        <ServicePage servicePageViewModel={viewModel.servicePageState} />
+        <ServiceView viewModel={viewModel.servicePageState} />
     ),
     [ActivityMode.Project]: (
-      <ProjectPage projectPageViewModel={viewModel.projectPageState} />
+        <ProjectView viewModel={viewModel.projectPageState} />
     ),
     [ActivityMode.Seminar]: (
-        <SeminarPage seminarPageViewModel={viewModel.seminarPageState} />
+        <SeminarView viewModel={viewModel.seminarPageState} />
     ),
+    [ActivityMode.News]: (
+        <NewsView viewModel={viewModel.newsPageState} />
+    )
   };
   return (
     <div>
       <Header />
-      <ModeSelectArea
+      <Submain
         activityMode={viewModel.mode}
         onModeChange={(mode) => {
           viewModel.setMode(mode);

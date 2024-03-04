@@ -1,16 +1,11 @@
 import SeminarsQueryResult from "@models/seminar/SeminarsQueryResult";
 import SeminarRepository from "common/services/seminar/seminar_repository";
 import { makeObservable, observable } from "mobx";
-
-export enum SeminarPageStatus {
-  Loading = "Loading",
-  Loaded = "Loaded",
-  Error = "Error",
-}
+import { PageStatus } from "@util/index";
 
 class SeminarPageViewModel {
   @observable
-  status: SeminarPageStatus;
+  status: PageStatus;
 
   @observable
   errorMessage: string;
@@ -27,7 +22,7 @@ class SeminarPageViewModel {
   };
 
   constructor() {
-    this.status = SeminarPageStatus.Loading;
+    this.status = PageStatus.Loading;
     this.errorMessage = "";
     this.queryResult = SeminarsQueryResult.empty();
 
@@ -42,18 +37,18 @@ class SeminarPageViewModel {
   }
 
   setLoading() {
-    this.status = SeminarPageStatus.Loading;
+    this.status = PageStatus.Loading;
     this.errorMessage = "";
   }
 
-  setLoaded(queryResult: SeminarsQueryResult) {
-    this.status = SeminarPageStatus.Loaded;
+  setSuccess(queryResult: SeminarsQueryResult) {
+    this.status = PageStatus.Success;
     this.errorMessage = "";
     this.queryResult = queryResult;
   }
 
-  setError(errorMessage: string) {
-    this.status = SeminarPageStatus.Error;
+  setFailed(errorMessage: string) {
+    this.status = PageStatus.Failed;
     this.errorMessage = errorMessage;
   }
 
@@ -69,9 +64,9 @@ class SeminarPageViewModel {
         pageNum: this.seminarQueryOptions.pageNum,
         page: this.seminarQueryOptions.pageIndex,
       });
-      this.setLoaded(queryResult);
+      this.setSuccess(queryResult);
     } catch (e: any) {
-      this.setError(e.message);
+      this.setFailed(e.message);
     }
   }
 

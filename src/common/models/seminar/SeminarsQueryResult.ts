@@ -1,39 +1,28 @@
-import Seminar from "./Seminar";
+import SeminarSummary, { ISeminarSummary } from "./SeminarSummary";
 
 export interface SeminarsQueryType{
-    seminars: Seminar[];
-    page: number;
-    maxPage: number;
+    list: ISeminarSummary[];
+    totalPage: number;
 }
 
 
 export default class SeminarsQueryResult {
-  seminars: Seminar[];
+  seminars: SeminarSummary[];
 
-  page: number;
-
-  maxPage: number;
+  totalPage: number;
 
   constructor({
-    seminars,
-    page,
-    maxPage,
-  }: {
-    seminars: Seminar[];
-    page: number;
-    maxPage: number;
-  }) {
-    this.seminars = seminars.map((item: any) => new Seminar(item));
-    this.page = page;
-    this.maxPage = maxPage;
+    list, totalPage
+  }: SeminarsQueryType) {
+    this.seminars = list.map((item: ISeminarSummary) => new SeminarSummary(item));
+    this.totalPage = totalPage;
   }
 
 
   static empty() {
     return new SeminarsQueryResult({
-      seminars: [],
-      page: 0,
-      maxPage: 0,
+      list: [],
+      totalPage: 0
     });
   }
 }

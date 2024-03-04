@@ -1,65 +1,47 @@
-import SeminarAttachment, {
-    ISeminarAttachment,
-} from "@models/seminar/SeminarAttachment";
-
 export interface ISeminar {
-    seminarId: number;
+    // seminarId: number;
     title: string;
     date: string;
-    writerUserId: number;
-    writerUserName: string;
-    writerName: string;
+    writer: string;
     content: string;
-    attachment: ISeminarAttachment[];
+    attachment: number[];
 }
 
 export default class Seminar {
-    seminarId: number;
+    // seminarId: number;
 
     title: string;
 
     date: string;
 
-    writerUserId: number;
-
-    writerUserName: string;
-
-    writerName: string;
+    writer: string;
 
     content: string;
 
-    attachment: SeminarAttachment[];
+    attachment: number[];
 
     constructor({
-        seminarId,
+        // seminarId,
         title,
         date,
-        writerUserId,
-        writerUserName,
-        writerName,
+        writer,
         content,
         attachment,
     }: ISeminar) {
-        this.seminarId = seminarId;
+        // this.seminarId = seminarId;
         this.title = title;
         this.date = date;
-        this.writerUserId = writerUserId;
-        this.writerUserName = writerUserName;
-        this.writerName = writerName;
+        this.writer = writer;
         this.content = content;
-        this.attachment = attachment.map(
-            (item: ISeminarAttachment) => new SeminarAttachment(item)
-        );
+        this.attachment = attachment;
     }
 
     static empty() {
         return new Seminar({
-            seminarId: 0,
+            // seminarId: 0,
             title: "",
             date: "",
-            writerUserId: 0,
-            writerUserName: "",
-            writerName: "",
+            writer: "",
             content: "",
             attachment: [],
         });

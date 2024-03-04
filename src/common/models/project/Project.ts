@@ -1,5 +1,3 @@
-import ProjectMember, { IProjectMember } from "@models/project/ProjectMember";
-
 export enum EProjectState {
     Approving, // 승인중
     Recruiting, // 모집중
@@ -29,7 +27,7 @@ export interface IProject {
     startDate: string;
     endDate: string | null;
     techStackList: string[];
-    memberList: ProjectMember[];
+    // memberList: IProjectMember[];
     state: string;
     isPublic: boolean;
     content: string | null;
@@ -48,7 +46,7 @@ export default class Project {
 
     techStackList: string[];
 
-    memberList: ProjectMember[];
+    // memberList: ProjectMember[];
 
     state: EProjectState;
 
@@ -63,7 +61,7 @@ export default class Project {
         startDate,
         endDate,
         techStackList,
-        memberList,
+        // memberList,
         state,
         isPublic,
         content,
@@ -74,9 +72,9 @@ export default class Project {
         this.startDate = startDate;
         this.endDate = endDate;
         this.techStackList = techStackList;
-        this.memberList = memberList.map(
-            (item: IProjectMember) => new ProjectMember(item)
-        );
+        // this.memberList = memberList.map(
+        //     (item: IProjectMember) => new ProjectMember(item)
+        // );
         this.state = convertState(state);
         this.isPublic = isPublic;
         this.content = content;
@@ -90,7 +88,7 @@ export default class Project {
             startDate: "",
             endDate: null,
             techStackList: [],
-            memberList: [],
+            // memberList: [],
             state: "승인중",
             isPublic: false,
             content: null,

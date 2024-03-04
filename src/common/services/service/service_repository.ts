@@ -1,28 +1,28 @@
 import axios from "axios";
 import WebConstants from "@constants";
-import Service from "@models/service/Service";
+import Service, { IService } from "@models/service/Service";
 import ServicesQueryResult, {
-    ServicesQueryType,
+    IServiceQueryResult,
 } from "@models/service/ServicesQueryResult";
 
-export interface ServiceQueryParams {
-    searchText?: string;
-    year: string;
-    pageNum?: number;
-    page: number;
-}
+// export interface ServiceQueryParams {
+//     searchText?: string;
+//     year: string;
+//     pageNum?: number;
+//     page: number;
+// }
 
 export default class ServiceRepository {
     public static async queryServices(): Promise<ServicesQueryResult> {
 
         const fakeResponse = await ServiceRepository.fakeQueryData();
-        return ServicesQueryResult.fromJson(fakeResponse);
+        return new ServicesQueryResult(fakeResponse);
         try {
             const response = await axios.get(
                 `${WebConstants.API_URL}/service/query`,
                 // { params } <= service doesn't have params
             );
-            return ServicesQueryResult.fromJson(response.data);
+            return new ServicesQueryResult(response.data);
         } catch (error) {
             console.log(error);
             throw error;
@@ -30,44 +30,51 @@ export default class ServiceRepository {
     }
 
     public static async getServiceById(id: number): Promise<Service> {
+        const fakeResponse = await ServiceRepository.fakeServiceData();
+        return new Service(fakeResponse);
+
         try {
             const response = await axios.get(
                 `${WebConstants.API_URL}/service?id=${id}`
             );
-            return Service.fromJson(response.data);
+            return new Service(response.data);
         } catch (error) {
             console.log(error);
             throw error;
         }
     }
 
-    private static async fakeQueryData(): Promise<ServicesQueryType> {
+    private static async fakeQueryData(): Promise<IServiceQueryResult> {
         await new Promise((resolve) => {
             setTimeout(resolve, 1000);
         });
         return {
-            services: [
+            totalPage: 1,
+            list: [
                 {
                     serviceId: 1,
-                    name: "BUS HeXA",
-                    image: "images/sample1.png",
-                    introduction:
-                        "BUS HeXA는 UNIST-울산 버스 배차간격 및 시간 정보 제공 서비스입니다. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                    link: "./home",
-                    github: "./home",
+                    title: "BUS HeXA",
+                    thumbnail: 50,
                 },
                 {
                     serviceId: 2,
-                    name: "Blackboard Extension",
-                    image: "images/sample1.png",
-                    introduction:
-                        "Blackboard Extension은 블랙보드 확장 프로그램입니다.",
-                    link: "./home",
-                    github: "./home",
+                    title: "BUS HeXA",
+                    thumbnail: 50,
                 },
-            ],
-            page: 0,
-            maxPage: 1,
+            ]
+        };
+    }
+
+    private static async fakeServiceData(): Promise<IService> {
+        await new Promise((resolve) => {
+            setTimeout(resolve, 1000);
+        });
+        return {
+            title: "Bus HeXA",
+            thumbnail: 50,
+            content: "거시기 버스 헥사",
+            siteLink: "https://google.com",
+            githubLink: "https://github.com"
         };
     }
 }

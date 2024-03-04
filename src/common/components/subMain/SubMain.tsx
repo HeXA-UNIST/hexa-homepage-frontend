@@ -10,12 +10,9 @@ import {
     // faArrowUp,
     faArrowDown,
 } from "@fortawesome/free-solid-svg-icons";
+import { ActivityMode } from "@pages/activities/vm/activity_view_model";
 
-interface DropdownItem {
-    id: number;
-    label: string;
-    link: string;
-}
+
 
 // class DropdownStore {
 //     @observable selectedItemId: number | null = null;
@@ -43,21 +40,30 @@ interface DropdownItem {
 
 // const dropdownd = new DropdownStore();
 
+
+interface DropdownItem {
+    id: number;
+    label: string;
+    mode: ActivityMode;
+    description: string;
+}
+
 const SubMain = observer(
     ({
-        shownTitle,
-        description,
+        activityMode,
+        onModeChange
     }: {
-        shownTitle: string;
-        description: string;
+        activityMode: ActivityMode;
+        onModeChange: (mode: ActivityMode) => void;
     }) => {
         let subPageList: DropdownItem[] = [
-            { id: 1, label: "프로젝트", link: "/projects" },
-            { id: 2, label: "서비스", link: "/services" },
-            { id: 3, label: "소식", link: "/news" },
-            { id: 4, label: "세미나", link: "/seminars" },
+            { id: 1, label: "프로젝트", mode: ActivityMode.Project, description: "HeXA는, UNIST 학우들을 위해 다양한 서비스를 제공합니다" },
+            { id: 2, label: "서비스", mode: ActivityMode.Service, description: "HeXA는, UNIST 학우들을 위해 다양한 서비스를 제공합니다"  },
+            { id: 3, label: "소식", mode: ActivityMode.News, description: "HeXA는, UNIST 학우들을 위해 다양한 서비스를 제공합니다"  },
+            { id: 4, label: "세미나", mode: ActivityMode.Seminar, description: "HeXA는, UNIST 학우들을 위해 다양한 서비스를 제공합니다"  },
         ];
-        subPageList = subPageList.filter((e) => e.label !== shownTitle);
+        const current: DropdownItem = subPageList.filter((e) => e.mode === activityMode)[0];
+        subPageList = subPageList.filter((e) => e.mode !== activityMode);
 
         const [isOpen, setOpen] = useState<boolean>(false);
 
@@ -75,7 +81,7 @@ const SubMain = observer(
                                         type="button"
                                     >
                                         <div className="absolute top-0 transition-all group-hover/dropdown:mt-[3px]">
-                                            {shownTitle}
+                                            {current.label}
                                             <FontAwesomeIcon
                                                 className="ml-3"
                                                 icon={faArrowDown}
@@ -88,16 +94,17 @@ const SubMain = observer(
                                         }`}
                                     >
                                         {subPageList.map((subPageItem) => (
-                                            <a
+                                            <button
                                                 key={subPageItem.id}
-                                                href={subPageItem.link}
                                                 className="transition-all text-white block px-4 py-2 w-56 text-center rounded-md hover:bg-zinc-900 m-2"
                                                 role="menuitem"
                                                 tabIndex={-1}
                                                 id="menu-item-1"
+                                                onClick={() => onModeChange(ActivityMode.Project)}
+                                                type="button"
                                             >
                                                 {subPageItem.label}
-                                            </a>
+                                            </button>
                                         ))}
                                     </div>
                                 </div>
@@ -106,7 +113,7 @@ const SubMain = observer(
                         <span className="ml-4">목록</span>
                     </div>
                     <div className=" font-medium text-zinc-400 text-lg">
-                        {description}
+                        {current.description}
                     </div>
                 </div>
             </ContentArea>

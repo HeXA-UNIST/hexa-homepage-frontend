@@ -1,16 +1,12 @@
 import ProjectsQueryResult from "@models/project/ProjectsQueryResult";
-import ProjectRepository from "common/services/project/project_repository";
+import ProjectRepository, {ProjectQueryParams} from "common/services/project/project_repository";
 import { makeObservable, observable } from "mobx";
+import { PageStatus } from "@util/index";
 
-export enum ProjectPageStatus {
-  Loading = "Loading",
-  Loaded = "Loaded",
-  Error = "Error",
-}
 
 class ProjectPageViewModel {
   @observable
-  status: ProjectPageStatus;
+  status: PageStatus;
 
   @observable
   errorMessage: string;
@@ -19,19 +15,10 @@ class ProjectPageViewModel {
   queryResult: ProjectsQueryResult;
 
   @observable
-  projectQueryOptions: {
-    searchText: string;
-    status: ("working" | "finished")[];
-    sort: "asc" | "desc";
-    includeTechStack: string[];
-    excludeTechStack: string[];
-    year: number;
-    pageNum: number;
-    pageIndex: number;
-  };
+  projectQueryOptions: ProjectQueryParams;
 
   constructor() {
-    this.status = ProjectPageStatus.Loading;
+    this.status = PageStatus.Loading;
     this.errorMessage = "";
     this.queryResult = ProjectsQueryResult.empty();
 
@@ -42,26 +29,26 @@ class ProjectPageViewModel {
       includeTechStack: [],
       excludeTechStack: [],
       year: 2023,
-      pageNum: 10,
-      pageIndex: 0,
+      pageNum: 1,
+      perPage: 15,
     };
 
     makeObservable(this);
   }
 
   setLoading() {
-    this.status = ProjectPageStatus.Loading;
+    this.status = PageStatus.Loading;
     this.errorMessage = "";
   }
 
-  setLoaded(queryResult: ProjectsQueryResult) {
-    this.status = ProjectPageStatus.Loaded;
+  setSuccess(queryResult: ProjectsQueryResult) {
+    this.status = PageStatus.Success;
     this.errorMessage = "";
     this.queryResult = queryResult;
   }
 
-  setError(errorMessage: string) {
-    this.status = ProjectPageStatus.Error;
+  setFailed(errorMessage: string) {
+    this.status = PageStatus.Failed;
     this.errorMessage = errorMessage;
   }
 
@@ -70,26 +57,27 @@ class ProjectPageViewModel {
     try {
       const queryResult = await ProjectRepository.queryProjects({
         searchText:
-          this.projectQueryOptions.searchText.trim() !== ""
+          this.projectQueryOptions.searchText?.trim() !== ""
             ? this.projectQueryOptions.searchText
             : undefined,
         status: this.projectQueryOptions.status,
         sort: this.projectQueryOptions.sort,
         includeTechStack:
-          this.projectQueryOptions.includeTechStack.length === 0
+          this.projectQueryOptions.includeTechStack?.length === 0
             ? undefined
             : this.projectQueryOptions.includeTechStack,
         excludeTechStack:
-          this.projectQueryOptions.excludeTechStack.length === 0
+          this.projectQueryOptions.excludeTechStack?.length === 0
             ? undefined
             : this.projectQueryOptions.excludeTechStack,
         year: this.projectQueryOptions.year,
         pageNum: this.projectQueryOptions.pageNum,
-        page: this.projectQueryOptions.pageIndex,
+        perPage: this.projectQueryOptions.perPage ?? 15,
       });
-      this.setLoaded(queryResult);
+      this.queryResult = queryResult;
+      this.setSuccess(queryResult);
     } catch (e: any) {
-      this.setError(e.message);
+      this.setFailed(e.message);
     }
   }
 
@@ -121,8 +109,8 @@ class ProjectPageViewModel {
     this.projectQueryOptions.pageNum = pageNum;
   }
 
-  setPageIndex(pageIndex: number) {
-    this.projectQueryOptions.pageIndex = pageIndex;
+  setPageIndex(perPage: number) {
+    this.projectQueryOptions.perPage = perPage;
   }
 }
 

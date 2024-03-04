@@ -6,7 +6,7 @@ export interface INews {
     date: string;
 }
 
-export default class news {
+export default class News {
     newsType: string;
 
     title: string;
@@ -23,7 +23,7 @@ export default class news {
     }
 
     static empty() {
-        return new news({
+        return new News({
             newsType: "공지",
             title: "title",
             content: "",

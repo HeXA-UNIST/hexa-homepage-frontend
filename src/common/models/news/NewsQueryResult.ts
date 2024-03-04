@@ -1,30 +1,24 @@
-import Seminar from "./News";
 import NewsSummary, { INewsSummary } from "./NewsSummary";
 
 export interface NewsQueryType {
-    news: INewsSummary[];
-    page: number;
-    maxPage: number;
+    list: INewsSummary[];
+    totalPage: number;
 }
 
 export default class NewsQueryResult {
     news: NewsSummary[];
 
-    page: number;
+    totalPage: number;
 
-    maxPage: number;
-
-    constructor({ news, page, maxPage }: NewsQueryType) {
-        this.news = news.map((item: INewsSummary) => new NewsSummary(item));
-        this.page = page;
-        this.maxPage = maxPage;
+    constructor({ list, totalPage }: NewsQueryType) {
+        this.news = list.map((item: INewsSummary) => new NewsSummary(item));
+        this.totalPage = totalPage;
     }
 
     static empty() {
         return new NewsQueryResult({
-            news: [],
-            page: 0,
-            maxPage: 0,
+            list: [],
+            totalPage: 0
         });
     }
 }

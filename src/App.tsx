@@ -12,10 +12,11 @@ import Footer from "@components/footer/Footer";
 
 import HomePage from "pages/home";
 // import IntroductionPage from "@pages/introduction";
-import ProjectPage from "@pages/project";
-import ServicePage from "@pages/service";
-import NewsPage from "@pages/news";
-import SeminarPage from "@pages/seminar";
+// import ProjectPage from "@pages/project";
+// import ServicePage from "@pages/service";
+// import NewsPage from "@pages/news";
+// import SeminarPage from "@pages/seminar";
+import ActivityPage from "@pages/activities";
 // import Activities from "pages/activities";
 import LoginPage from "@pages/login";
 
@@ -28,10 +29,10 @@ function App() {
                     <Routes>
                         <Route path="/home" element={<HomePage />} />
                         {/* <Route path="/introduction" element={<IntroductionPage />} /> */}
-                        <Route path="/projects" element={<ProjectPage />} />
-                        <Route path="/services" element={<ServicePage />} />
+                        <Route path="/activities" element={<ActivityPage />} />
+                        {/* <Route path="/services" element={<ServicePage />} />
                         <Route path="/news" element={<NewsPage />} />
-                        <Route path="/seminars" element={<SeminarPage />} />
+                        <Route path="/seminars" element={<SeminarPage />} /> */}
                         <Route path="/login" element={<LoginPage />} />
                         {/* <Route path="/activities" element={<Activities />} /> */}
                         <Route path="/*" element={<HomePage />} />
