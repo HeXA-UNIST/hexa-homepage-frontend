@@ -6,6 +6,7 @@ import useStores from "@hooks/storeHooks";
 import profileimg from "@img/profile_img.jpg";
 
 import ContentArea from "@components/ContentArea";
+import { Link } from "react-router-dom";
 // import { useMediaQuery } from "react-responsive";
 
 // import "@css/app/Header.css";
@@ -58,9 +59,9 @@ function Header(/* { transparent = false }: { transparent?: boolean } */) {
                         }}
                     >
                         <div className="flex flex-row items-center h-16 p-4 rounded-lg font-medium text-base text-gray-200">
-                            <a
+                            <Link
                                 className="flex flex-row items-center"
-                                href="home"
+                                to="/"
                             >
                                 <div className="ml-1 mr-3">
                                     <img
@@ -69,53 +70,53 @@ function Header(/* { transparent = false }: { transparent?: boolean } */) {
                                     />
                                 </div>
                                 <div className=" text-xl font-bold mb-[3px]">HeXA</div>
-                            </a>
+                            </Link>
                             <div className="flex flex-grow-[1] ml-10">
                                 <div className="flex justify-center items-center w-32">
-                                    <a
+                                    <Link
                                         className="max-w-full pl-8 pr-8 rounded-lg transition bg-zinc-900 bg-opacity-0 hover:bg-opacity-70 p-2"
-                                        href="/projects"
+                                        to="/activity/projects"
                                     >
                                         <div className="mb-[3px]">프로젝트</div>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div className="flex justify-center items-center w-32">
-                                    <a
+                                    <Link
                                         className="max-w-full pl-8 pr-8 rounded-lg transition bg-zinc-900 bg-opacity-0 hover:bg-opacity-70 p-2"
-                                        href="/sevices"
+                                        to="/activity/services"
                                     >
                                         <div className="mb-[3px]">서비스</div>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div className="flex justify-center items-center w-32">
-                                    <a
+                                    <Link
                                         className="max-w-full pl-8 pr-8 rounded-lg transition bg-zinc-900 bg-opacity-0 hover:bg-opacity-70 p-2"
-                                        href="/news"
+                                        to="/activity/news"
                                     >
                                         <div className="mb-[3px]">소식</div>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div className="flex justify-center items-center w-32">
-                                    <a
+                                    <Link
                                         className="max-w-full pl-8 pr-8 rounded-lg transition bg-zinc-900 bg-opacity-0 hover:bg-opacity-70 p-2"
-                                        href="/seminars"
+                                        to="/activity/seminars"
                                     >
                                         <div className="mb-[3px]">세미나</div>
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                             <div className="ml-auto max-w-2xl flex justify-evenly flex-grow-0">
                                 {isLoggedIn ? (
                                     [
                                         <div className="flex justify-center items-center w-32">
-                                            <a
+                                            <Link
                                                 className="max-w-full pl-8 pr-8 rounded-lg transition bg-zinc-900 bg-opacity-0 hover:bg-opacity-70 p-2"
-                                                href="test"
+                                                to="test"
                                             >
                                                 <div className="mb-[3px]">
                                                     마이페이지
                                                 </div>
-                                            </a>
+                                            </Link>
                                         </div>,
                                         <div>
                                             <div className="box">
@@ -129,14 +130,14 @@ function Header(/* { transparent = false }: { transparent?: boolean } */) {
                                     ]
                                 ) : (
                                     <div className="flex justify-center items-center w-32">
-                                        <a
+                                        <Link
                                             className="max-w-full pl-8 pr-8 rounded-lg transition bg-zinc-900 bg-opacity-0 hover:bg-opacity-70 p-2"
-                                            href="login"
+                                            to="/login"
                                         >
                                             <div className="mb-[3px]">
                                                 로그인
                                             </div>
-                                        </a>
+                                        </Link>
                                     </div>
                                 )}
                             </div>

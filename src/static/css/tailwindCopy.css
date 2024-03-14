@@ -1513,6 +1513,10 @@ html {
   height: 100%;
 }
 
+.min-h-\[35rem\] {
+  min-height: 35rem;
+}
+
 .w-10 {
   width: 2.5rem;
 }
@@ -1571,6 +1575,10 @@ html {
 
 .w-96 {
   width: 24rem;
+}
+
+.w-\[15\.5rem\] {
+  width: 15.5rem;
 }
 
 .w-\[20rem\] {

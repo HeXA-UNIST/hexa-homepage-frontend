@@ -12,10 +12,10 @@ import Footer from "@components/footer/Footer";
 
 import HomePage from "pages/home";
 // import IntroductionPage from "@pages/introduction";
-// import ProjectPage from "@pages/project";
-// import ServicePage from "@pages/service";
-// import NewsPage from "@pages/news";
-// import SeminarPage from "@pages/seminar";
+import ProjectListView from "@pages/project/activity";
+import ServiceListView from "@pages/service/activity";
+import NewsListView from "@pages/news/activity";
+import SeminarListView from "@pages/seminar/activity";
 import ActivityPage from "@pages/activities";
 // import Activities from "pages/activities";
 import LoginPage from "@pages/login";
@@ -27,15 +27,15 @@ function App() {
                 <BrowserRouter>
                     <Header />
                     <Routes>
-                        <Route path="/home" element={<HomePage />} />
-                        {/* <Route path="/introduction" element={<IntroductionPage />} /> */}
-                        <Route path="/activities" element={<ActivityPage />} />
-                        {/* <Route path="/services" element={<ServicePage />} />
-                        <Route path="/news" element={<NewsPage />} />
-                        <Route path="/seminars" element={<SeminarPage />} /> */}
+                        <Route path="/activity" element={<ActivityPage />}>
+                            <Route path="projects" element={<ProjectListView/>}/>
+                            <Route path="services" element={<ServiceListView/>}/>
+                            <Route path="news" element={<NewsListView/>}/>
+                            <Route path="seminars" element={<SeminarListView/>}/>
+                        </Route>
+                        {/* <Route path="/activity" element={<ActivityPage />} /> */}
                         <Route path="/login" element={<LoginPage />} />
-                        {/* <Route path="/activities" element={<Activities />} /> */}
-                        <Route path="/*" element={<HomePage />} />
+                        <Route path="/" element={<HomePage />} />
                     </Routes>
                     <Footer />
                 </BrowserRouter>

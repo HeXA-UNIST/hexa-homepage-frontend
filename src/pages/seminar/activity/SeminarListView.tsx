@@ -1,5 +1,5 @@
 import { observer } from "mobx-react";
-import SeminarPageViewModel from "@pages/activities/vm/seminar_page_view_model";
+
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileLines } from "@fortawesome/free-regular-svg-icons";
@@ -12,6 +12,7 @@ import ContentArea from "@components/ContentArea";
 
 import { useState } from "react";
 import SeminarSummary from "@models/seminar/SeminarSummary";
+import SeminarListViewModel from "./SeminarListViewModel";
 
 function SeminarItem({ seminarData }: { seminarData: SeminarSummary }) {
     const [isOpen, setOpen] = useState<boolean>(false);
@@ -64,7 +65,7 @@ function SeminarItem({ seminarData }: { seminarData: SeminarSummary }) {
     );
 }
 
-function SeminarView({ viewModel }: { viewModel: SeminarPageViewModel }) {
+function SeminarView({ viewModel }: { viewModel: SeminarListViewModel }) {
     return (
         <ContentArea>
                 <div className="flex flex-col">

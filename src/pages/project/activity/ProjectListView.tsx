@@ -1,6 +1,4 @@
 import { observer } from "mobx-react";
-import ProjectPageViewModel from "@pages/activities/vm/project_page_view_model";
-
 import ContentArea from "@components/ContentArea";
 import SearchBox from "@components/search/SearchBox";
 
@@ -8,12 +6,13 @@ import SearchBox from "@components/search/SearchBox";
 // import Footer from "@components/footer/Footer";
 
 import ProjectSummary from "@models/project/ProjectSummary";
+import ProjectListViewModel from "./ProjectListViewModel";
 
 const QueryFormPart = observer(
     ({
       projectPageViewModel,
     }: {
-      projectPageViewModel: ProjectPageViewModel;
+      projectPageViewModel: ProjectListViewModel;
     }) => {
       const { projectQueryOptions } = projectPageViewModel;
   
@@ -49,7 +48,7 @@ function ProjectItem({ projectData }: { projectData: ProjectSummary }) {
     );
 }
 
-function ProjectView({ viewModel }: { viewModel: ProjectPageViewModel }) {
+function ProjectView({ viewModel }: { viewModel: ProjectListViewModel }) {
     return (
         <ContentArea>
             <QueryFormPart projectPageViewModel={viewModel}/>

@@ -29,8 +29,6 @@ class NewsPageViewModel {
     this.queryResult = NewsQueryResult.empty();
     
     this.newsQueryOptions = {
-    //   searchText: "",
-    //   year: "",
       pageNum: 1,
       perPage: 10,
     };

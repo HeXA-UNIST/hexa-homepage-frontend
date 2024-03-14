@@ -1,14 +1,14 @@
 import { observer } from "mobx-react";
-import ServicePageViewModel from "@pages/activities/vm/service_page_view_model";
+
 
 import ContentArea from "@components/ContentArea";
-import SearchBox from "@components/search/SearchBox";
+// import SearchBox from "@components/search/SearchBox";
 
 // import Header from "@components/header/Header";
 // import Footer from "@components/footer/Footer";
 
 import ServiceSummary from "@models/service/ServiceSummary";
-
+import ServiceListViewModel from "./ServiceListViewModel";
 
 
 function ServiceItem({ serviceData }: { serviceData: ServiceSummary }) {
@@ -25,7 +25,7 @@ function ServiceItem({ serviceData }: { serviceData: ServiceSummary }) {
     );
 }
 
-function ServiceView({ viewModel }: { viewModel: ServicePageViewModel }) {
+function ServiceView({ viewModel }: { viewModel: ServiceListViewModel }) {
     return (
         <ContentArea>
             <div className="flex justify-between">

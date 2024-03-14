@@ -3,7 +3,7 @@
     "baseUrl": "./src",
     "paths": {
       "@pages/*": ["./src/pages/*"],
-      "@services/*": ["./src/services/*"],
+      "@services/*": ["./src/common/services/*"],
       "@css/*": ["./src/static/css/*"],
       "@img/*": ["./src/static/img/*"],
       "@constants" : ["./src/common/constants/web_constants.ts"],

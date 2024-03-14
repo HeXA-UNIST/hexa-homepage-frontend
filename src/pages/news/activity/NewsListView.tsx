@@ -1,33 +1,36 @@
 import { observer } from "mobx-react";
-import NewsPageViewModel from "@pages/activities/vm/news_page_view_model";
+import { useState } from "react";
+import NewsSummary from "@models/news/NewsSummary";
+import ContentArea from "@components/ContentArea";
+import NewsListViewModel from "./NewsListViewModel";
 
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faFileLines } from "@fortawesome/free-regular-svg-icons";
 
-import ContentArea from "@components/ContentArea";
+
 // import SearchBox from "@components/search/SearchBox";
 
 // import Header from "@components/header/Header";
 // import Footer from "@components/footer/Footer";
 
-import { useState } from "react";
-import NewsSummary from "@models/news/NewsSummary";
 
-const QueryFormPart = observer(
-    ({
-      newsPageViewModel,
-    }: {
-      newsPageViewModel: NewsPageViewModel;
-    }) => {
-      const { newsQueryOptions } = newsPageViewModel;
+
+
+// const QueryFormPart = observer(
+//     ({
+//       newsPageViewModel,
+//     }: {
+//       newsPageViewModel: NewsPageViewModel;
+//     }) => {
+//       const { newsQueryOptions } = newsPageViewModel;
   
-      return (
-        <div className="">
+//       return (
+//         <div className="">
           
-        </div>
-      );
-    }
-  );
+//         </div>
+//       );
+//     }
+//   );
 
 function NewsItem({ newsData }: { newsData: NewsSummary }) {
     const [isOpen, setOpen] = useState<boolean>(false);
@@ -72,7 +75,7 @@ function NewsItem({ newsData }: { newsData: NewsSummary }) {
     );
 }
 
-function NewsView({ viewModel }: { viewModel: NewsPageViewModel }) {
+function NewsView({ viewModel }: { viewModel: NewsListViewModel }) {
     return (
         <ContentArea>
             <div className="flex flex-col">

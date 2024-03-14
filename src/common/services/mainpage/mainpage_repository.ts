@@ -65,13 +65,13 @@ export default class MainPageRepository {
                     subTitle: "유니스트의 학식 정보를 알려주는 서비스",
                 },
                 {
-                    serviceId: 0,
+                    serviceId: 2,
                     thumbnail: "images/babService.svg",
                     title: "밥먹어U",
                     subTitle: "유니스트의 학식 정보를 알려주는 서비스",
                 },
                 {
-                    serviceId: 1,
+                    serviceId: 3,
                     thumbnail: "images/babService.svg",
                     title: "밥먹어U",
                     subTitle: "유니스트의 학식 정보를 알려주는 서비스",

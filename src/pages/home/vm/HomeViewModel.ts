@@ -27,9 +27,14 @@ export class HomeViewModel {
       const mainPage = await MainPageRepository.getMainPageData();
 
       this.status = PageStatus.Success;
-      this.mainPageData = mainPage;
+      this.setMainPageData(mainPage);
     } catch (error) {
       this.status = PageStatus.Failed;
     }
   }
+
+  @action
+  setMainPageData(mainPage: MainPageData){
+    this.mainPageData = mainPage;
+  } 
 }
