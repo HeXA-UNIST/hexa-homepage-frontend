@@ -21,31 +21,4 @@ export enum PageStatus {
 }
 
 
-import { observable } from "mobx";
 
-export class PageViewModel {
-    @observable
-    status: PageStatus;
-
-    @observable
-    errorMessage: string;
-
-    constructor() {
-        this.status = PageStatus.Loading;
-        this.errorMessage = "";
-    }
-
-    setLoading() {
-        this.status = PageStatus.Loading;
-        this.errorMessage = "";
-    }
-    setSuccess() {
-        this.status = PageStatus.Success;
-        this.errorMessage = "";
-    }
-
-    setFailed(errorMessage: string) {
-        this.status = PageStatus.Failed;
-        this.errorMessage = errorMessage;
-    }
-}

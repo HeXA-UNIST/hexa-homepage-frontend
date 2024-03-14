@@ -17,6 +17,7 @@ export default class PageViewModel {
         this.status = PageStatus.Loading;
         this.errorMessage = "";
     }
+    
     setSuccess() {
         this.status = PageStatus.Success;
         this.errorMessage = "";
