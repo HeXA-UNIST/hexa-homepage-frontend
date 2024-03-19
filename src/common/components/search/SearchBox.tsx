@@ -2,29 +2,36 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import "@css/components/SearchBox.css";
 
-function SearchBox({
+import { useState } from "react";
+
+export default function SearchBox({
     value,
-    onChange,
-    placeholder = "",
+    onSubmit,
+    placeholder = ""
 }: {
     value: string;
-    onChange: (value: string) => void;
+    onSubmit: (value: string) => void;
     placeholder?: string;
 }) {
+
+    const [searchText, setSearchText] = useState<string>("");
+
     return (
-        <div className=" bg-zinc-500 rounded-2xl ">
-            <div className="search-box__prefix">
+        <div className="flex flex-row bg-zinc-800 rounded-2xl p-4 max-w-sm">
+            <div className="mr-4">
                 <FontAwesomeIcon
                     className=" w-6 h-6 text-white"
                     icon={faMagnifyingGlass}
                 />
             </div>
             <input
+                className=" text-white outline-none bg-transparent mb-1 w-full"
                 type="text"
                 value={value}
-                onChange={(e) => onChange(e.target.value)}
+                onChange={(e) => setSearchText(e.target.value)}
                 placeholder={placeholder}
             />
+            <button type="submit" onClick={() => onSubmit(searchText)}></button>
         </div>
     );
 }
@@ -34,4 +41,3 @@ SearchBox.defaultProps = {
     placeholder: ""
 }
 
-export default SearchBox;

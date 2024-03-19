@@ -1,11 +1,13 @@
 import { EProjectState, convertState } from "./Project";
+import { ProjectStatusString } from "./Project";
+
 
 
 export interface IProjectSummary{
     projectId: number;
     thumbnail: number;
     title: string;
-    state: string;
+    status: ProjectStatusString;
 }
 
 export default class ProjectSummary {
@@ -15,13 +17,13 @@ export default class ProjectSummary {
 
     title: string;
 
-    state: EProjectState;
+    status: EProjectState;
 
-    constructor({ projectId, thumbnail, title, state }: IProjectSummary) {
+    constructor({ projectId, thumbnail, title, status }: IProjectSummary) {
         this.projectId = projectId;
         this.thumbnail = thumbnail;
         this.title = title;
-        this.state = convertState(state);
+        this.status = convertState(status);
     }
 
 }

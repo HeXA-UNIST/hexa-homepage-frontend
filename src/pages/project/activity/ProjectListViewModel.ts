@@ -2,6 +2,7 @@ import ProjectsQueryResult from "@models/project/ProjectsQueryResult";
 import ProjectRepository, {ProjectQueryParams} from "@services/project/project_repository";
 import { makeObservable, observable } from "mobx";
 import PageViewModel from "@pages/vm/PageViewModel";
+import { ProjectStatusString } from "@models/project/Project";
 
 
 class ProjectListViewModel extends PageViewModel {
@@ -18,7 +19,7 @@ class ProjectListViewModel extends PageViewModel {
 
     this.projectQueryOptions = {
       searchText: "",
-      status: ["working", "finished"],
+      status: ["승인중", "모집중", "진행중", "진행완료중"],
       sort: "desc",
       includeTechStack: [],
       excludeTechStack: [],
@@ -69,7 +70,7 @@ class ProjectListViewModel extends PageViewModel {
     this.projectQueryOptions.searchText = searchText;
   }
 
-  setStatus(status: ("working" | "finished")[]) {
+  setStatus(status: ProjectStatusString[]) {
     this.projectQueryOptions.status = status;
   }
 

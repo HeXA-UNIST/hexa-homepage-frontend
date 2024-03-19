@@ -1,13 +1,14 @@
 import axios from "axios";
 import WebConstants from "@constants";
-import Project, { IProject } from "@models/project/Project";
+import Project, { IProject, ProjectStatusString } from "@models/project/Project";
 import ProjectsQueryResult, {
     IProejctQueryResult,
 } from "@models/project/ProjectsQueryResult";
 
+
 export interface ProjectQueryParams {
     searchText?: string;
-    status?: ("working" | "finished")[];
+    status?: ProjectStatusString[];
     sort: "asc" | "desc";
     includeTechStack?: string[];
     excludeTechStack?: string[];
@@ -19,7 +20,7 @@ export interface ProjectQueryParams {
 export default class ProjectRepository {
     public static async queryProjects({
         searchText = "",
-        status = ["working", "finished"],
+        status = ["승인중", "모집중", "진행중", "진행완료중"],
         sort,
         includeTechStack = [],
         excludeTechStack = [],
@@ -78,49 +79,49 @@ export default class ProjectRepository {
                     projectId: 0,
                     title: "프로젝트 1",
                     thumbnail: 10,
-                    state: "진행중"
+                    status: "진행중"
                 },
                 {
                     projectId: 0,
                     title: "프로젝트 1",
                     thumbnail: 10,
-                    state: "진행중"
+                    status: "진행중"
                 },
                 {
                     projectId: 0,
                     title: "프로젝트 1",
                     thumbnail: 10,
-                    state: "진행중"
+                    status: "진행중"
                 },
                 {
                     projectId: 0,
                     title: "프로젝트 1",
                     thumbnail: 10,
-                    state: "진행중"
+                    status: "진행중"
                 },
                 {
                     projectId: 0,
                     title: "프로젝트 1",
                     thumbnail: 10,
-                    state: "진행중"
+                    status: "진행중"
                 },
                 {
                     projectId: 0,
                     title: "프로젝트 1",
                     thumbnail: 10,
-                    state: "진행중"
+                    status: "진행중"
                 },
                 {
                     projectId: 0,
                     title: "프로젝트 1",
                     thumbnail: 10,
-                    state: "진행중"
+                    status: "진행중"
                 },
                 {
                     projectId: 0,
                     title: "프로젝트 1",
                     thumbnail: 10,
-                    state: "진행중"
+                    status: "진행중"
                 },
             ]
         };
