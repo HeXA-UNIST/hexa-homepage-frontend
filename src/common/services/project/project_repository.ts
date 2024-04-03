@@ -12,7 +12,7 @@ export interface ProjectQueryParams {
     sort: "asc" | "desc";
     includeTechStack?: string[];
     excludeTechStack?: string[];
-    year: number;
+    year: string;
     pageNum: number;
     perPage?: number;
 }
@@ -20,7 +20,7 @@ export interface ProjectQueryParams {
 export default class ProjectRepository {
     public static async queryProjects({
         searchText = "",
-        status = ["승인중", "모집중", "진행중", "진행완료중"],
+        status = ["승인중", "모집중", "진행중", "진행완료"],
         sort,
         includeTechStack = [],
         excludeTechStack = [],
@@ -66,6 +66,11 @@ export default class ProjectRepository {
             console.log(error);
             throw error;
         }
+    }
+
+    public static async getTechStackList(): Promise<string[]> {
+        const fakeResponse = await ProjectRepository.fakeTechList();
+        return fakeResponse;
     }
 
     private static async fakeQueryData(): Promise<IProejctQueryResult> {
@@ -144,6 +149,15 @@ export default class ProjectRepository {
             isPublic: true,
             content: ""
         };
+    }
+
+    private static async fakeTechList(): Promise<string[]> {
+        await new Promise((resolve) => {
+            setTimeout(resolve, 1000);
+        });
+        return [
+            "javascript", "python", "c#", "c", "c++", "java"
+        ]
     }
 
     static empty(): ProjectsQueryResult{

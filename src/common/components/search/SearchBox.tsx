@@ -17,7 +17,7 @@ export default function SearchBox({
     const [searchText, setSearchText] = useState<string>("");
 
     return (
-        <div className="flex flex-row bg-zinc-800 rounded-2xl p-4 max-w-sm">
+        <div className="flex flex-row bg-zinc-800 rounded-2xl p-4 min-w-[22rem] h-14">
             <div className="mr-4">
                 <FontAwesomeIcon
                     className=" w-6 h-6 text-white"
@@ -25,13 +25,13 @@ export default function SearchBox({
                 />
             </div>
             <input
-                className=" text-white outline-none bg-transparent mb-1 w-full"
+                className=" text-white outline-none bg-transparent pb-1 w-full"
                 type="text"
                 value={value}
                 onChange={(e) => setSearchText(e.target.value)}
                 placeholder={placeholder}
             />
-            <button type="submit" onClick={() => onSubmit(searchText)}></button>
+            <button type="submit" onClick={() => onSubmit(searchText)} aria-label="Search Button"/>
         </div>
     );
 }

@@ -12,6 +12,7 @@ class ProjectDetailViewModel extends PageViewModel{
     @observable
     projectDetail: Project;
 
+
     constructor(){
         super();
         this.projectId = 0;
@@ -37,6 +38,7 @@ class ProjectDetailViewModel extends PageViewModel{
             this.setFailed(e.message);
         }
     }
+
 
     setProjectId(projectId: number){
         this.projectId = projectId;

@@ -1,4 +1,3 @@
-
 export enum EProjectState {
     Approving, // 승인중
     Recruiting, // 모집중
@@ -6,7 +5,7 @@ export enum EProjectState {
     Completed, // 진행완료
 }
 
-export type ProjectStatusString = "승인중" | "모집중" | "진행중" | "진행완료중";
+export type ProjectStatusString = "승인중" | "모집중" | "진행중" | "진행완료";
 
 export function convertState(stateString: ProjectStatusString): EProjectState {
     switch (stateString) {
@@ -14,10 +13,11 @@ export function convertState(stateString: ProjectStatusString): EProjectState {
             return EProjectState.Approving;
         case "모집중":
             return EProjectState.Recruiting;
-        case "진행중":
-            return EProjectState.InProgress;
-        case "진행완료중":
+        case "진행완료":
             return EProjectState.Completed;
+        case "진행중":
+        default:
+            return EProjectState.InProgress;
     }
 }
 
@@ -27,7 +27,7 @@ export interface IProject {
     thumbnailUrl: string;
     startDate: string;
     endDate: string | null;
-    techStackList: string[];    // 따로 interface 지정을 해줄수 있지만, 관리자 페이지에 의해 종류가 달라지기 때문에 string으로 보존.
+    techStackList: string[]; // 따로 interface 지정을 해줄수 있지만, 관리자 페이지에 의해 종류가 달라지기 때문에 string으로 보존.
     // memberList: IProjectMember[];
     state: ProjectStatusString;
     isPublic: boolean;

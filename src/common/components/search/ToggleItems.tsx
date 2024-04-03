@@ -1,26 +1,132 @@
-interface IToggleItem{
+import { useEffect, useState } from "react";
+
+export interface IToggleItem {
     text: string;
-    iconImg: number;
+    // iconImg: number;
     activeColor: string;
+    deactiveColor?: string;
 }
-function ToggleItem<T>({item}: {item: IToggleItem;}) {
+
+enum ToggleState {
+    Normal,
+    Active,
+    Deactive,
+}
+function ToggleItem<T>({
+    id,
+    item,
+    preToggleState,
+    hasDeactive,
+    onStateChanged,
+}: {
+    id: T;
+    item: IToggleItem;
+    preToggleState: ToggleState;
+    hasDeactive: boolean;
+    onStateChanged: (value: T, state: ToggleState) => void;
+}) {
+    const [toggleState, setToggleState] = useState<ToggleState>(
+        ToggleState.Normal
+    );
+    const [backgroundColor, setbackgroundColor] = useState<string>("#27272a");
+
+    const setColor = (): string => {
+        switch (toggleState) {
+            case ToggleState.Active:
+                return item.activeColor;
+            case ToggleState.Deactive:
+                return item.deactiveColor ?? "#27272a";
+            case ToggleState.Normal:
+            default:
+                return "#27272a";
+        }
+    };
+
+    useEffect(() => {
+        console.log(`state changed to ${toggleState.toString()}`);
+        setbackgroundColor(setColor());
+        console.log(backgroundColor);
+    }, [toggleState]);
+
     return (
-        <div className=" rounded-lg">
-            {/* TODO:  */}
-        </div>
+        <button
+            className="rounded-3xl text-white px-5 py-3 whitespace-nowrap"
+            onClick={() => {
+                if (toggleState === ToggleState.Normal) {
+                    setToggleState(ToggleState.Active);
+                } else if (toggleState === ToggleState.Deactive) {
+                    setToggleState(ToggleState.Normal);
+                } else if (hasDeactive) {
+                    setToggleState(ToggleState.Deactive);
+                } else {
+                    setToggleState(ToggleState.Normal);
+                }
+                onStateChanged(id, toggleState);
+            }}
+            type="button"
+            style={{ backgroundColor }}
+        >
+            <div className="mb-[2px]">{item.text}</div>
+        </button>
     );
 }
-function ToggleItems<T>({
+export default function ToggleItems<T>({
     items,
-    onToggleChanged,
+    activeItems,
+    deactiveItems,
+    onActiveToggleChanged,
+    onDeactiveToggleChanged,
+    hasDeactive,
 }: {
-    items: IToggleItem[];
-    onToggleChanged: (value: T[]) => void;
+    items: { id: T; data: IToggleItem }[];
+    activeItems: T[];
+    deactiveItems: T[];
+    onActiveToggleChanged: (value: T[]) => void;
+    onDeactiveToggleChanged: (value: T[]) => void;
+    hasDeactive: boolean;
 }) {
+    // TODO: 귀찮아서 else if문으로 그냥 덕지덕지 붙임. 나중에 리팩할때는 가독성있게 해주시길..
+    const onToggleItemStateChanged = (id: T, state: ToggleState) => {
+        if (state === ToggleState.Normal) {
+            if (activeItems.includes(id)) {
+                onActiveToggleChanged(activeItems.filter((x) => x !== id));
+            } else if (deactiveItems.includes(id)) {
+                onDeactiveToggleChanged(deactiveItems.filter((x) => x !== id));
+            }
+        } else if (state === ToggleState.Active) {
+            if (!activeItems.includes(id)) {
+                onActiveToggleChanged(activeItems.concat(id));
+            }
+        } else if (state === ToggleState.Deactive) {
+            if (activeItems.includes(id)) {
+                onActiveToggleChanged(activeItems.filter((x) => x !== id));
+            }
+            if (!deactiveItems.includes(id)) {
+                onDeactiveToggleChanged(deactiveItems.concat(id));
+            }
+        }
+    };
+
+    const PreToggleStateFromId = (id: T): ToggleState => {
+        if(activeItems.includes(id)){
+            return ToggleState.Active;
+        }else if(deactiveItems.includes(id)){
+            return ToggleState.Deactive;
+        }else{
+            return ToggleState.Normal;
+        }
+    }
     return (
-        <div className="flex flex-row">
+        <div className="flex flex-row gap-3">
             {items.map((item) => (
-                <ToggleItem key={item.text} item={item} />
+                <ToggleItem
+                    key={item.data.text}
+                    id={item.id}
+                    item={item.data}
+                    preToggleState={PreToggleStateFromId(item.id)}
+                    hasDeactive={hasDeactive}
+                    onStateChanged={onToggleItemStateChanged}
+                />
             ))}
         </div>
     );

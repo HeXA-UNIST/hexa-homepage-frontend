@@ -84,7 +84,7 @@ const SubMain = observer(
 
         return (
             <ContentArea>
-                <div className="flex flex-col items-start text-white font-semibold text-5xl pt-[180px] mb-20">
+                <div className="flex flex-col items-start text-white font-semibold text-5xl pt-[180px] mb-10">
                     <div className="w-100 mb-5">HeXA에서 진행한</div>
                     <div className="flex flex-row mb-7">
                         <div>

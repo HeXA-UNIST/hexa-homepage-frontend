@@ -1,15 +1,21 @@
 import { ProjectStatusString } from "@models/project/Project";
-
+import ProjectListViewModel from "@pages/project/activity/ProjectListViewModel";
 import { SortDropDown, YearDropDown } from "./DropDowns";
 import SearchBox from "./SearchBox";
 import TechStack from "./TechStack";
+import ProjectState from "./ProjectState";
+
 
 interface ISearchTypes {
-    onTextChanged: (text: string) => void | null;
-    onSortChanged: (sort: "asc" | "desc") => void | null;
-    onYearChanged: (year: string) => void | null;
-    onStatusChanged: (status: ProjectStatusString) => void | null;
-    onStackChanged: (stack: string[]) => void | null;
+    search?: {
+        searchText: string;
+        placeHolder: string;
+        onTextChanged: (text: string) => void;
+    };
+    onSortChanged?: (sort: "asc" | "desc") => void;
+    onYearChanged?: (year: string) => void;
+    onStatusChanged?: (status: ProjectStatusString[]) => void;
+    projectListViewModel?: ProjectListViewModel
 }
 
 function SubSearchArea({
@@ -23,35 +29,43 @@ function SubSearchArea({
         return null;
     }
     return (
-        <div>
-            <div className=" text-sm text-white font-semibold">{title}</div>
-            <div className="flex flex-row"></div>
+        <div className="mb-8">
+            <div className=" text-left text-xl text-white font-semibold mb-4">{title}</div>
+            <div className="flex flex-row gap-3">
+                {children}
+            </div>
         </div>
     );
 }
 
-export default function SearchArea(toggle: ISearchTypes) {
+export default function SearchArea({ toggle }: { toggle: ISearchTypes }) {
     return (
         <div>
             <SubSearchArea title="검색">
-                {toggle.onTextChanged === null ?? (
-                    <SearchBox value="" onSubmit={toggle.onTextChanged} />
+                {toggle.search !== undefined && (
+                    <SearchBox
+                        value={toggle.search.searchText}
+                        placeholder={toggle.search.placeHolder}
+                        onSubmit={toggle.search.onTextChanged}
+                    />
                 )}
-                {toggle.onSortChanged === null ?? (
+                {toggle.onSortChanged !== undefined && (
                     <SortDropDown onSortChanged={toggle.onSortChanged} />
                 )}
-                {toggle.onYearChanged === null ?? (
+                {toggle.onYearChanged !== undefined && (
                     <YearDropDown onYearChanged={toggle.onYearChanged} />
                 )}
             </SubSearchArea>
             <SubSearchArea title="상태">
-                {toggle.onStatusChanged === null ?? (
-                    <SearchBox value="" onSubmit={toggle.onTextChanged} />
+                {toggle.onStatusChanged !== undefined && (
+                    <ProjectState onStatusChanged={toggle.onStatusChanged} />
                 )}
             </SubSearchArea>
             <SubSearchArea title="기술스택">
-                {toggle.onStackChanged === null ?? (
-                    <TechStack onStackChanged={toggle.onStackChanged} />
+                {toggle.projectListViewModel !== undefined && (
+                    <TechStack
+                        projectListViewModel={toggle.projectListViewModel}
+                    />
                 )}
             </SubSearchArea>
         </div>

@@ -1,38 +1,39 @@
 import { observer } from "mobx-react";
-import ContentArea from "@components/ContentArea";
-import SearchBox from "@components/search/SearchBox";
-
-// import Header from "@components/header/Header";
-// import Footer from "@components/footer/Footer";
-
 import ProjectSummary from "@models/project/ProjectSummary";
+
+import ContentArea from "@components/ContentArea";
+// import SearchBox from "@components/search/SearchBox";
+import SearchArea from "@components/search";
 import ProjectListViewModel from "./ProjectListViewModel";
 
 const QueryFormPart = observer(
     ({
-      projectPageViewModel,
+        projectPageViewModel,
     }: {
-      projectPageViewModel: ProjectListViewModel;
-    }) => {
-      const { projectQueryOptions } = projectPageViewModel;
-  
-      return (
+        projectPageViewModel: ProjectListViewModel;
+    }) => (
         <div className="project-page__query-form">
-          <div>
-            <SearchBox
-              value={projectQueryOptions.searchText ?? ""}
-              onChange={(text) => {
-                projectPageViewModel.setSearchText(text);
-                projectPageViewModel.fetchProjects();
-              }}
-              placeholder="검색 (예: BUS HeXA, tag:서비스)"
-            />
-          </div>
+            <div>
+                <SearchArea
+                    toggle={{
+                        search: {
+                            searchText: "",
+                            onTextChanged: (text: string) => {
+                                projectPageViewModel.setSearchText(text);
+                                projectPageViewModel.fetchProjects();
+                            },
+                            placeHolder: "검색 (예: BUS HeXA, tag:서비스)",
+                        },
+                        onSortChanged: projectPageViewModel.setSort,
+                        onYearChanged: projectPageViewModel.setYear,
+                        onStatusChanged: projectPageViewModel.setStatus,
+                        projectListViewModel: projectPageViewModel,
+                    }}
+                />
+            </div>
         </div>
-      );
-    }
-  );
-
+    )
+);
 
 function ProjectItem({ projectData }: { projectData: ProjectSummary }) {
     return (
@@ -51,7 +52,7 @@ function ProjectItem({ projectData }: { projectData: ProjectSummary }) {
 function ProjectView({ viewModel }: { viewModel: ProjectListViewModel }) {
     return (
         <ContentArea>
-            <QueryFormPart projectPageViewModel={viewModel}/>
+            <QueryFormPart projectPageViewModel={viewModel} />
             <div className="flex justify-between">
                 {viewModel.queryResult.projects.map((project) => (
                     <ProjectItem
