@@ -25,9 +25,7 @@ function ToggleItem<T>({
     hasDeactive: boolean;
     onStateChanged: (value: T, state: ToggleState) => void;
 }) {
-    const [toggleState, setToggleState] = useState<ToggleState>(
-        ToggleState.Normal
-    );
+    const [toggleState, setToggleState] = useState<ToggleState>(preToggleState);
     const [backgroundColor, setbackgroundColor] = useState<string>("#27272a");
 
     const setColor = (): string => {
@@ -110,11 +108,11 @@ export default function ToggleItems<T>({
     const PreToggleStateFromId = (id: T): ToggleState => {
         if(activeItems.includes(id)){
             return ToggleState.Active;
-        }else if(deactiveItems.includes(id)){
-            return ToggleState.Deactive;
-        }else{
-            return ToggleState.Normal;
         }
+        if(deactiveItems.includes(id)){
+            return ToggleState.Deactive;
+        }
+        return ToggleState.Normal;
     }
     return (
         <div className="flex flex-row gap-3">

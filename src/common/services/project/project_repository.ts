@@ -8,7 +8,7 @@ import ProjectsQueryResult, {
 
 export interface ProjectQueryParams {
     searchText?: string;
-    status?: ProjectStatusString[];
+    status: ProjectStatusString[];
     sort: "asc" | "desc";
     includeTechStack?: string[];
     excludeTechStack?: string[];

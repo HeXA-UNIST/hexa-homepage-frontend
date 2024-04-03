@@ -1,10 +1,11 @@
 import { ProjectStatusString } from "@models/project/Project";
+import ProjectListViewModel from "@pages/project/activity/ProjectListViewModel";
 import ToggleItems, { IToggleItem } from "./ToggleItems";
 
 export default function ProjectState({
-    onStatusChanged,
+    projectListViewModel,
 }: {
-    onStatusChanged: (status: ProjectStatusString[]) => void;
+    projectListViewModel: ProjectListViewModel;
 }) {
     const item: { id: ProjectStatusString; data: IToggleItem }[] = [
         {
@@ -39,9 +40,9 @@ export default function ProjectState({
     return (
         <ToggleItems
             items={item}
-            activeItems={["모집중", "승인중", "진행완료", "진행중"]}
+            activeItems={projectListViewModel.projectQueryOptions.status}
             deactiveItems={[]}
-            onActiveToggleChanged={onStatusChanged}
+            onActiveToggleChanged={projectListViewModel.setStatus}
             onDeactiveToggleChanged={() => {}}
             hasDeactive={false}
         />

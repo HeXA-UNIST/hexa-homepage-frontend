@@ -26,7 +26,7 @@ const QueryFormPart = observer(
                         },
                         onSortChanged: projectPageViewModel.setSort,
                         onYearChanged: projectPageViewModel.setYear,
-                        onStatusChanged: projectPageViewModel.setStatus,
+                        // onStatusChanged: projectPageViewModel.setStatus,
                         projectListViewModel: projectPageViewModel,
                     }}
                 />

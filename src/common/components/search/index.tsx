@@ -1,4 +1,4 @@
-import { ProjectStatusString } from "@models/project/Project";
+// import { ProjectStatusString } from "@models/project/Project";
 import ProjectListViewModel from "@pages/project/activity/ProjectListViewModel";
 import { SortDropDown, YearDropDown } from "./DropDowns";
 import SearchBox from "./SearchBox";
@@ -14,7 +14,7 @@ interface ISearchTypes {
     };
     onSortChanged?: (sort: "asc" | "desc") => void;
     onYearChanged?: (year: string) => void;
-    onStatusChanged?: (status: ProjectStatusString[]) => void;
+    // onStatusChanged?: (status: ProjectStatusString[]) => void;
     projectListViewModel?: ProjectListViewModel
 }
 
@@ -57,8 +57,8 @@ export default function SearchArea({ toggle }: { toggle: ISearchTypes }) {
                 )}
             </SubSearchArea>
             <SubSearchArea title="상태">
-                {toggle.onStatusChanged !== undefined && (
-                    <ProjectState onStatusChanged={toggle.onStatusChanged} />
+                {toggle.projectListViewModel !== undefined && (
+                    <ProjectState projectListViewModel={toggle.projectListViewModel} />
                 )}
             </SubSearchArea>
             <SubSearchArea title="기술스택">
