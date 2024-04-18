@@ -47,7 +47,7 @@ export default function DeleteButton({
 
   return (
     <button
-      className="rounded-md text-sm flex flex-row justify-between items-center gap-1 px-4 py-3 bg-[#1B83BE] text-white hover:bg-white hover:text-black
+      className="rounded-md text-sm flex flex-row justify-between items-center gap-1 px-4 py-3 bg-rose-700 text-white hover:bg-white hover:text-black
         disabled:opacity-50
         "
       type="button"
@@ -56,7 +56,7 @@ export default function DeleteButton({
     >
       {!isConfirming
         ? `${prefix} 삭제`
-        : `정말 삭제하시겠습니까? (${confirmCountDown})`}
+        : `정말 삭제하시겠습니까? (${confirmCountDown}초 뒤 취소)`}
     </button>
   );
 }

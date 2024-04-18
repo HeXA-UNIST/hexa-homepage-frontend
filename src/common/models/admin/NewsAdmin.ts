@@ -1,13 +1,21 @@
-export interface ModifyNewsAdmin {
+export type NewsTypeAdmin = "공지" | "수상";
+
+export interface SimpleNewsAdmin {
   newsId: number;
-  newsType: string;
+  newsType: NewsTypeAdmin;
+  title: string;
+  date: Date;
+}
+
+export interface ModifyNewsAdmin {
+  newsType: NewsTypeAdmin;
   title: string;
   date: Date;
   content: string;
 }
 
 export interface CreateNewsAdmin {
-  newsType: string;
+  newsType: NewsTypeAdmin;
   title: string;
   date: Date;
   content: string;
@@ -15,16 +23,11 @@ export interface CreateNewsAdmin {
 
 export interface GetNewsListResultAdmin {
   totalPage: number;
-  list: {
-    newsId: number;
-    newsType: string;
-    title: string;
-    date: Date;
-  }[];
+  list: SimpleNewsAdmin[];
 }
 
 export interface DetailNewsAdmin {
-  newsType: string;
+  newsType: NewsTypeAdmin;
   title: string;
   date: Date;
   content: string;

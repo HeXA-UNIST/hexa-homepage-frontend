@@ -1,5 +1,11 @@
-export interface ModifyServiceAdmin {
+export interface SimpleServiceAdmin {
   serviceId: number;
+  title: number;
+  description: number;
+  thumbnail: number;
+}
+
+export interface ModifyServiceAdmin {
   title: string;
   content: string;
   description: string;
@@ -19,12 +25,7 @@ export interface CreateServiceAdmin {
 
 export interface GetServiceListResultAdmin {
   totalPage: number;
-  list: {
-    serviceId: number;
-    title: number;
-    description: number;
-    thumbnail: number;
-  }[];
+  list: SimpleServiceAdmin[];
 }
 
 export interface DetailServiceAdmin {

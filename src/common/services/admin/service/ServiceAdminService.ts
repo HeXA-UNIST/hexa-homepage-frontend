@@ -12,10 +12,13 @@ import {
 } from "@models/admin/dto/ServiceAdminDTO";
 import api from "common/api";
 
-export async function modifyServiceAdmin(data: ModifyServiceAdmin) {
+export async function modifyServiceAdmin(
+  serviceId: number,
+  data: ModifyServiceAdmin
+) {
   return api.post(
     "/admin/modifyService",
-    data satisfies ModifyServiceAdminDTO,
+    { serviceId, ...data } satisfies ModifyServiceAdminDTO,
     {
       withCredentials: true,
     }

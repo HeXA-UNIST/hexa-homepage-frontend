@@ -1,19 +1,19 @@
-import { SimpleProjectAdmin } from "@models/admin/ProjectAdmin";
+import { SimpleServiceAdmin } from "@models/admin/ServiceAdmin";
 import WebConstants from "@constants";
 import Button from "@pages/admin/components/Button";
 import { observer } from "mobx-react-lite";
-import { useProjectAdminStore } from "../../context/ProjectAdminContext";
+import { useServiceAdminStore } from "../../context/ServiceAdminContext";
 
-function ProjectItem({
+function ServiceItem({
   item,
   onClick,
 }: {
-  item: SimpleProjectAdmin;
+  item: SimpleServiceAdmin;
   onClick: () => void;
 }) {
   return (
     <button
-      className="p-4 w-full max-w-lg bg-gray-800 rounded-md border border-gray-700 flex flex-row items-center gap-2"
+      className="p-4 w-full max-w-lg bg-gray-800 rounded-md border border-gray-700 flex flex-row items-center gap-4"
       type="button"
       onClick={onClick}
     >
@@ -24,33 +24,32 @@ function ProjectItem({
       />
       <div className="flex-1 flex flex-col items-start">
         <div className="text-base font-bold text-white">{item.title}</div>
-        <div className="text-sm text-gray-500">{item.state}</div>
       </div>
     </button>
   );
 }
 
-function ProjectList() {
-  const store = useProjectAdminStore();
+function ServiceList() {
+  const store = useServiceAdminStore();
 
   return (
     <div className="w-full h-full relative flex flex-col gap-4 min-h-0 overflow-y-auto">
       <div className="w-full flex flex-row items-center py-2 gap-6">
-        <div className="text-xl font-bold text-white">프로젝트 목록</div>
+        <div className="text-xl font-bold text-white">서비스 목록</div>
         <Button
-          label="프로젝트 추가"
+          label="서비스 추가"
           onClick={() => {
-            store.createProject();
+            store.createService();
           }}
         />
       </div>
       <div className="w-full h-full flex-wrap flex flex-row gap-4 justify-start items-start p-4">
         {store.data?.list.map((item) => (
-          <ProjectItem
-            key={item.projectId}
+          <ServiceItem
+            key={item.serviceId}
             item={item}
             onClick={() => {
-              store.editorStore.selectProject(item.projectId);
+              store.editorStore.selectService(item.serviceId);
             }}
           />
         ))}
@@ -59,4 +58,4 @@ function ProjectList() {
   );
 }
 
-export default observer(ProjectList);
+export default observer(ServiceList);

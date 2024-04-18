@@ -13,7 +13,7 @@ import NoticePage from "@pages/notice";
 import LoginPage from "@pages/login";
 import { AdminRouter } from "@pages/admin";
 import { AuthenticationProvider } from "common/context/AuthenticationContext";
-import { AdminNewsRouter } from "@pages/admin/pages/news";
+import AdminNewsRouter from "@pages/admin/pages/news";
 import AdminProjectRouter from "@pages/admin/pages/project";
 import AdminSeminarRouter from "@pages/admin/pages/seminar";
 import AdminServiceRouter from "@pages/admin/pages/service";

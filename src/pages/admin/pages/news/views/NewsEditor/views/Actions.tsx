@@ -1,46 +1,38 @@
 import { observer } from "mobx-react-lite";
 import DeleteButton from "@pages/admin/components/DeleteButton";
 import Button from "@pages/admin/components/Button";
-import { useProjectAdminStore } from "../../../context/ProjectAdminContext";
+import { useNewsAdminStore } from "../../../context/NewsAdminContext";
 
 function Actions() {
-  const { editorStore } = useProjectAdminStore();
+  const { editorStore } = useNewsAdminStore();
 
   return (
     <div className="flex flex-row gap-2">
       {!editorStore.isEditing ? (
         <>
           <Button
-            label="프로젝트 수정"
+            label="뉴스 수정"
             onClick={() => {
               editorStore.startEditing();
             }}
           />
           <DeleteButton
-            prefix="프로젝트"
+            prefix="뉴스"
             onClick={() => {
-              editorStore.deleteProject();
+              editorStore.deleteNews();
             }}
           />
         </>
       ) : (
         <>
           <Button
-            label={
-              editorStore.isNewProject
-                ? "프로젝트 생성 완료"
-                : "프로젝트 수정 완료"
-            }
+            label={editorStore.isNewNews ? "뉴스 생성 완료" : "뉴스 수정 완료"}
             onClick={() => {
               editorStore.submitEditing();
             }}
           />
           <Button
-            label={
-              editorStore.isNewProject
-                ? "프로젝트 생성 취소"
-                : "프로젝트 수정 취소"
-            }
+            label={editorStore.isNewNews ? "뉴스 생성 취소" : "뉴스 수정 취소"}
             onClick={() => {
               editorStore.cancelEditing();
             }}

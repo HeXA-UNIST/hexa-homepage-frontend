@@ -60,7 +60,26 @@ export async function getProjectListAdmin(
     })
   ).data as GetProjectListResultAdminDTO;
 
-  return result satisfies GetProjectListResultAdmin;
+  return {
+    totalPage: result.totalPage,
+    list: result.list.map((project) => ({
+      ...project,
+      state: ((state): ProjectStateAdmin => {
+        switch (state) {
+          case "승인중":
+            return "승인중";
+          case "모집중":
+            return "모집중";
+          case "진행중":
+            return "진행중";
+          case "진행완료":
+            return "진행완료";
+          default:
+            throw new Error(`Invalid state: ${state}`);
+        }
+      })(project.state),
+    })),
+  } satisfies GetProjectListResultAdmin;
 }
 
 export async function getDetailProjectAdmin(

@@ -18,8 +18,8 @@ function IndexButton({
       className={`w-4 h-4 flex items-center justify-center text-sm rounded-md
       ${
         selected
-          ? "bg-stone-300 text-black hover:bg-stone-500"
-          : "bg-white text-stone-700 hover:bg-stone-200"
+          ? "bg-stone-300 text-white hover:bg-stone-500"
+          : "bg-white text-stone-600 hover:bg-stone-200"
       }
       `}
       onClick={onClick}

@@ -4,6 +4,7 @@ import OneLineTextField from "@pages/admin/components/OneLineTextField";
 import WebConstants from "@constants";
 import { uploadAttachment } from "common/services/admin/attachment/AttachmentAdminService";
 import DateField from "@pages/admin/components/DateField";
+import { ProjectStateAdmin } from "@models/admin/ProjectAdmin";
 import adminNotificationStore from "@pages/admin/store/AdminNotificationStore";
 import MultilineTextField from "@pages/admin/components/MultilineTextField";
 import TextListField from "@pages/admin/components/TextListField";
@@ -161,7 +162,7 @@ const State = observer(() => {
   return (
     <div className="flex flex-col gap-2 items-start w-full">
       <div className="text-white text-sm">상태</div>
-      <EnumSelector<"승인중" | "모집중" | "진행중" | "진행완료">
+      <EnumSelector<ProjectStateAdmin>
         options={["승인중", "모집중", "진행중", "진행완료"]}
         value={
           editorStore.isEditing

@@ -3,6 +3,7 @@ import {
   DetailNewsAdmin,
   GetNewsListResultAdmin,
   ModifyNewsAdmin,
+  NewsTypeAdmin,
 } from "@models/admin/NewsAdmin";
 import {
   CreateNewsAdminDTO,
@@ -12,10 +13,11 @@ import {
 } from "@models/admin/dto/NewsAdminDTO";
 import api from "common/api";
 
-export async function modifyNewsAdmin(data: ModifyNewsAdmin) {
+export async function modifyNewsAdmin(newsId: number, data: ModifyNewsAdmin) {
   return api.post(
     "/admin/news/modify",
     {
+      newsId,
       ...data,
       // date to "yyyy-MM-dd"
       date: data.date.toISOString().split("T")[0],
@@ -59,6 +61,11 @@ export async function getNewsListAdmin(
       ...news,
       // "yyyy-mm-dd" to Date
       date: new Date(news.date),
+      newsType: ((newsType): NewsTypeAdmin => {
+        if (newsType === "공지") return "공지";
+        if (newsType === "수상") return "수상";
+        throw new Error("invalid newsType");
+      })(news.newsType),
     })),
   } satisfies GetNewsListResultAdmin;
 }
@@ -79,6 +86,11 @@ export async function getDetailNewsAdmin(
     ...result,
     // "yyyy-mm-dd" to Date
     date: new Date(result.date),
+    newsType: ((newsType): NewsTypeAdmin => {
+      if (newsType === "공지") return "공지";
+      if (newsType === "수상") return "수상";
+      throw new Error("invalid newsType");
+    })(result.newsType),
   } satisfies DetailNewsAdmin;
 }
 

@@ -2,7 +2,7 @@ export interface SimpleProjectAdmin {
   projectId: number;
   thumbnail: number;
   title: string;
-  state: string;
+  state: ProjectStateAdmin;
 }
 
 export interface GetProjectListResultAdmin {

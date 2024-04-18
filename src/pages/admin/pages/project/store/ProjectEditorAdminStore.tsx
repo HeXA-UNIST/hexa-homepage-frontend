@@ -34,13 +34,15 @@ export default class ProjectEditorAdminStore {
 
     makeAutoObservable<
       ProjectEditorAdminStore,
-      | "_selectedProject"
+      | "_projectId"
+      | "_project"
       | "_isEditing"
       | "_edittingProject"
       | "_isLoading"
       | "_isSubmitting"
     >(this, {
-      _selectedProject: observable,
+      _projectId: observable,
+      _project: observable,
       _isEditing: observable,
       _edittingProject: observable,
       _isLoading: observable,
