@@ -1,13 +1,8 @@
-
 import "@css/tailwindCopy.css";
 import "@css/app/App.css";
 import "@css/app/Hexa.css";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Provider } from "mobx-react";
-
-import LoginStore from "common/stores/LoginStore";
-
 
 import HomePage from "pages/home";
 import IntroductionPage from "@pages/introduction";
@@ -16,11 +11,17 @@ import ServicePage from "@pages/service";
 import NoticePage from "@pages/notice";
 // import Activities from "pages/activities";
 import LoginPage from "@pages/login";
+import { AdminRouter } from "@pages/admin";
+import { AuthenticationProvider } from "common/context/AuthenticationContext";
+import { AdminNewsRouter } from "@pages/admin/pages/news";
+import AdminProjectRouter from "@pages/admin/pages/project";
+import AdminSeminarRouter from "@pages/admin/pages/seminar";
+import AdminServiceRouter from "@pages/admin/pages/service";
 
 function App() {
   return (
     <div className="App bg-black">
-      <Provider loginStore={new LoginStore()}>
+      <AuthenticationProvider>
         <BrowserRouter>
           <Routes>
             <Route path="/home" element={<HomePage />} />
@@ -31,9 +32,15 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             {/* <Route path="/activities" element={<Activities />} /> */}
             <Route path="/*" element={<HomePage />} />
+            <Route path="/admin" element={<AdminRouter />}>
+              <Route path="/admin/news" element={<AdminNewsRouter />} />
+              <Route path="/admin/project" element={<AdminProjectRouter />} />
+              <Route path="/admin/seminar" element={<AdminSeminarRouter />} />
+              <Route path="/admin/service" element={<AdminServiceRouter />} />
+            </Route>
           </Routes>
         </BrowserRouter>
-      </Provider>
+      </AuthenticationProvider>
     </div>
   );
 }

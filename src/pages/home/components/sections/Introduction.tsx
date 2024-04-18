@@ -1,10 +1,10 @@
-import ContentFrame from "../content";
+// import ContentFrame from "../content";
 import "@css/home/Introduction.css";
 
 function Introduction() {
-    return (
-        <div className="introduction-area">
-            {/* <ContentFrame title="동아리 소개" subTitle="HeXA란?" icon="💻">
+  return (
+    <div className="introduction-area">
+      {/* <ContentFrame title="동아리 소개" subTitle="HeXA란?" icon="💻">
                 <div className="flex flex-row">
                     <div className="mr-20 grow">
                         <img
@@ -31,8 +31,8 @@ function Introduction() {
                     </div>
                 </div>
             </ContentFrame> */}
-        </div>
-    );
+    </div>
+  );
 }
 
 export default Introduction;
