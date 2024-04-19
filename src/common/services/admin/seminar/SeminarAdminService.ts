@@ -12,11 +12,16 @@ import {
 } from "@models/admin/dto/SeminarAdminDTO";
 import api from "common/api";
 
-export async function modifySeminarAdmin(data: ModifySeminarAdmin) {
+export async function modifySeminarAdmin(
+  seminarId: number,
+  data: ModifySeminarAdmin
+) {
   return api.post(
     "/admin/modifySeminar",
     {
       ...data,
+      seminarId,
+      attachments: data.attachments.map((attachment) => attachment.fileId),
       // date to "yyyy-MM-dd"
       date: data.date.toISOString().split("T")[0],
     } satisfies ModifySeminarAdminDTO,
@@ -31,6 +36,7 @@ export async function createSeminarAdmin(data: CreateSeminarAdmin) {
     "/admin/createSeminar",
     {
       ...data,
+      attachments: data.attachments.map((attachment) => attachment.fileId),
       // date to "yyyy-MM-dd"
       date: data.date.toISOString().split("T")[0],
     } satisfies CreateSeminarAdminDTO,

@@ -1,25 +1,22 @@
-import { SimpleNewsAdmin } from "@models/admin/NewsAdmin";
+import { SimpleSeminarAdmin } from "@models/admin/SeminarAdmin";
 import Button from "@pages/admin/components/Button";
 import { observer } from "mobx-react-lite";
-import { useNewsAdminStore } from "../../context/NewsAdminContext";
+import { useSeminarAdminStore } from "../../context/SeminarAdminContext";
 
-function NewsItem({
+function SeminarItem({
   item,
   onClick,
 }: {
-  item: SimpleNewsAdmin;
+  item: SimpleSeminarAdmin;
   onClick: () => void;
 }) {
   return (
     <button
-      className="p-4 w-full bg-gray-800 rounded-md border border-gray-700 flex flex-row items-center gap-2"
+      className="p-4 w-full max-w-lg bg-gray-800 rounded-md border border-gray-700 flex flex-row items-center gap-2"
       type="button"
       onClick={onClick}
     >
-      <div className="px-8 flex items-center justify-center text-sm text-gray-300">
-        {item.newsType}
-      </div>
-      <div className="flex-1 flex flex-col items-start gap-1">
+      <div className="flex-1 flex flex-col items-start">
         <div className="text-base font-bold text-white">{item.title}</div>
         <div className="text-sm text-gray-500">
           {item.date.toISOString().split("T")[0]}
@@ -29,27 +26,27 @@ function NewsItem({
   );
 }
 
-function NewsList() {
-  const store = useNewsAdminStore();
+function SeminarList() {
+  const store = useSeminarAdminStore();
 
   return (
     <div className="w-full h-full relative flex flex-col gap-4 min-h-0 overflow-y-auto">
       <div className="w-full flex flex-row items-center py-2 gap-6">
-        <div className="text-xl font-bold text-white">뉴스 목록</div>
+        <div className="text-xl font-bold text-white">세미나 목록</div>
         <Button
-          label="뉴스 추가"
+          label="세미나 추가"
           onClick={() => {
-            store.createNews();
+            store.createProject();
           }}
         />
       </div>
       <div className="w-full h-full flex-wrap flex flex-row gap-4 justify-start items-start p-4">
         {store.data?.list.map((item) => (
-          <NewsItem
-            key={item.newsId}
+          <SeminarItem
+            key={item.seminarId}
             item={item}
             onClick={() => {
-              store.editorStore.selectNews(item.newsId);
+              store.editorStore.selectSeminar(item.seminarId);
             }}
           />
         ))}
@@ -58,4 +55,4 @@ function NewsList() {
   );
 }
 
-export default observer(NewsList);
+export default observer(SeminarList);

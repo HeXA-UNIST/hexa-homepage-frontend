@@ -14,18 +14,18 @@ function EnumItem({
 
   if (readOnly) {
     if (isSelected) {
-      cn = "border border-[#1B83BE] text-[#1B83BE]";
+      cn = "border border-[#1B83BE] text-gray-300 font-bold";
     } else {
-      cn = "text-gray-700";
+      cn = "text-gray-500";
     }
   } else if (isSelected) {
-    cn = "border border-[#1B83BE] text-[#1B83BE] bg-gray-800";
+    cn = "border border-[#1B83BE] text-white bg-gray-800 font-bold";
   } else {
-    cn = "text-gray-700 bg-gray-800";
+    cn = "text-gray-400 bg-gray-800";
   }
   return (
     <button
-      className={`rounded-md px-3 py-2 ${cn}`}
+      className={`rounded-md px-5 py-2.5 text-sm ${cn}`}
       disabled={readOnly}
       onClick={onClick}
       type="button"

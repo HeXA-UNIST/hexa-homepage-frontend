@@ -11,7 +11,7 @@ function FileListUploadField({
 }: {
   initialFiles: { fileId: number; fileName: string; fileSize: number }[];
   value: { fileId: number; fileName: string; fileSize: number }[];
-  onUpload: (files: File) => Promise<void>;
+  onUpload: (files: File, fileName: string) => Promise<void>;
   onChange: (
     value: { fileId: number; fileName: string; fileSize: number }[]
   ) => void;
@@ -69,10 +69,7 @@ function FileListUploadField({
             readOnly={isUploading || readOnly}
             placeholder="파일 이름"
           />
-          <div className="text-sm text-white font-bold">
-            {fileUploadSetting.fileName}
-          </div>
-          <div className="flex flex-row gap-2">
+          <div className="flex flex-row gap-2 shrink-0">
             <Button
               label="취소"
               onClick={() => {
@@ -88,7 +85,10 @@ function FileListUploadField({
               label="업로드"
               onClick={() => {
                 setIsUploading(true);
-                onUpload(fileUploadSetting.file).finally(() => {
+                onUpload(
+                  fileUploadSetting.file,
+                  fileUploadSetting.fileName
+                ).finally(() => {
                   setIsUploading(false);
                   setFileUploadSetting({
                     isConfirming: false,

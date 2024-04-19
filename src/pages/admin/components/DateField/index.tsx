@@ -14,7 +14,7 @@ function DateField({
   return (
     <input
       className={`w-full px-4 py-2 border border-gray-700 rounded-md
-        ${readOnly ? "bg-gray-800" : ""}
+      ${readOnly ? "bg-transparent text-gray-300" : "bg-gray-900 text-white "}
         `}
       type="date"
       value={value?.toISOString().split("T")[0] ?? ""}
