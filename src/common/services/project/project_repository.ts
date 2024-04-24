@@ -78,7 +78,7 @@ export default class ProjectRepository {
             setTimeout(resolve, 1000);
         });
         return {
-            totalPage: 1,
+            totalPage: 7,
             list: [
                 {
                     projectId: 0,
@@ -87,43 +87,43 @@ export default class ProjectRepository {
                     status: "진행중"
                 },
                 {
-                    projectId: 0,
+                    projectId: 1,
                     title: "프로젝트 1",
                     thumbnail: 10,
                     status: "진행중"
                 },
                 {
-                    projectId: 0,
+                    projectId: 2,
                     title: "프로젝트 1",
                     thumbnail: 10,
                     status: "진행중"
                 },
                 {
-                    projectId: 0,
+                    projectId: 3,
                     title: "프로젝트 1",
                     thumbnail: 10,
                     status: "진행중"
                 },
                 {
-                    projectId: 0,
+                    projectId: 4,
                     title: "프로젝트 1",
                     thumbnail: 10,
                     status: "진행중"
                 },
                 {
-                    projectId: 0,
+                    projectId: 5,
                     title: "프로젝트 1",
                     thumbnail: 10,
                     status: "진행중"
                 },
                 {
-                    projectId: 0,
+                    projectId: 6,
                     title: "프로젝트 1",
                     thumbnail: 10,
                     status: "진행중"
                 },
                 {
-                    projectId: 0,
+                    projectId: 7,
                     title: "프로젝트 1",
                     thumbnail: 10,
                     status: "진행중"

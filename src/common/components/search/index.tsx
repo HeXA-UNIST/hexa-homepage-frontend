@@ -5,7 +5,6 @@ import SearchBox from "./SearchBox";
 import TechStack from "./TechStack";
 import ProjectState from "./ProjectState";
 
-
 interface ISearchTypes {
     search?: {
         searchText: string;
@@ -14,8 +13,9 @@ interface ISearchTypes {
     };
     onSortChanged?: (sort: "asc" | "desc") => void;
     onYearChanged?: (year: string) => void;
+    // onPerPageChanged?: (perPage: number) => void;
     // onStatusChanged?: (status: ProjectStatusString[]) => void;
-    projectListViewModel?: ProjectListViewModel
+    projectListViewModel?: ProjectListViewModel;
 }
 
 function SubSearchArea({
@@ -30,10 +30,10 @@ function SubSearchArea({
     }
     return (
         <div className="mb-8">
-            <div className=" text-left text-xl text-white font-semibold mb-4">{title}</div>
-            <div className="flex flex-row gap-3">
-                {children}
+            <div className=" text-left text-xl text-white font-semibold mb-4">
+                {title}
             </div>
+            <div className="flex flex-row gap-3">{children}</div>
         </div>
     );
 }
@@ -58,7 +58,9 @@ export default function SearchArea({ toggle }: { toggle: ISearchTypes }) {
             </SubSearchArea>
             <SubSearchArea title="상태">
                 {toggle.projectListViewModel !== undefined && (
-                    <ProjectState projectListViewModel={toggle.projectListViewModel} />
+                    <ProjectState
+                        projectListViewModel={toggle.projectListViewModel}
+                    />
                 )}
             </SubSearchArea>
             <SubSearchArea title="기술스택">

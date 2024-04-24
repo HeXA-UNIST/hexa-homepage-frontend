@@ -1,18 +1,44 @@
 import { observer } from "mobx-react";
 
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileLines } from "@fortawesome/free-regular-svg-icons";
 
+import SearchArea from "@components/search";
+import PageNation from "@components/search/PageNation";
 import ContentArea from "@components/ContentArea";
 
 // import Header from "@components/header/Header";
 // import Footer from "@components/footer/Footer";
 
-
 import { useState } from "react";
 import SeminarSummary from "@models/seminar/SeminarSummary";
 import SeminarListViewModel from "./SeminarListViewModel";
+
+const QueryFormPart = observer(
+    ({
+        seminarPageViewModel,
+    }: {
+        seminarPageViewModel: SeminarListViewModel;
+    }) => (
+        <div className="project-page__query-form">
+            <div>
+                <SearchArea
+                    toggle={{
+                        search: {
+                            searchText: "",
+                            placeHolder: "검색 (예: BUS HeXA, tag:서비스)",
+                            onTextChanged: (text: string) => {
+                                seminarPageViewModel.setSearchText(text);
+                                seminarPageViewModel.fetchSeminars();
+                            }
+                        },
+                        onYearChanged: seminarPageViewModel.setYear
+                    }}
+                />
+            </div>
+        </div>
+    )
+);
 
 function SeminarItem({ seminarData }: { seminarData: SeminarSummary }) {
     const [isOpen, setOpen] = useState<boolean>(false);
@@ -24,41 +50,20 @@ function SeminarItem({ seminarData }: { seminarData: SeminarSummary }) {
             type="button"
         >
             <div className="flex flex-col transition-all">
-                <div className="w-full flex flex-row items-center">
+                <div className="w-full flex flex-col">
                     <div className="flex flex-row items-center text-3xl font-bold text-left text-white text-ellipsis overflow-hidden grow">
-                        <div className="mb-[3px]">{seminarData.title}</div>
-
                         {seminarData.hasAttachment && (
                             <FontAwesomeIcon
-                                className=" ml-4 text-xl"
+                                className=" mr-2 text-xl"
                                 icon={faFileLines}
                             />
                         )}
+                        <div className="mb-[3px]">{seminarData.title}</div>
                     </div>
-                    <div className="text-xl w-32">{seminarData.writer}</div>
-                    <div className="text-xl w-32">{seminarData.date}</div>
-                </div>
-                <div
-                    className={`flex flex-row text-left overflow-hidden transition-all duration-300 ${
-                        seminarData.hasAttachment ? "ml-10" : "mx-10"
-                    } ${isOpen ? "h-80 my-10" : "h-0 my-0"}`}
-                >
-                    {/* <div>{seminarData.content}</div>
-                    <div className="ml-auto">
-                        {seminarData.attachment.length !== 0 && (
-                            <div>
-                                <div className=" text-base mb-3">첨부파일</div>
-                                {seminarData.attachment.map((attach) => (
-                                    <div
-                                        key={attach}
-                                        className=" p-4 overflow-hidden text-ellipsis w-[20rem] border-zinc-600 bg-zinc-700 rounded-2xl"
-                                    >
-                                        {attach}
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                    </div> */}
+                    <div className="flex flex-row gap-2">
+                        <div className="text-xl">{seminarData.writer}</div>
+                        <div className="text-xl">{seminarData.date}</div>
+                    </div>
                 </div>
             </div>
         </button>
@@ -68,7 +73,9 @@ function SeminarItem({ seminarData }: { seminarData: SeminarSummary }) {
 function SeminarView({ viewModel }: { viewModel: SeminarListViewModel }) {
     return (
         <ContentArea>
-                <div className="flex flex-col">
+            <QueryFormPart seminarPageViewModel={viewModel}/>
+            <div className="min-h-[40rem]">
+                <div className="grid grid-cols-[repeat(auto-fit,minmax(350px,auto))] gap-x-4 gap-y-6 mb-28">
                     {viewModel.queryResult.seminars.map((seminar) => (
                         <SeminarItem
                             key={seminar.seminarId}
@@ -76,7 +83,15 @@ function SeminarView({ viewModel }: { viewModel: SeminarListViewModel }) {
                         />
                     ))}
                 </div>
-            </ContentArea>
+            </div>
+
+            <PageNation
+                curPage={viewModel.seminarQueryOptions.pageNum}
+                maxPage={viewModel.queryResult.totalPage}
+                onCurPageChanged={viewModel.setPageNum}
+                onPerPageChanged={viewModel.setPerPage}
+            />
+        </ContentArea>
     );
 }
 

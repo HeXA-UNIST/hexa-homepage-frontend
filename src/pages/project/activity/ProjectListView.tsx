@@ -4,6 +4,7 @@ import ProjectSummary from "@models/project/ProjectSummary";
 import ContentArea from "@components/ContentArea";
 // import SearchBox from "@components/search/SearchBox";
 import SearchArea from "@components/search";
+import PageNation from "@components/search/PageNation";
 import ProjectListViewModel from "./ProjectListViewModel";
 
 const QueryFormPart = observer(
@@ -39,12 +40,20 @@ function ProjectItem({ projectData }: { projectData: ProjectSummary }) {
     return (
         <a
             href="home"
-            className="flex flex-col min-w-min w-[22rem] h-96 bg-neutral-900 rounded-2xl p-7 text-left font-bold"
+            className="flex flex-col h-80 bg-neutral-900 rounded-3xl p-6 text-left font-bold"
         >
-            <div className="flex justify-center items-center bg-emerald-500 rounded-xl h-40 mb-4">
+            <div className="flex flex-row items-center justify-between text-white text-2xl mb-3 px-1">
+                <div>{projectData.title}</div>
+                <span className="text-base font-medium text-zinc-500 float-right">
+                    Project
+                </span>
+            </div>
+            <div className="flex justify-center items-center bg-emerald-500 rounded-2xl h-44 mb-4">
                 <img className="" src={`${projectData.thumbnail}`} alt="" />
             </div>
-            <div className="text-white text-3xl mb-3">{projectData.title}</div>
+            <div className="text-base text-white font-light">
+                테스트 거시기입니다.
+            </div>
         </a>
     );
 }
@@ -53,14 +62,23 @@ function ProjectView({ viewModel }: { viewModel: ProjectListViewModel }) {
     return (
         <ContentArea>
             <QueryFormPart projectPageViewModel={viewModel} />
-            <div className="flex justify-between">
-                {viewModel.queryResult.projects.map((project) => (
-                    <ProjectItem
-                        key={project.projectId}
-                        projectData={project}
-                    />
-                ))}
+            <div className="min-h-[40rem]">
+                <div className="grid grid-cols-[repeat(auto-fit,minmax(350px,auto))] gap-x-6 gap-y-8 mb-28">
+                    {viewModel.queryResult.projects.map((project) => (
+                        <ProjectItem
+                            key={project.projectId}
+                            projectData={project}
+                        />
+                    ))}
+                </div>
             </div>
+
+            <PageNation
+                curPage={viewModel.projectQueryOptions.pageNum}
+                maxPage={viewModel.queryResult.totalPage}
+                onCurPageChanged={viewModel.setPageNum}
+                onPerPageChanged={viewModel.setPerPage}
+            />
         </ContentArea>
     );
 }

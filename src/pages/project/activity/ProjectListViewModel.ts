@@ -17,7 +17,6 @@ class ProjectListViewModel extends PageViewModel {
   techList: string[];
 
   constructor() {
-    console.log("dddd");
     super();
     makeObservable(this);
     this.queryResult = ProjectsQueryResult.empty();
@@ -34,6 +33,8 @@ class ProjectListViewModel extends PageViewModel {
       perPage: 15,
     };
     this.setProjectSuccess = this.setProjectSuccess.bind(this);
+
+    this.fetchProjects();
   }
 
   @action
@@ -118,7 +119,7 @@ class ProjectListViewModel extends PageViewModel {
   }
 
   @action
-  setPageIndex = (perPage: number) => {
+  setPerPage = (perPage: number) => {
     this.projectQueryOptions.perPage = perPage;
   }
 }

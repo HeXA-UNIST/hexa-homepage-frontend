@@ -115,3 +115,26 @@ export function SortDropDown({
 
     return <DropDown items={sortList} onItemChanged={sortStringConvertor} />;
 }
+
+export function PerPage({
+    onPerPageChanged,
+    defaultValue = 15,
+}: {
+    onPerPageChanged: (perPage: number) => void;
+    defaultValue?: number;
+}) {
+    const values = ["6", "15", "30"];
+
+    return (
+        <DropDown
+            items={values}
+            onItemChanged={(item) => onPerPageChanged(+item)}
+            defaultItemIndex={values.indexOf(defaultValue.toString())}
+        />
+    );
+}
+
+
+PerPage.defaultProps = {
+    defaultValue: 15,
+};

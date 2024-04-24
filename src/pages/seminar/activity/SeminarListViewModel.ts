@@ -1,6 +1,6 @@
 import SeminarsQueryResult from "@models/seminar/SeminarsQueryResult";
 import SeminarRepository from "@services/seminar/seminar_repository";
-import { makeObservable, observable } from "mobx";
+import { makeObservable, observable, action } from "mobx";
 import PageViewModel from "@pages/vm/PageViewModel";
 
 class SeminarListViewModel extends PageViewModel {
@@ -12,39 +12,40 @@ class SeminarListViewModel extends PageViewModel {
     searchText: string;
     year: string;
     pageNum: number;
-    pageIndex: number;
+    perPage: number;
   };
 
   constructor() {
     super();
+    
+    makeObservable(this);
     this.queryResult = SeminarsQueryResult.empty();
 
     this.seminarQueryOptions = {
       searchText: "",
       year: "",
-      pageNum: 10,
-      pageIndex: 0,
+      pageNum: 1,
+      perPage: 15,
     };
 
-    makeObservable(this);
+    this.setSeminarSuccess = this.setSeminarSuccess.bind(this);
+
+    this.fetchSeminars();
   }
 
+  @action
   setSeminarSuccess(queryResult: SeminarsQueryResult) {
     super.setSuccess();
     this.queryResult = queryResult;
   }
 
-  async fetchSeminars() {
+  @action
+  fetchSeminars = async () => {
     this.setLoading();
     try {
       const queryResult = await SeminarRepository.querySeminars({
-        searchText:
-          this.seminarQueryOptions.searchText.trim() !== ""
-            ? this.seminarQueryOptions.searchText
-            : undefined,
-        year: this.seminarQueryOptions.year,
         pageNum: this.seminarQueryOptions.pageNum,
-        page: this.seminarQueryOptions.pageIndex,
+        perPage: this.seminarQueryOptions.perPage,
       });
       this.setSeminarSuccess(queryResult);
     } catch (e: any) {
@@ -52,20 +53,24 @@ class SeminarListViewModel extends PageViewModel {
     }
   }
 
-  setSearchText(searchText: string) {
+  @action
+  setSearchText = (searchText: string) => {
     this.seminarQueryOptions.searchText = searchText;
   }
 
-  setYear(year: string) {
+  @action
+  setYear = (year: string) => {
     this.seminarQueryOptions.year = year;
   }
 
-  setPageNum(pageNum: number) {
+  @action
+  setPageNum = (pageNum: number) => {
     this.seminarQueryOptions.pageNum = pageNum;
   }
 
-  setPageIndex(pageIndex: number) {
-    this.seminarQueryOptions.pageIndex = pageIndex;
+  @action
+  setPerPage = (perPage: number) => {
+    this.seminarQueryOptions.perPage = perPage;
   }
 }
 

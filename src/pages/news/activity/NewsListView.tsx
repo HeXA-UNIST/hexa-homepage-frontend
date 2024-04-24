@@ -2,19 +2,16 @@ import { observer } from "mobx-react";
 import { useState } from "react";
 import NewsSummary from "@models/news/NewsSummary";
 import ContentArea from "@components/ContentArea";
+import PageNation from "@components/search/PageNation";
 import NewsListViewModel from "./NewsListViewModel";
 
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faFileLines } from "@fortawesome/free-regular-svg-icons";
 
-
 // import SearchBox from "@components/search/SearchBox";
 
 // import Header from "@components/header/Header";
 // import Footer from "@components/footer/Footer";
-
-
-
 
 // const QueryFormPart = observer(
 //     ({
@@ -23,10 +20,10 @@ import NewsListViewModel from "./NewsListViewModel";
 //       newsPageViewModel: NewsPageViewModel;
 //     }) => {
 //       const { newsQueryOptions } = newsPageViewModel;
-  
+
 //       return (
 //         <div className="">
-          
+
 //         </div>
 //       );
 //     }
@@ -78,11 +75,19 @@ function NewsItem({ newsData }: { newsData: NewsSummary }) {
 function NewsView({ viewModel }: { viewModel: NewsListViewModel }) {
     return (
         <ContentArea>
-            <div className="flex flex-col">
-                {viewModel.queryResult.news.map((news) => (
-                    <NewsItem key={news.newsId} newsData={news} />
-                ))}
+            <div className="min-h-[40rem]">
+                <div className="flex flex-col">
+                    {viewModel.queryResult.news.map((news) => (
+                        <NewsItem key={news.newsId} newsData={news} />
+                    ))}
+                </div>
             </div>
+            <PageNation
+                curPage={viewModel.newsQueryOptions.pageNum}
+                maxPage={viewModel.queryResult.totalPage}
+                onCurPageChanged={viewModel.setPageNum}
+                onPerPageChanged={viewModel.setPerPage}
+            />
         </ContentArea>
     );
 }

@@ -1,6 +1,6 @@
 import ServicesQueryResult from "@models/service/ServicesQueryResult";
 import ServiceRepository from "@services/service/service_repository";
-import { makeObservable, observable } from "mobx";
+import { makeObservable, observable, action } from "mobx";
 import PageViewModel from "@pages/vm/PageViewModel";
 
 class ServiceListViewModel extends PageViewModel {
@@ -9,17 +9,21 @@ class ServiceListViewModel extends PageViewModel {
 
   constructor() {
     super();
+    makeObservable(this);
     this.queryResult = ServicesQueryResult.empty();
     
-    makeObservable(this);
+    this.setServiceSuccess = this.setServiceSuccess.bind(this);
+    this.fetchServices();
   }
 
+  @action
   setServiceSuccess(queryResult: ServicesQueryResult) {
     super.setSuccess();
     this.queryResult = queryResult;
   }
 
-  async fetchServices() {
+  @action
+  fetchServices = async () => {
     this.setLoading();
     try {
       const queryResult = await ServiceRepository.queryServices();

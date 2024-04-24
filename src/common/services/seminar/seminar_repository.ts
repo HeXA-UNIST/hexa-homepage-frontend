@@ -8,22 +8,22 @@ import SeminarsQueryResult, {
 export interface SeminarQueryParams {
     searchText?: string;
     year?: string;
-    pageNum?: number;
-    page: number;
+    pageNum: number;
+    perPage: number;
 }
 
 export default class SeminarRepository {
     public static async querySeminars({
         searchText = "",
         year,
-        pageNum = 10,
-        page,
+        pageNum,
+        perPage,
     }: SeminarQueryParams): Promise<SeminarsQueryResult> {
         const params = {
             searchText,
             year,
             pageNum,
-            page,
+            perPage,
         };
 
         const fakeResponse = await SeminarRepository.fakeQueryData();

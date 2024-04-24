@@ -1,6 +1,6 @@
 import NewsQueryResult from "@models/news/NewsQueryResult";
 import NewsRepository from "@services/news/news_repository";
-import { makeObservable, observable } from "mobx";
+import { makeObservable, observable, action } from "mobx";
 import PageViewModel from "@pages/vm/PageViewModel";
 
 class NewsListViewModel extends PageViewModel {
@@ -15,21 +15,28 @@ class NewsListViewModel extends PageViewModel {
 
     constructor() {
         super();
+        
+        makeObservable(this);
+
         this.queryResult = NewsQueryResult.empty();
         this.newsQueryOptions = {
             pageNum: 1,
-            perPage: 10,
+            perPage: 15,
         };
+        
+        this.setNewsSuccess = this.setNewsSuccess.bind(this);
 
-        makeObservable(this);
+        this.fetchServices();
     }
 
+    @action
     setNewsSuccess(queryResult: NewsQueryResult) {
         super.setSuccess();
         this.queryResult = queryResult;
     }
 
-    async fetchServices() {
+    @action
+    fetchServices = async () => {
         this.setLoading();
         try {
             const queryResult = await NewsRepository.queryNews({
@@ -50,12 +57,15 @@ class NewsListViewModel extends PageViewModel {
     //     this.newsQueryOptions.year = year;
     //   }
 
-    setPageNum(pageNum: number) {
+    @action
+    setPageNum = (pageNum: number) => {
         this.newsQueryOptions.pageNum = pageNum;
     }
 
-    setPageIndex(pageIndex: number) {
-        this.newsQueryOptions.perPage = pageIndex;
+    @action
+    setPerPage = (perPage: number) => {
+        this.newsQueryOptions.perPage = perPage;
+        this.fetchServices();
     }
 }
 
