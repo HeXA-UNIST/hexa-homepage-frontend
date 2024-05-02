@@ -139,15 +139,14 @@ export default class ProjectRepository {
         return {
             projectId: 0,
             title: "프로젝트 1",
-            thumbnailUrl:
-                "https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849825_960_720.jpg",
+            thumbnail: 0,
             startDate: "2022.01.04",
             endDate: null,
             techStackList: ["javascript", "tensorflow", "python"],
             // memberList: [],
             state: "진행중",
-            isPublic: true,
-            content: ""
+            public_status: true,
+            content: "아무런 내용도 없습니다. lorem * 100dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddㄹ맬듲ㅁ래먖르ㅐㅁㅈ댜러매ㅑㅈ럼재ㅑ럼재ㅑ러ㅐㅁ쟈ㅓㄻㅈ름재ㅑㄹ프ㅐㅑㅁ저래ㅑㅁㄷ절재ㅑㅓㄹ"
         };
     }
 

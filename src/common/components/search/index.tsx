@@ -5,7 +5,10 @@ import SearchBox from "./SearchBox";
 import TechStack from "./TechStack";
 import ProjectState from "./ProjectState";
 
+type SubSearchAreaType = ("search" | "state" | "tech")[];
+
 interface ISearchTypes {
+    subAreaTypes: SubSearchAreaType;
     search?: {
         searchText: string;
         placeHolder: string;
@@ -41,35 +44,41 @@ function SubSearchArea({
 export default function SearchArea({ toggle }: { toggle: ISearchTypes }) {
     return (
         <div>
-            <SubSearchArea title="검색">
-                {toggle.search !== undefined && (
-                    <SearchBox
-                        value={toggle.search.searchText}
-                        placeholder={toggle.search.placeHolder}
-                        onSubmit={toggle.search.onTextChanged}
-                    />
-                )}
-                {toggle.onSortChanged !== undefined && (
-                    <SortDropDown onSortChanged={toggle.onSortChanged} />
-                )}
-                {toggle.onYearChanged !== undefined && (
-                    <YearDropDown onYearChanged={toggle.onYearChanged} />
-                )}
-            </SubSearchArea>
-            <SubSearchArea title="상태">
-                {toggle.projectListViewModel !== undefined && (
-                    <ProjectState
-                        projectListViewModel={toggle.projectListViewModel}
-                    />
-                )}
-            </SubSearchArea>
-            <SubSearchArea title="기술스택">
-                {toggle.projectListViewModel !== undefined && (
-                    <TechStack
-                        projectListViewModel={toggle.projectListViewModel}
-                    />
-                )}
-            </SubSearchArea>
+            {toggle.subAreaTypes.includes("search") && (
+                <SubSearchArea title="검색">
+                    {toggle.search !== undefined && (
+                        <SearchBox
+                            value={toggle.search.searchText}
+                            placeholder={toggle.search.placeHolder}
+                            onSubmit={toggle.search.onTextChanged}
+                        />
+                    )}
+                    {toggle.onSortChanged !== undefined && (
+                        <SortDropDown onSortChanged={toggle.onSortChanged} />
+                    )}
+                    {toggle.onYearChanged !== undefined && (
+                        <YearDropDown onYearChanged={toggle.onYearChanged} />
+                    )}
+                </SubSearchArea>
+            )}
+            {toggle.subAreaTypes.includes("state") && (
+                <SubSearchArea title="상태">
+                    {toggle.projectListViewModel !== undefined && (
+                        <ProjectState
+                            projectListViewModel={toggle.projectListViewModel}
+                        />
+                    )}
+                </SubSearchArea>
+            )}
+            {toggle.subAreaTypes.includes("tech") && (
+                <SubSearchArea title="기술스택">
+                    {toggle.projectListViewModel !== undefined && (
+                        <TechStack
+                            projectListViewModel={toggle.projectListViewModel}
+                        />
+                    )}
+                </SubSearchArea>
+            )}
         </div>
     );
 }

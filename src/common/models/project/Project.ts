@@ -24,13 +24,13 @@ export function convertState(stateString: ProjectStatusString): EProjectState {
 export interface IProject {
     projectId: number;
     title: string;
-    thumbnailUrl: string;
+    thumbnail: number;
     startDate: string;
     endDate: string | null;
     techStackList: string[]; // 따로 interface 지정을 해줄수 있지만, 관리자 페이지에 의해 종류가 달라지기 때문에 string으로 보존.
     // memberList: IProjectMember[];
     state: ProjectStatusString;
-    isPublic: boolean;
+    public_status: boolean;
     content: string | null;
 }
 
@@ -39,7 +39,7 @@ export default class Project {
 
     title: string;
 
-    thumbnailUrl: string;
+    thumbnail: number;
 
     startDate: string;
 
@@ -49,7 +49,7 @@ export default class Project {
 
     // memberList: ProjectMember[];
 
-    state: EProjectState;
+    state: ProjectStatusString;
 
     isPublic: boolean;
 
@@ -58,25 +58,25 @@ export default class Project {
     constructor({
         projectId,
         title,
-        thumbnailUrl,
+        thumbnail,
         startDate,
         endDate,
         techStackList,
         // memberList,
         state,
-        isPublic,
+        public_status: isPublic,
         content,
     }: IProject) {
         this.projectId = projectId;
         this.title = title;
-        this.thumbnailUrl = thumbnailUrl;
+        this.thumbnail = thumbnail;
         this.startDate = startDate;
         this.endDate = endDate;
         this.techStackList = techStackList;
         // this.memberList = memberList.map(
         //     (item: IProjectMember) => new ProjectMember(item)
         // );
-        this.state = convertState(state);
+        this.state = state;
         this.isPublic = isPublic;
         this.content = content;
     }
@@ -85,13 +85,13 @@ export default class Project {
         return new Project({
             projectId: 0,
             title: "",
-            thumbnailUrl: "",
+            thumbnail: 0,
             startDate: "",
             endDate: null,
             techStackList: [],
             // memberList: [],
             state: "승인중",
-            isPublic: false,
+            public_status: false,
             content: null,
         });
     }

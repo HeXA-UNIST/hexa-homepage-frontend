@@ -3,45 +3,78 @@ import WebConstants from "@constants";
 
 import { useState, useEffect } from "react";
 
-export function Image({
+export function Image({ id, className }: { id: number; className: string }) {
+    const defaultPath = "";
+    const [path, setPath] = useState<string>(defaultPath);
+
+    useEffect(() => {
+        setPath(defaultPath);
+
+        (async () => {
+            await new Promise(resolve => {
+                setTimeout(resolve, 1000);
+            });
+            setPath("/images/loadingIcon.svg");
+        })();
+
+        // const params = {
+        //     attachmentId: id,
+        // };
+        // try {
+        //     axios
+        //         .get(`${WebConstants.API_URL}/attachment`, {
+        //             params,
+        //             responseType: "blob",
+        //         })
+        //         .then((response) => {
+        //             setPath(window.URL.createObjectURL(response.data));
+        //         });
+        // } catch (error) {
+        //     console.log(error);
+        //     throw error;
+        // }
+    }, [id]);
+    return <img className={className} src={path} alt="" />;
+}
+
+export function FileDownload({
     id,
     className,
 }: {
     id: number;
     className: string;
 }) {
-    const defaultPath: string = "";
-    const [path, setPath] = useState<string>(defaultPath);
-
-    useEffect(() => {
-        setPath(defaultPath);
+    const handleDownload = async () => {
         const params = {
             attachmentId: id,
         };
         try {
-            axios
-                .get(`${WebConstants.API_URL}/attachment`, {
+            const response = await axios.get(
+                `${WebConstants.API_URL}/attachment`,
+                {
                     params,
+                    method: "GET",
                     responseType: "blob",
-                })
-                .then((response) => {
-                    setPath(window.URL.createObjectURL(response.data));
-                });
+                }
+            );
+
+            const downloadUrl = window.URL.createObjectURL(
+                new Blob([response.data])
+            );
+            const link = document.createElement("a");
+            link.href = downloadUrl;
+            link.setAttribute("download", "example.pdf");
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
         } catch (error) {
-            console.log(error);
-            throw error;
+            console.error("파일 다운로드 실패:", error);
         }
-    }, [id]);
-    return <img className={className} src={path} alt="" />;
-}
+    };
 
-
-export function FileDownload({
-    id,
-    className
-}: {
-    id: number;
-    className: string;
-}){
-    // todo
+    return (
+        <div className={className}>
+            <button type="button" onClick={handleDownload}>파일 다운로드</button>
+        </div>
+    );
 }

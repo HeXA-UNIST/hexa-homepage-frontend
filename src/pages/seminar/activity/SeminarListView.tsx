@@ -1,5 +1,6 @@
 import { observer } from "mobx-react";
 
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileLines } from "@fortawesome/free-regular-svg-icons";
 
@@ -10,7 +11,6 @@ import ContentArea from "@components/ContentArea";
 // import Header from "@components/header/Header";
 // import Footer from "@components/footer/Footer";
 
-import { useState } from "react";
 import SeminarSummary from "@models/seminar/SeminarSummary";
 import SeminarListViewModel from "./SeminarListViewModel";
 
@@ -24,6 +24,7 @@ const QueryFormPart = observer(
             <div>
                 <SearchArea
                     toggle={{
+                        subAreaTypes: ["search"],
                         search: {
                             searchText: "",
                             placeHolder: "검색 (예: BUS HeXA, tag:서비스)",
@@ -41,13 +42,11 @@ const QueryFormPart = observer(
 );
 
 function SeminarItem({ seminarData }: { seminarData: SeminarSummary }) {
-    const [isOpen, setOpen] = useState<boolean>(false);
 
     return (
-        <button
-            onClick={() => setOpen(!isOpen)}
+        <Link
+            to={`/seminar/${seminarData.seminarId}`}
             className="w-full h-30 p-8 bg-neutral-900 rounded-2xl text-zinc-300 mb-10 group/seminarItem"
-            type="button"
         >
             <div className="flex flex-col transition-all">
                 <div className="w-full flex flex-col">
@@ -66,7 +65,7 @@ function SeminarItem({ seminarData }: { seminarData: SeminarSummary }) {
                     </div>
                 </div>
             </div>
-        </button>
+        </Link>
     );
 }
 

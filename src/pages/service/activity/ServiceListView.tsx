@@ -1,5 +1,5 @@
 import { observer } from "mobx-react";
-
+import { Link } from "react-router-dom";
 
 import ContentArea from "@components/ContentArea";
 // import SearchBox from "@components/search/SearchBox";
@@ -7,34 +7,47 @@ import ContentArea from "@components/ContentArea";
 // import Header from "@components/header/Header";
 // import Footer from "@components/footer/Footer";
 
-import ServiceSummary from "@models/service/ServiceSummary";
-import ServiceListViewModel from "./ServiceListViewModel";
 
+import ServiceSummary from "@models/service/ServiceSummary";
+import { Image } from "@components/ImageContent";
+import ServiceListViewModel from "./ServiceListViewModel";
 
 function ServiceItem({ serviceData }: { serviceData: ServiceSummary }) {
     return (
-        <a
-            href="home"
-            className="flex flex-col min-w-min w-[22rem] h-96 bg-neutral-900 rounded-2xl p-7 text-left font-bold"
+        <Link
+            to={`/service/${serviceData.serviceId}`}
+            className=" overflow-hidden relative flex flex-col min-w-min w-[22rem] h-48 bg-neutral-900 rounded-2xl text-left font-bold"
         >
-            <div className="flex justify-center items-center bg-emerald-500 rounded-xl h-40 mb-4">
-                <img className="" src={`${serviceData.thumbnail}`} alt="" />
+            <Image
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full blur-sm bg-slate-200 scale-110 origin-center"
+                id={serviceData.thumbnail}
+            />
+            <div className="p-3 z-10">
+                <div className="flex flex-row justify-between">
+                    <div className=" px-4 py-2 text-white text-base mb-3 rounded-xl bg-opacity-30 bg-zinc-300 border-white border-2 w-fit">
+                        {serviceData.title}
+                    </div>
+                    <div className="px-4 py-2 text-white text-lg mb-3 text-right">
+                        Service
+                    </div>
+                </div>
             </div>
-            <div className="text-white text-3xl mb-3">{serviceData.title}</div>
-        </a>
+        </Link>
     );
 }
 
 function ServiceView({ viewModel }: { viewModel: ServiceListViewModel }) {
     return (
         <ContentArea>
-            <div className="flex justify-between">
-                {viewModel.queryResult.services.map((service) => (
-                    <ServiceItem
-                        key={service.serviceId}
-                        serviceData={service}
-                    />
-                ))}
+            <div className="min-h-[40rem]">
+                <div className="grid grid-cols-[repeat(auto-fit,minmax(350px,auto))] gap-x-6 gap-y-8 mb-28">
+                    {viewModel.queryResult.services.map((service) => (
+                        <ServiceItem
+                            key={service.serviceId}
+                            serviceData={service}
+                        />
+                    ))}
+                </div>
             </div>
         </ContentArea>
     );

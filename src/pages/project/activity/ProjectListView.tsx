@@ -1,4 +1,5 @@
 import { observer } from "mobx-react";
+import { Link } from "react-router-dom";
 import ProjectSummary from "@models/project/ProjectSummary";
 
 import ContentArea from "@components/ContentArea";
@@ -17,6 +18,7 @@ const QueryFormPart = observer(
             <div>
                 <SearchArea
                     toggle={{
+                        subAreaTypes: ["search", "state", "tech"],
                         search: {
                             searchText: "",
                             onTextChanged: (text: string) => {
@@ -38,8 +40,8 @@ const QueryFormPart = observer(
 
 function ProjectItem({ projectData }: { projectData: ProjectSummary }) {
     return (
-        <a
-            href="home"
+        <Link
+            to={`/project/${projectData.projectId}`}
             className="flex flex-col h-80 bg-neutral-900 rounded-3xl p-6 text-left font-bold"
         >
             <div className="flex flex-row items-center justify-between text-white text-2xl mb-3 px-1">
@@ -54,7 +56,7 @@ function ProjectItem({ projectData }: { projectData: ProjectSummary }) {
             <div className="text-base text-white font-light">
                 테스트 거시기입니다.
             </div>
-        </a>
+        </Link>
     );
 }
 
