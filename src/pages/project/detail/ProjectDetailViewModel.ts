@@ -1,24 +1,29 @@
 import Project from "@models/project/Project";
 import ProjectRepository from "@services/project/project_repository";
-import { makeObservable, observable } from "mobx";
+import { makeObservable, observable, action, flow } from "mobx";
 import PageViewModel from "@pages/vm/PageViewModel";
 
 
 
 class ProjectDetailViewModel extends PageViewModel{
-    @observable
     projectId: number;
 
-    @observable
     projectDetail: Project;
 
 
     constructor(){
         super();
+        makeObservable(this, {
+            projectId: observable,
+            projectDetail: observable,
+            setProjectDetailSuccess: action,
+            fetchProject: flow,
+            setProjectId: action
+        });
         this.projectId = 0;
         this.projectDetail = Project.empty();
 
-        makeObservable(this);
+        
     }
 
     // 그냥 제네릭으로 싹다 바꾸고 싶다

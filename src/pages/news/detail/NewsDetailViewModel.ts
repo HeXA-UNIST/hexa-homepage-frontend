@@ -1,21 +1,27 @@
 import News from "@models/news/News";
 import NewsRepository from "@services/news/news_repository";
-import { makeObservable, observable } from "mobx";
+import { makeObservable, observable, action, flow } from "mobx";
 import PageViewModel from "@pages/vm/PageViewModel";
 
 class NewsDetailViewModel extends PageViewModel{
-    @observable
     newsId: number;
 
-    @observable
     newsDetail: News;
 
     constructor(){
         super();
+        makeObservable(this, {
+            newsId: observable,
+            newsDetail: observable,
+            setNewsDetailSuccess: action,
+            fetchNews: flow,
+            setNewsId: action
+        });
+
         this.newsId = 0;
         this.newsDetail = News.empty();
 
-        makeObservable(this);
+        
     }
 
     setNewsDetailSuccess(newsDetail: News){

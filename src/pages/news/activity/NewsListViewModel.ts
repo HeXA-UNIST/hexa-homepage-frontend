@@ -1,13 +1,11 @@
 import NewsQueryResult from "@models/news/NewsQueryResult";
 import NewsRepository from "@services/news/news_repository";
-import { makeObservable, observable, action } from "mobx";
+import { makeObservable, observable, action, flow } from "mobx";
 import PageViewModel from "@pages/vm/PageViewModel";
 
 class NewsListViewModel extends PageViewModel {
-    @observable
     queryResult: NewsQueryResult;
 
-    @observable
     newsQueryOptions: {
         pageNum: number;
         perPage: number;
@@ -16,7 +14,14 @@ class NewsListViewModel extends PageViewModel {
     constructor() {
         super();
         
-        makeObservable(this);
+        makeObservable(this, {
+            queryResult: observable,
+            newsQueryOptions: observable,
+            setNewsSuccess: action,
+            fetchServices: flow,
+            setPageNum: action,
+            setPerPage: action
+        });
 
         this.queryResult = NewsQueryResult.empty();
         this.newsQueryOptions = {
@@ -29,13 +34,11 @@ class NewsListViewModel extends PageViewModel {
         this.fetchServices();
     }
 
-    @action
     setNewsSuccess(queryResult: NewsQueryResult) {
         super.setSuccess();
         this.queryResult = queryResult;
     }
 
-    @action
     fetchServices = async () => {
         this.setLoading();
         try {
@@ -57,13 +60,11 @@ class NewsListViewModel extends PageViewModel {
     //     this.newsQueryOptions.year = year;
     //   }
 
-    @action
     setPageNum = (pageNum: number) => {
         this.newsQueryOptions.pageNum = pageNum;
         this.fetchServices();
     }
 
-    @action
     setPerPage = (perPage: number) => {
         this.newsQueryOptions.perPage = perPage;
         this.fetchServices();

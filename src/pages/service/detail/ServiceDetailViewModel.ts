@@ -1,23 +1,28 @@
 import Service from "@models/service/Service";
 import ServiceRepository from "@services/service/service_repository";
-import { makeObservable, observable } from "mobx";
+import { makeObservable, observable, action, flow } from "mobx";
 import PageViewModel from "@pages/vm/PageViewModel";
 
 
 
 class ServiceDetailViewModel extends PageViewModel{
-    @observable
     serviceId: number;
 
-    @observable
     serviceDetail: Service;
 
     constructor(){
         super();
+        makeObservable(this, {
+            serviceId: observable,
+            serviceDetail: observable,
+            setServiceDetailSuccess: action,
+            fetchService: flow,
+            setServiceId: action
+        });
         this.serviceId = 0;
         this.serviceDetail = Service.empty();
 
-        makeObservable(this);
+        
     }
 
     // 그냥 제네릭으로 싹다 바꾸고 싶다

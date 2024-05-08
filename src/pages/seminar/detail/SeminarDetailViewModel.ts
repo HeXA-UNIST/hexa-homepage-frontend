@@ -1,23 +1,28 @@
 import Seminar from "@models/seminar/Seminar";
 import SeminarRepository from "@services/seminar/seminar_repository";
-import { makeObservable, observable } from "mobx";
+import { makeObservable, observable, action, flow } from "mobx";
 import PageViewModel from "@pages/vm/PageViewModel";
 
 
 
 class SeminarDetailViewModel extends PageViewModel{
-    @observable
     seminarId: number;
 
-    @observable
     seminarDetail: Seminar;
 
     constructor(){
         super();
+        makeObservable(this, {
+            seminarId: observable,
+            seminarDetail: observable,
+            setSeminarDetailSuccess: action,
+            fetchSeminar: flow,
+            setSeminarId: action
+        });
         this.seminarId = 0;
         this.seminarDetail = Seminar.empty();
 
-        makeObservable(this);
+        
     }
 
     // 그냥 제네릭으로 싹다 바꾸고 싶다

@@ -1,13 +1,11 @@
 import SeminarsQueryResult from "@models/seminar/SeminarsQueryResult";
 import SeminarRepository from "@services/seminar/seminar_repository";
-import { makeObservable, observable, action } from "mobx";
+import { makeObservable, observable, action, flow } from "mobx";
 import PageViewModel from "@pages/vm/PageViewModel";
 
 class SeminarListViewModel extends PageViewModel {
-  @observable
   queryResult: SeminarsQueryResult;
 
-  @observable
   seminarQueryOptions: {
     searchText: string;
     year: string;
@@ -18,7 +16,16 @@ class SeminarListViewModel extends PageViewModel {
   constructor() {
     super();
     
-    makeObservable(this);
+    makeObservable(this, {
+        queryResult: observable,
+        seminarQueryOptions: observable,
+        setSeminarSuccess: action,
+        fetchSeminars: flow,
+        setSearchText: action,
+        setYear: action,
+        setPageNum: action,
+        setPerPage: action
+    });
     this.queryResult = SeminarsQueryResult.empty();
 
     this.seminarQueryOptions = {
@@ -33,13 +40,11 @@ class SeminarListViewModel extends PageViewModel {
     this.fetchSeminars();
   }
 
-  @action
   setSeminarSuccess(queryResult: SeminarsQueryResult) {
     super.setSuccess();
     this.queryResult = queryResult;
   }
 
-  @action
   fetchSeminars = async () => {
     this.setLoading();
     try {
@@ -53,22 +58,18 @@ class SeminarListViewModel extends PageViewModel {
     }
   }
 
-  @action
   setSearchText = (searchText: string) => {
     this.seminarQueryOptions.searchText = searchText;
   }
 
-  @action
   setYear = (year: string) => {
     this.seminarQueryOptions.year = year;
   }
 
-  @action
   setPageNum = (pageNum: number) => {
     this.seminarQueryOptions.pageNum = pageNum;
   }
 
-  @action
   setPerPage = (perPage: number) => {
     this.seminarQueryOptions.perPage = perPage;
   }
