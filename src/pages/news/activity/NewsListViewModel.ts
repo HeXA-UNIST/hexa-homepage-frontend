@@ -60,6 +60,7 @@ class NewsListViewModel extends PageViewModel {
     @action
     setPageNum = (pageNum: number) => {
         this.newsQueryOptions.pageNum = pageNum;
+        this.fetchServices();
     }
 
     @action

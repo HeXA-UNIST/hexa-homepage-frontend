@@ -32,6 +32,10 @@ export default function TechStack({
         );
     }, [projectListViewModel.techList]);
 
+    useEffect(() => {
+        console.error(projectListViewModel.projectQueryOptions);
+    }, [projectListViewModel.projectQueryOptions.sort]);
+
     return (
         <ToggleItems
             items={items}

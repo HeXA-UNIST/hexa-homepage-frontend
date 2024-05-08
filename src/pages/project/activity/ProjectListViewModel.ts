@@ -1,6 +1,6 @@
 import ProjectsQueryResult from "@models/project/ProjectsQueryResult";
 import ProjectRepository, {ProjectQueryParams} from "@services/project/project_repository";
-import { makeObservable, observable, action } from "mobx";
+import { makeObservable, observable, action, runInAction } from "mobx";
 import PageViewModel from "@pages/vm/PageViewModel";
 import { ProjectStatusString } from "@models/project/Project";
 
@@ -47,26 +47,28 @@ class ProjectListViewModel extends PageViewModel {
   fetchProjects = async () => {
     this.setLoading();
     try {
-      const queryResult = await ProjectRepository.queryProjects({
-        searchText:
-          this.projectQueryOptions.searchText?.trim() !== ""
-            ? this.projectQueryOptions.searchText
-            : undefined,
-        status: this.projectQueryOptions.status,
-        sort: this.projectQueryOptions.sort,
-        includeTechStack:
-          this.projectQueryOptions.includeTechStack?.length === 0
-            ? undefined
-            : this.projectQueryOptions.includeTechStack,
-        excludeTechStack:
-          this.projectQueryOptions.excludeTechStack?.length === 0
-            ? undefined
-            : this.projectQueryOptions.excludeTechStack,
-        year: this.projectQueryOptions.year,
-        pageNum: this.projectQueryOptions.pageNum,
-        perPage: this.projectQueryOptions.perPage ?? 15,
-      });
-      this.queryResult = queryResult;
+        const query = {
+            searchText:
+              this.projectQueryOptions.searchText?.trim() !== ""
+                ? this.projectQueryOptions.searchText
+                : undefined,
+            status: this.projectQueryOptions.status,
+            sort: this.projectQueryOptions.sort,
+            includeTechStack:
+              this.projectQueryOptions.includeTechStack?.length === 0
+                ? undefined
+                : this.projectQueryOptions.includeTechStack,
+            excludeTechStack:
+              this.projectQueryOptions.excludeTechStack?.length === 0
+                ? undefined
+                : this.projectQueryOptions.excludeTechStack,
+            year: this.projectQueryOptions.year,
+            pageNum: this.projectQueryOptions.pageNum,
+            perPage: this.projectQueryOptions.perPage ?? 15,
+          };
+          console.log(query);
+      const queryResult = await ProjectRepository.queryProjects(query);
+      
       this.setProjectSuccess(queryResult);
     } catch (e: any) {
       this.setFailed(e.message);
@@ -86,41 +88,52 @@ class ProjectListViewModel extends PageViewModel {
   @action
   setSearchText = (searchText: string) => {
     this.projectQueryOptions.searchText = searchText;
+    this.fetchProjects();
   }
 
   @action
   setStatus = (status: ProjectStatusString[]) => {
     this.projectQueryOptions.status = status;
+    this.fetchProjects();
   }
 
   @action
   setSort = (sort: "asc" | "desc") => {
-    this.projectQueryOptions.sort = sort;
+    runInAction(()=>{
+        this.projectQueryOptions.sort = sort;
+    })
+    this.fetchProjects();
   }
 
   @action
   setIncludeTechStack = (includeTechStack: string[]) => {
     this.projectQueryOptions.includeTechStack = includeTechStack;
+    console.log("setIncludeTechStack", includeTechStack, this.projectQueryOptions.includeTechStack);
+    this.fetchProjects();
   }
 
   @action
   setExcludeTechStack = (excludeTechStack: string[]) => {
     this.projectQueryOptions.excludeTechStack = excludeTechStack;
+    this.fetchProjects();
   }
 
   @action
   setYear = (year: string) => {
     this.projectQueryOptions.year = year;
+    this.fetchProjects();
   }
 
   @action
   setPageNum = (pageNum: number) => {
     this.projectQueryOptions.pageNum = pageNum;
+    this.fetchProjects();
   }
 
   @action
   setPerPage = (perPage: number) => {
     this.projectQueryOptions.perPage = perPage;
+    this.fetchProjects();
   }
 }
 

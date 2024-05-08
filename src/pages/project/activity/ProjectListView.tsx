@@ -6,7 +6,11 @@ import ContentArea from "@components/ContentArea";
 // import SearchBox from "@components/search/SearchBox";
 import SearchArea from "@components/search";
 import PageNation from "@components/search/PageNation";
+import { PageStatus } from "@util/index";
+import Loading from "@components/Loading";
+
 import ProjectListViewModel from "./ProjectListViewModel";
+
 
 const QueryFormPart = observer(
     ({
@@ -65,14 +69,18 @@ function ProjectView({ viewModel }: { viewModel: ProjectListViewModel }) {
         <ContentArea>
             <QueryFormPart projectPageViewModel={viewModel} />
             <div className="min-h-[40rem]">
-                <div className="grid grid-cols-[repeat(auto-fit,minmax(350px,auto))] gap-x-6 gap-y-8 mb-28">
-                    {viewModel.queryResult.projects.map((project) => (
-                        <ProjectItem
-                            key={project.projectId}
-                            projectData={project}
-                        />
-                    ))}
-                </div>
+                {viewModel.status === PageStatus.Loading ? (
+                    <Loading/>
+                ) : (
+                    <div className="grid grid-cols-[repeat(auto-fit,minmax(350px,auto))] gap-x-6 gap-y-8 mb-28">
+                        {viewModel.queryResult.projects.map((project) => (
+                            <ProjectItem
+                                key={project.projectId}
+                                projectData={project}
+                            />
+                        ))}
+                    </div>
+                )}
             </div>
 
             <PageNation

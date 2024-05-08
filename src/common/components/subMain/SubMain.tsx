@@ -78,7 +78,17 @@ const SubMain = observer(
 
         useEffect(() => {
             console.log(`mode changed to ${activityMode.toString()}`);
-            setOpen(false);
+            if(isOpen){
+                setOpen(false);
+            }else{
+                setSubPageList(
+                    PageList.filter(
+                        (page) =>
+                            page.mode !==
+                            activityMode
+                    )
+                );
+            }
             setPage(PageList.filter((e) => e.mode === activityMode)[0]);
         }, [activityMode]);
 
@@ -107,7 +117,7 @@ const SubMain = observer(
                                         </div>
                                     </button>
                                     <div
-                                        className={`transition-all z-10 text-2xl absolute origin-top top-20 rounded-lg bg-zinc-800 overflow-hidden ${
+                                        className={`transition-all z-20 text-2xl absolute origin-top top-20 rounded-lg bg-zinc-800 overflow-hidden ${
                                             !isOpen ? "h-0" : "h-44"
                                         }`}
                                         onTransitionEnd={(e) => {
