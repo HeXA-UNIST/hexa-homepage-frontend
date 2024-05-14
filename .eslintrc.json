@@ -40,6 +40,7 @@
         "tsx": "never"
       }
     ],
+    "import/no-extraneous-dependencies": 0,
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "linebreak-style": 0,
@@ -48,14 +49,7 @@
     "react/react-in-jsx-scope": 0,
     "react/prop-types": 0,
     "no-param-reassign": 0,
-    "@typescript-eslint/no-restricted-imports": [
-      "warn",
-      {
-        "name": "react-redux",
-        "importNames": ["useSelector", "useDispatch"],
-        "message": "Use typed hooks `useAppDispatch` and `useAppSelector` instead."
-      }
-    ]
+    "no-underscore-dangle": 0
   },
   "settings": {
     "import/resolver": {

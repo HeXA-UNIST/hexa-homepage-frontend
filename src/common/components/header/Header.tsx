@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 import { observer } from "mobx-react";
-import useStores from "@hooks/storeHooks";
 
 import profileimg from "@img/profile_img.jpg";
 
@@ -12,34 +11,35 @@ import { Link } from "react-router-dom";
 // import "@css/app/Header.css";
 
 const useScrollPosition = () => {
-    //   const [scrollPosition, setScrollPosition] = useState<boolean>('100%');
-    const [scrolling, setScrolling] = useState<boolean>(false);
+  //   const [scrollPosition, setScrollPosition] = useState<boolean>('100%');
+  const [scrolling, setScrolling] = useState<boolean>(false);
 
-    useEffect(() => {
-        const updatePosition = () => {
-            if (window.scrollY > 0 && !scrolling) {
-                setScrolling(true);
-            } else if (window.scrollY === 0 && scrolling) {
-                setScrolling(false);
-            }
-        };
-        window.addEventListener("scroll", updatePosition);
-        updatePosition();
-        return () => window.removeEventListener("scroll", updatePosition);
-    }, [scrolling]);
+  useEffect(() => {
+    const updatePosition = () => {
+      if (window.scrollY > 0 && !scrolling) {
+        setScrolling(true);
+      } else if (window.scrollY === 0 && scrolling) {
+        setScrolling(false);
+      }
+    };
+    window.addEventListener("scroll", updatePosition);
+    updatePosition();
+    return () => window.removeEventListener("scroll", updatePosition);
+  }, [scrolling]);
 
-    return scrolling;
+  return scrolling;
 };
 
 function Header(/* { transparent = false }: { transparent?: boolean } */) {
-    const scrolling = useScrollPosition();
-    //   const isMobile = useMediaQuery({
-    //     query: "(max-width: 700px)",
-    //   });
+  const scrolling = useScrollPosition();
+  //   const isMobile = useMediaQuery({
+  //     query: "(max-width: 700px)",
+  //   });
 
-    const { isLoggedIn } = useStores().loginStore;
+  // TODO: 나중에 로그인 기능이 생기면 연동하기ㅋ
+  const isLoggedIn = false;
 
-    //   const height = scrollPosition === 0 ? "74px" : "114px";
+  //   const height = scrollPosition === 0 ? "74px" : "114px";
 
     return (
         <div className="header-area">
