@@ -45,7 +45,7 @@ class ProjectListViewModel extends PageViewModel {
       perPage: 15,
     };
     // this.setProjectSuccess = this.setProjectSuccess.bind(this);
-
+    this.fetchTechList();
     this.fetchProjects();
   }
 
@@ -112,7 +112,9 @@ class ProjectListViewModel extends PageViewModel {
   }
 
   setIncludeTechStack = (includeTechStack: string[]) => {
-    this.projectQueryOptions.includeTechStack = includeTechStack;
+    const temp = {...this.projectQueryOptions};
+    temp.includeTechStack = includeTechStack;
+    this.projectQueryOptions = temp;
     console.log("setIncludeTechStack", includeTechStack, this.projectQueryOptions.includeTechStack);
     this.fetchProjects();
   }

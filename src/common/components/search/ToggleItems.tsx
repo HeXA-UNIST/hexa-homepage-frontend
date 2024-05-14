@@ -1,3 +1,4 @@
+// import { observer } from "mobx-react";
 import { useEffect, useState } from "react";
 
 export interface IToggleItem {
@@ -41,8 +42,6 @@ function ToggleItem<T>({
     };
 
     useEffect(() => {
-        // console.log(`state changed to ${toggleState.toString()}`);
-        console.log(toggleState);
                 onStateChanged(id, toggleState);
         setbackgroundColor(setColor());
     }, [toggleState]);
@@ -69,7 +68,7 @@ function ToggleItem<T>({
         </button>
     );
 }
-export default function ToggleItems<T>({
+function ToggleItems<T>({
     items,
     activeItems,
     deactiveItems,
@@ -87,19 +86,16 @@ export default function ToggleItems<T>({
     // TODO: 귀찮아서 else if문으로 그냥 덕지덕지 붙임. 나중에 리팩할때는 가독성있게 해주시길..
     const onToggleItemStateChanged = (id: T, state: ToggleState) => {
         if (state === ToggleState.Normal) {
-            console.log("to normal", activeItems, deactiveItems);
             if (activeItems.includes(id)) {
                 onActiveToggleChanged(activeItems.filter((x) => x !== id));
             } else if (deactiveItems.includes(id)) {
                 onDeactiveToggleChanged(deactiveItems.filter((x) => x !== id));
             }
         } else if (state === ToggleState.Active) {
-            console.log("to active", activeItems, deactiveItems);
             if (!activeItems.includes(id)) {
                 onActiveToggleChanged(activeItems.concat(id));
             }
         } else if (state === ToggleState.Deactive) {
-            console.log("to deactive", activeItems, deactiveItems);
             if (activeItems.includes(id)) {
                 onActiveToggleChanged(activeItems.filter((x) => x !== id));
             }
@@ -133,3 +129,5 @@ export default function ToggleItems<T>({
         </div>
     );
 }
+
+export default ToggleItems;

@@ -1,6 +1,6 @@
 import Seminar from "@models/seminar/Seminar";
 import SeminarRepository from "@services/seminar/seminar_repository";
-import { makeObservable, observable, action, flow } from "mobx";
+import { makeObservable, observable, action } from "mobx";
 import PageViewModel from "@pages/vm/PageViewModel";
 
 
@@ -16,7 +16,7 @@ class SeminarDetailViewModel extends PageViewModel{
             seminarId: observable,
             seminarDetail: observable,
             setSeminarDetailSuccess: action,
-            fetchSeminar: flow,
+            fetchSeminar: action,
             setSeminarId: action
         });
         this.seminarId = 0;

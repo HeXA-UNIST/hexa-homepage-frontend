@@ -1,6 +1,6 @@
 import NewsQueryResult from "@models/news/NewsQueryResult";
 import NewsRepository from "@services/news/news_repository";
-import { makeObservable, observable, action, flow } from "mobx";
+import { makeObservable, observable, action } from "mobx";
 import PageViewModel from "@pages/vm/PageViewModel";
 
 class NewsListViewModel extends PageViewModel {
@@ -18,7 +18,7 @@ class NewsListViewModel extends PageViewModel {
             queryResult: observable,
             newsQueryOptions: observable,
             setNewsSuccess: action,
-            fetchServices: flow,
+            fetchServices: action,
             setPageNum: action,
             setPerPage: action
         });

@@ -1,6 +1,6 @@
 import ServicesQueryResult from "@models/service/ServicesQueryResult";
 import ServiceRepository from "@services/service/service_repository";
-import { makeObservable, observable, action, flow } from "mobx";
+import { makeObservable, observable, action } from "mobx";
 import PageViewModel from "@pages/vm/PageViewModel";
 
 class ServiceListViewModel extends PageViewModel {
@@ -11,7 +11,7 @@ class ServiceListViewModel extends PageViewModel {
     makeObservable(this, {
         queryResult: observable,
         setServiceSuccess: action,
-        fetchServices: flow
+        fetchServices: action
     }
     );
     this.queryResult = ServicesQueryResult.empty();

@@ -3,7 +3,7 @@ import "@css/app/App.css";
 import "@css/app/Hexa.css";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Provider } from "mobx-react";
+import { Provider, observer } from "mobx-react";
 
 import LoginStore from "common/stores/LoginStore";
 
@@ -64,4 +64,4 @@ function App() {
     );
 }
 
-export default App;
+export default observer(App);

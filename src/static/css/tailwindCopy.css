@@ -1855,8 +1855,12 @@ html {
   grid-template-columns: 20rem minmax(20rem, 1fr);
 }
 
-.grid-cols-\[repeat\(auto-fit\2c minmax\(350px\2c auto\)\)\] {
-  grid-template-columns: repeat(auto-fit,minmax(350px,auto));
+.grid-cols-\[repeat\(3\2c minmax\(350px\2c _1fr\)\)\] {
+  grid-template-columns: repeat(3,minmax(350px, 1fr));
+}
+
+.grid-cols-\[repeat\(3\2c minmax\(350px\2c auto\)\)\] {
+  grid-template-columns: repeat(3,minmax(350px,auto));
 }
 
 .grid-rows-\[3rem_max-content_max-content_auto\] {

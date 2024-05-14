@@ -1,6 +1,6 @@
 import News from "@models/news/News";
 import NewsRepository from "@services/news/news_repository";
-import { makeObservable, observable, action, flow } from "mobx";
+import { makeObservable, observable, action } from "mobx";
 import PageViewModel from "@pages/vm/PageViewModel";
 
 class NewsDetailViewModel extends PageViewModel{
@@ -14,7 +14,7 @@ class NewsDetailViewModel extends PageViewModel{
             newsId: observable,
             newsDetail: observable,
             setNewsDetailSuccess: action,
-            fetchNews: flow,
+            fetchNews: action,
             setNewsId: action
         });
 

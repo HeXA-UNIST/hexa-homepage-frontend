@@ -1,6 +1,6 @@
 import SeminarsQueryResult from "@models/seminar/SeminarsQueryResult";
 import SeminarRepository from "@services/seminar/seminar_repository";
-import { makeObservable, observable, action, flow } from "mobx";
+import { makeObservable, observable, action } from "mobx";
 import PageViewModel from "@pages/vm/PageViewModel";
 
 class SeminarListViewModel extends PageViewModel {
@@ -20,7 +20,7 @@ class SeminarListViewModel extends PageViewModel {
         queryResult: observable,
         seminarQueryOptions: observable,
         setSeminarSuccess: action,
-        fetchSeminars: flow,
+        fetchSeminars: action,
         setSearchText: action,
         setYear: action,
         setPageNum: action,
@@ -60,18 +60,22 @@ class SeminarListViewModel extends PageViewModel {
 
   setSearchText = (searchText: string) => {
     this.seminarQueryOptions.searchText = searchText;
+    this.fetchSeminars();
   }
 
   setYear = (year: string) => {
     this.seminarQueryOptions.year = year;
+    this.fetchSeminars();
   }
 
   setPageNum = (pageNum: number) => {
     this.seminarQueryOptions.pageNum = pageNum;
+    this.fetchSeminars();
   }
 
   setPerPage = (perPage: number) => {
     this.seminarQueryOptions.perPage = perPage;
+    this.fetchSeminars();
   }
 }
 

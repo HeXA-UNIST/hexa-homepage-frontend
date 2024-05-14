@@ -57,7 +57,7 @@ function NewsView({ viewModel }: { viewModel: NewsListViewModel }) {
     return (
         <ContentArea>
             <div className="min-h-[40rem]">
-                <div className="grid grid-cols-[repeat(auto-fit,minmax(350px,auto))] gap-x-4 gap-y-6 mb-28">
+                <div className="grid grid-cols-[repeat(3,minmax(350px,auto))] gap-x-4 gap-y-6 mb-28">
                     {viewModel.queryResult.news.map((news) => (
                         <NewsItem key={news.newsId} newsData={news} />
                     ))}

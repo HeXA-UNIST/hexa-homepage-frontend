@@ -1,6 +1,6 @@
 import Project from "@models/project/Project";
 import ProjectRepository from "@services/project/project_repository";
-import { makeObservable, observable, action, flow } from "mobx";
+import { makeObservable, observable, action } from "mobx";
 import PageViewModel from "@pages/vm/PageViewModel";
 
 
@@ -17,7 +17,7 @@ class ProjectDetailViewModel extends PageViewModel{
             projectId: observable,
             projectDetail: observable,
             setProjectDetailSuccess: action,
-            fetchProject: flow,
+            fetchProject: action,
             setProjectId: action
         });
         this.projectId = 0;

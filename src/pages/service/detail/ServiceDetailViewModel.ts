@@ -1,6 +1,6 @@
 import Service from "@models/service/Service";
 import ServiceRepository from "@services/service/service_repository";
-import { makeObservable, observable, action, flow } from "mobx";
+import { makeObservable, observable, action } from "mobx";
 import PageViewModel from "@pages/vm/PageViewModel";
 
 
@@ -16,7 +16,7 @@ class ServiceDetailViewModel extends PageViewModel{
             serviceId: observable,
             serviceDetail: observable,
             setServiceDetailSuccess: action,
-            fetchService: flow,
+            fetchService: action,
             setServiceId: action
         });
         this.serviceId = 0;

@@ -72,7 +72,7 @@ function ProjectView({ viewModel }: { viewModel: ProjectListViewModel }) {
                 {viewModel.status === PageStatus.Loading ? (
                     <Loading/>
                 ) : (
-                    <div className="grid grid-cols-[repeat(auto-fit,minmax(350px,auto))] gap-x-6 gap-y-8 mb-28">
+                    <div className="grid grid-cols-[repeat(3,minmax(350px,_1fr))] gap-x-6 gap-y-8 mb-28">
                         {viewModel.queryResult.projects.map((project) => (
                             <ProjectItem
                                 key={project.projectId}

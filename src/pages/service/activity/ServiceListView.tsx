@@ -40,7 +40,7 @@ function ServiceView({ viewModel }: { viewModel: ServiceListViewModel }) {
     return (
         <ContentArea>
             <div className="min-h-[40rem]">
-                <div className="grid grid-cols-[repeat(auto-fit,minmax(350px,auto))] gap-x-6 gap-y-8 mb-28">
+                <div className="grid grid-cols-[repeat(3,minmax(350px,auto))] gap-x-6 gap-y-8 mb-28">
                     {viewModel.queryResult.services.map((service) => (
                         <ServiceItem
                             key={service.serviceId}

@@ -1,8 +1,11 @@
+
+import { observer } from "mobx-react";
 import { ProjectStatusString } from "@models/project/Project";
 import ProjectListViewModel from "@pages/project/activity/ProjectListViewModel";
 import ToggleItems, { IToggleItem } from "./ToggleItems";
 
-export default function ProjectState({
+
+function ProjectState({
     projectListViewModel,
 }: {
     projectListViewModel: ProjectListViewModel;
@@ -48,3 +51,6 @@ export default function ProjectState({
         />
     );
 }
+
+
+export default observer(ProjectState);

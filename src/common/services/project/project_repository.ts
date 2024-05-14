@@ -92,42 +92,6 @@ export default class ProjectRepository {
                     thumbnail: 10,
                     status: "진행중"
                 },
-                {
-                    projectId: 2,
-                    title: "프로젝트 1",
-                    thumbnail: 10,
-                    status: "진행중"
-                },
-                {
-                    projectId: 3,
-                    title: "프로젝트 1",
-                    thumbnail: 10,
-                    status: "진행중"
-                },
-                {
-                    projectId: 4,
-                    title: "프로젝트 1",
-                    thumbnail: 10,
-                    status: "진행중"
-                },
-                {
-                    projectId: 5,
-                    title: "프로젝트 1",
-                    thumbnail: 10,
-                    status: "진행중"
-                },
-                {
-                    projectId: 6,
-                    title: "프로젝트 1",
-                    thumbnail: 10,
-                    status: "진행중"
-                },
-                {
-                    projectId: 7,
-                    title: "프로젝트 1",
-                    thumbnail: 10,
-                    status: "진행중"
-                },
             ]
         };
     }
