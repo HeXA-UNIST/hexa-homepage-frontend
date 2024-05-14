@@ -28,7 +28,7 @@ export default function SearchBox({
                 className=" text-white outline-none bg-transparent pb-1 w-full"
                 type="text"
                 id="searchBox"
-                value=""
+                value={value}
                 name="q"
                 onChange={(e) => setSearchText(e.target.value)}
                 placeholder={placeholder}
