@@ -5,9 +5,6 @@ import "@css/app/Hexa.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { observer } from "mobx-react";
 
-import Header from "@components/header/Header";
-import Footer from "@components/footer/Footer";
-
 import HomePage from "pages/home";
 
 import ActivityPage from "@pages/activities";
@@ -35,7 +32,6 @@ function App() {
         <div className="App bg-black">
             <AuthenticationProvider>
                 <BrowserRouter>
-                    <Header />
                     <Routes>
                         <Route path="/activity" element={<ActivityPage />}>
                             <Route
@@ -88,7 +84,6 @@ function App() {
                         </Route>
                         <Route path="/" element={<HomePage />} />
                     </Routes>
-                    <Footer />
                 </BrowserRouter>
             </AuthenticationProvider>
         </div>

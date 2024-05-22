@@ -1,10 +1,19 @@
 import ProjectDetailView from "./ProjectDetailView";
 import ProjectDetailViewModel from "./ProjectDetailViewModel";
 
+
+import Header from "@components/header/Header";
+import Footer from "@components/footer/Footer";
+
 function ProjectDetail() {
-    console.log("프로젝트!!!");
   const viewModel = new ProjectDetailViewModel();
-  return <ProjectDetailView viewModel={viewModel} />;
+  return (
+    <>
+        <Header/>
+        <ProjectDetailView viewModel={viewModel} />
+        <Footer/>
+    </>
+  );
 }
 
 export default ProjectDetail;
