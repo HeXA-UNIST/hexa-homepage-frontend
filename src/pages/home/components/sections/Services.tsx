@@ -25,6 +25,7 @@ function ServiceItem({ service }: { service: MainPageServiceItem }) {
     );
 }
 function Services({ serviceList }: ServiceProps) {
+    const maxCnt = 6;
     return (
         <div className="services-area">
             <ContentFrame
@@ -39,7 +40,7 @@ function Services({ serviceList }: ServiceProps) {
                         height: "50rem",
                     }}
                 >
-                    {serviceList.map((service) => (
+                    {serviceList.slice(0, maxCnt).map((service) => (
                         <ServiceItem
                             key={service.serviceId}
                             service={service}

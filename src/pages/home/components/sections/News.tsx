@@ -28,6 +28,7 @@ function NewsSummaryItem({ news }: { news: NewsSummary }) {
 }
 
 function News({ newsList }: NewsProps) {
+    const maxNews = 6;
     return (
         <div className="news-area">
             <ContentFrame
@@ -36,7 +37,7 @@ function News({ newsList }: NewsProps) {
                 // icon="📄"
             >
                 <div className="flex flex-row">
-                    {newsList.map((news) => (
+                    {newsList.slice(0, maxNews).map((news) => (
                         <NewsSummaryItem key={news.newsId} news={news} />
                     ))}
                 </div>

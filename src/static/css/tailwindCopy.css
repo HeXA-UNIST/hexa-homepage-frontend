@@ -1781,6 +1781,10 @@ html {
   height: 100vh;
 }
 
+.h-auto {
+  height: auto;
+}
+
 .max-h-\[20rem\] {
   max-height: 20rem;
 }
@@ -2094,6 +2098,10 @@ html {
 
 .gap-6 {
   gap: 1.5rem;
+}
+
+.gap-5 {
+  gap: 1.25rem;
 }
 
 .gap-x-12 {
