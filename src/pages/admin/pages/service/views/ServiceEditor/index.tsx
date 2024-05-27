@@ -77,6 +77,31 @@ const Title = observer(() => {
   );
 });
 
+const Description = observer(() => {
+  const { editorStore } = useServiceAdminStore();
+
+  return (
+    <div className="flex flex-col gap-2 items-start w-full">
+      <div className="text-white text-sm">설명</div>
+      <OneLineTextField
+        value={
+          editorStore.isEditing
+            ? editorStore.edittingService?.description ?? ""
+            : editorStore.service?.description ?? ""
+        }
+        onChange={(v) => {
+          if (!editorStore.edittingService) return;
+          editorStore.setEdittingService({
+            ...editorStore.edittingService,
+            description: v,
+          });
+        }}
+        readOnly={!editorStore.isEditing}
+      />
+    </div>
+  );
+});
+
 const SiteUrl = observer(() => {
   const { editorStore } = useServiceAdminStore();
 
@@ -159,6 +184,7 @@ function ServiceEditor() {
       <Actions />
       <Thumbnail />
       <Title />
+      <Description />
       <SiteUrl />
       <GithubUrl />
       <Content />

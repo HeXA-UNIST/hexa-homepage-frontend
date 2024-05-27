@@ -17,7 +17,7 @@ export async function modifySeminarAdmin(
   data: ModifySeminarAdmin
 ) {
   return api.post(
-    "/admin/modifySeminar",
+    "/admin/seminar/modify",
     {
       ...data,
       seminarId,
@@ -33,7 +33,7 @@ export async function modifySeminarAdmin(
 
 export async function createSeminarAdmin(data: CreateSeminarAdmin) {
   return api.post(
-    "/admin/createSeminar",
+    "/admin/seminar/create",
     {
       ...data,
       attachments: data.attachments.map((attachment) => attachment.fileId),
@@ -51,7 +51,7 @@ export async function getSeminarListAdmin(
   perPage: number
 ): Promise<GetSeminarListResultAdmin> {
   const result = (
-    await api.get("/admin/seminarList", {
+    await api.get("/admin/seminar/list", {
       params: {
         pageNum,
         perPage,
@@ -74,7 +74,7 @@ export async function getDetailSeminarAdmin(
   seminarId: number
 ): Promise<DetailSeminarAdmin> {
   const result = (
-    await api.get(`/admin/seminarDetail`, {
+    await api.get(`/admin/seminar/detail`, {
       params: {
         seminarId,
       },
@@ -90,7 +90,7 @@ export async function getDetailSeminarAdmin(
 }
 
 export async function deleteSeminarAdmin(seminarId: number) {
-  return api.delete(`/admin/deleteSeminar`, {
+  return api.delete(`/admin/seminar/delete`, {
     params: {
       seminarId,
     },

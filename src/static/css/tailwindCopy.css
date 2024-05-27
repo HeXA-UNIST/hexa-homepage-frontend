@@ -2386,6 +2386,14 @@ html {
   padding: 2rem;
 }
 
+.p-12 {
+  padding: 3rem;
+}
+
+.p-10 {
+  padding: 2.5rem;
+}
+
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -2399,11 +2407,6 @@ html {
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-}
-
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
 }
 
 .px-4 {

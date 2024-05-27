@@ -1,3 +1,33 @@
+# 헥사 서버 배포
+
+현재 pm2로 실행중인 것 확인
+
+```
+sudo pm2 list
+```
+
+pm2로 실행중인 것 중지
+
+```
+sudo pm2 stop (id)
+```
+
+pm2로 실행중인 것 삭제
+
+```
+sudo pm2 delete (id)
+```
+
+pm2로 실행중인 것 재시작
+
+```
+sudo pm2 restart (id)
+```
+
+홈페이지 배포 업데이트 방법
+/app/hexa-homepage-frontend
+에서 `sudo git pull`후, `sudo pm2 restart hexa-homepage-frontend` 실행
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

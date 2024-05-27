@@ -24,7 +24,6 @@ export interface CreateServiceAdmin {
 }
 
 export interface GetServiceListResultAdmin {
-  totalPage: number;
   list: SimpleServiceAdmin[];
 }
 
