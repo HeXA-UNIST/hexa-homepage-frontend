@@ -22,11 +22,11 @@ export default class NewsRepository {
             perPage
         };
 
-        const fakeResponse = await NewsRepository.fakeQueryData();
-        return new NewsQueryResult(fakeResponse);
+        // const fakeResponse = await NewsRepository.fakeQueryData();
+        // return new NewsQueryResult(fakeResponse);
         try {
             const response = await axios.get(
-                `${WebConstants.API_URL}/News/query`,
+                `${WebConstants.API_URL}/news/list`,
                 { params }
             );
             return new NewsQueryResult(response.data);
@@ -37,11 +37,11 @@ export default class NewsRepository {
     }
 
     public static async getNewsById(id: number): Promise<News> {
-        const fakeResponse = await NewsRepository.fakeNewsData();
-        return new News(fakeResponse);
+        // const fakeResponse = await NewsRepository.fakeNewsData();
+        // return new News(fakeResponse);
         try {
             const response = await axios.get(
-                `${WebConstants.API_URL}/news?id=${id}`
+                `${WebConstants.API_URL}/news/detail?newsId=${id}`
             );
             return new News(response.data);
         } catch (error) {

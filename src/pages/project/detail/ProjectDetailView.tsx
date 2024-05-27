@@ -33,6 +33,7 @@ function ProjectDetailView({
                     title={viewModel.projectDetail.title}
                     image={viewModel.projectDetail.thumbnail}
                     contentTitle="프로젝트 설명"
+                    attachments={undefined}
                     content={
                         viewModel.projectDetail.content ?? "내용이 없습니다."
                     }
@@ -54,7 +55,7 @@ function ProjectDetailView({
                         <li>
                             <div className="text-zinc-600 text-lg">기술스택</div>
                             <div className="flex flex-row gap-2 mt-1 flex-wrap">
-                                {viewModel.projectDetail.techStackList.map(
+                                {viewModel.projectDetail.projectTechStacks.map(
                                     (tech) => (
                                         <div key={tech} className=" text-zinc-400 rounded-xl bg-zinc-800 px-3 p-1">
                                             <div className="mb-1">{tech}</div>

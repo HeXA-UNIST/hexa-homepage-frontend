@@ -16,11 +16,17 @@ function DropDown({
         defaultItemIndex = 0;
     }
 
+    const isFirstRender = useRef(true);
+
     const dropMenuRef = useRef<HTMLDivElement | null>(null);
     const [item, setItem] = useState<string>(items[defaultItemIndex]);
     const [open, setOpen] = useState<boolean>(false);
 
     useEffect(() => {
+        if (isFirstRender.current) {
+            isFirstRender.current = false;
+            return;
+          }
         onItemChanged(item);
     }, [item]);
 
@@ -50,7 +56,7 @@ function DropDown({
                 <FontAwesomeIcon className="ml-2" icon={faArrowDown} />
             </button>
             {open && (
-                <div className="rounded-lg w-[8rem] absolute max-h-[20rem] overflow-y-auto customscrollbar mt-2">
+                <div className="rounded-lg w-[8rem] absolute max-h-[20rem] overflow-y-auto customscrollbar mt-2 z-50">
                     {items.map((x) => (
                         <button
                             type="button"

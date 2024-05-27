@@ -1,10 +1,13 @@
 import axios from "axios";
+import QueryString from "qs";
 import WebConstants from "@constants";
-import Project, { IProject, ProjectStatusString } from "@models/project/Project";
+import Project, {
+    IProject,
+    ProjectStatusString,
+} from "@models/project/Project";
 import ProjectsQueryResult, {
     IProejctQueryResult,
 } from "@models/project/ProjectsQueryResult";
-
 
 export interface ProjectQueryParams {
     searchText?: string;
@@ -39,13 +42,19 @@ export default class ProjectRepository {
             perPage,
         };
 
-        const fakeResponse = await ProjectRepository.fakeQueryData();
-        return new ProjectsQueryResult(fakeResponse);
+        // const fakeResponse = await ProjectRepository.fakeQueryData();
+        // return new ProjectsQueryResult(fakeResponse);
 
         try {
             const response = await axios.get(
-                `${WebConstants.API_URL}/project/query`,
-                { params }
+                `${WebConstants.API_URL}/project/list`,
+                {
+                    params,
+                    paramsSerializer: (p) =>
+                        QueryString.stringify(p, {
+                            arrayFormat: "repeat",
+                        }),
+                }
             );
             return new ProjectsQueryResult(response.data);
         } catch (error) {
@@ -55,11 +64,11 @@ export default class ProjectRepository {
     }
 
     public static async getProjectById(id: number): Promise<Project> {
-        const fakeResponse = await ProjectRepository.fakeProjectData();
-        return new Project(fakeResponse);
+        // const fakeResponse = await ProjectRepository.fakeProjectData();
+        // return new Project(fakeResponse);
         try {
             const response = await axios.get(
-                `${WebConstants.API_URL}/project?id=${id}`
+                `${WebConstants.API_URL}/project/detail?projectId=${id}`
             );
             return new Project(response.data);
         } catch (error) {
@@ -69,8 +78,17 @@ export default class ProjectRepository {
     }
 
     public static async getTechStackList(): Promise<string[]> {
-        const fakeResponse = await ProjectRepository.fakeTechList();
-        return fakeResponse;
+        // const fakeResponse = await ProjectRepository.fakeTechList();
+        // return fakeResponse;
+        try {
+            const response = await axios.get(
+                `${WebConstants.API_URL}/project/techStackList`
+            );
+            return response.data.techStackList;
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
     }
 
     private static async fakeQueryData(): Promise<IProejctQueryResult> {
@@ -84,15 +102,15 @@ export default class ProjectRepository {
                     projectId: 0,
                     title: "프로젝트 1",
                     thumbnail: 10,
-                    status: "진행중"
+                    status: "진행중",
                 },
                 {
                     projectId: 1,
                     title: "프로젝트 1",
                     thumbnail: 10,
-                    status: "진행중"
+                    status: "진행중",
                 },
-            ]
+            ],
         };
     }
 
@@ -101,16 +119,17 @@ export default class ProjectRepository {
             setTimeout(resolve, 1000);
         });
         return {
-            projectId: 0,
+            // projectId: 0,
             title: "프로젝트 1",
             thumbnail: 0,
             startDate: "2022.01.04",
             endDate: null,
-            techStackList: ["javascript", "tensorflow", "python"],
+            projectTechStacks: ["javascript", "tensorflow", "python"],
             // memberList: [],
             state: "진행중",
             public_status: true,
-            content: "아무런 내용도 없습니다. lorem * 100dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddㄹ맬듲ㅁ래먖르ㅐㅁㅈ댜러매ㅑㅈ럼재ㅑ럼재ㅑ러ㅐㅁ쟈ㅓㄻㅈ름재ㅑㄹ프ㅐㅑㅁ저래ㅑㅁㄷ절재ㅑㅓㄹ"
+            content:
+                "아무런 내용도 없습니다. lorem * 100dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddㄹ맬듲ㅁ래먖르ㅐㅁㅈ댜러매ㅑㅈ럼재ㅑ럼재ㅑ러ㅐㅁ쟈ㅓㄻㅈ름재ㅑㄹ프ㅐㅑㅁ저래ㅑㅁㄷ절재ㅑㅓㄹ",
         };
     }
 
@@ -118,12 +137,10 @@ export default class ProjectRepository {
         await new Promise((resolve) => {
             setTimeout(resolve, 1000);
         });
-        return [
-            "javascript", "python", "c#", "c", "c++", "java"
-        ]
+        return ["javascript", "python", "c#", "c", "c++", "java"];
     }
 
-    static empty(): ProjectsQueryResult{
+    static empty(): ProjectsQueryResult {
         return ProjectsQueryResult.empty();
     }
 }

@@ -34,6 +34,7 @@ function ServiceDetailView({
                     title={viewModel.serviceDetail.title}
                     image={viewModel.serviceDetail.thumbnail}
                     contentTitle="서비스 설명"
+                    attachments={undefined}
                     content={
                         viewModel.serviceDetail.content ?? "내용이 없습니다."
                     }

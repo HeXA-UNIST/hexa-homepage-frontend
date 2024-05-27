@@ -30,6 +30,7 @@ class ProjectDetailViewModel extends PageViewModel{
 
     setProjectDetailSuccess(newsDetail: Project){
         super.setSuccess();
+        console.log(newsDetail);
         this.projectDetail = newsDetail;
     }
 

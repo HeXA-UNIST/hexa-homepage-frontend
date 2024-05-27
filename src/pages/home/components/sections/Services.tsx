@@ -1,6 +1,7 @@
 // import Carousel from "@pages/home/components/serviceCarousels/Carousel";
 import "@css/home/Services.css";
 import MainPageServiceItem from "@models/service/MainPageServiceItem";
+import { Link } from "react-router-dom";
 import ContentFrame from "../content";
 
 interface ServiceProps {
@@ -11,8 +12,8 @@ function ServiceItem({ service }: { service: MainPageServiceItem }) {
     const { thumbnail, title, subTitle } = service;
 
     return (
-        <a
-            href="home"
+        <Link
+            to={`/service/${service.serviceId}`}
             className="flex flex-col min-w-min w-[22rem] h-96 bg-neutral-800 rounded-2xl p-7 text-left font-bold"
         >
             <div className="flex justify-center items-center bg-emerald-500 rounded-xl h-40 mb-4">
@@ -20,7 +21,7 @@ function ServiceItem({ service }: { service: MainPageServiceItem }) {
             </div>
             <div className="text-white text-3xl mb-3">{title}</div>
             <div className="text-zinc-500 text-xl">{subTitle}</div>
-        </a>
+        </Link>
     );
 }
 function Services({ serviceList }: ServiceProps) {

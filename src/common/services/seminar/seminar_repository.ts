@@ -26,11 +26,11 @@ export default class SeminarRepository {
             perPage,
         };
 
-        const fakeResponse = await SeminarRepository.fakeQueryData();
-        return new SeminarsQueryResult(fakeResponse);
+        // const fakeResponse = await SeminarRepository.fakeQueryData();
+        // return new SeminarsQueryResult(fakeResponse);
         try {
             const response = await axios.get(
-                `${WebConstants.API_URL}/seminar/query`,
+                `${WebConstants.API_URL}/seminar/list`,
                 { params }
             );
             return new SeminarsQueryResult(response.data);
@@ -41,11 +41,11 @@ export default class SeminarRepository {
     }
 
     public static async getSeminarById(id: number): Promise<Seminar> {
-        const fakeResponse = await SeminarRepository.fakeSeminarData();
-        return new Seminar(fakeResponse);
+        // const fakeResponse = await SeminarRepository.fakeSeminarData();
+        // return new Seminar(fakeResponse);
         try {
             const response = await axios.get(
-                `${WebConstants.API_URL}/seminar?id=${id}`
+                `${WebConstants.API_URL}/seminar/detail?seminarId=${id}`
             );
             return new Seminar(response.data);
         } catch (error) {

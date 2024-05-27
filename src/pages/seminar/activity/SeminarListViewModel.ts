@@ -35,8 +35,6 @@ class SeminarListViewModel extends PageViewModel {
       perPage: 15,
     };
 
-    this.setSeminarSuccess = this.setSeminarSuccess.bind(this);
-
     this.fetchSeminars();
   }
 
@@ -48,10 +46,16 @@ class SeminarListViewModel extends PageViewModel {
   fetchSeminars = async () => {
     this.setLoading();
     try {
-      const queryResult = await SeminarRepository.querySeminars({
-        pageNum: this.seminarQueryOptions.pageNum,
-        perPage: this.seminarQueryOptions.perPage,
-      });
+        const query = {
+            serchText: this.seminarQueryOptions.searchText?.trim() !== ""
+            ? this.seminarQueryOptions.searchText
+            : undefined,
+            year: this.seminarQueryOptions.year,
+            pageNum: this.seminarQueryOptions.pageNum,
+            perPage: this.seminarQueryOptions.perPage,
+          };
+          console.log(query);
+      const queryResult = await SeminarRepository.querySeminars(query);
       this.setSeminarSuccess(queryResult);
     } catch (e: any) {
       this.setFailed(e.message);
@@ -64,6 +68,7 @@ class SeminarListViewModel extends PageViewModel {
   }
 
   setYear = (year: string) => {
+    console.error("seminar set year", year);
     this.seminarQueryOptions.year = year;
     this.fetchSeminars();
   }

@@ -10,29 +10,29 @@ export function Image({ id, className }: { id: number; className: string }) {
     useEffect(() => {
         setPath(defaultPath);
 
-        (async () => {
-            await new Promise(resolve => {
-                setTimeout(resolve, 1000);
-            });
-            setPath("/images/loadingIcon.svg");
-        })();
+        // (async () => {
+        //     await new Promise(resolve => {
+        //         setTimeout(resolve, 1000);
+        //     });
+        //     setPath("/images/loadingIcon.svg");
+        // })();
 
-        // const params = {
-        //     attachmentId: id,
-        // };
-        // try {
-        //     axios
-        //         .get(`${WebConstants.API_URL}/attachment`, {
-        //             params,
-        //             responseType: "blob",
-        //         })
-        //         .then((response) => {
-        //             setPath(window.URL.createObjectURL(response.data));
-        //         });
-        // } catch (error) {
-        //     console.log(error);
-        //     throw error;
-        // }
+        const params = {
+            attachmentId: id,
+        };
+        try {
+            axios
+                .get(`${WebConstants.API_URL}/attachment`, {
+                    params,
+                    responseType: "blob",
+                })
+                .then((response) => {
+                    setPath(window.URL.createObjectURL(response.data));
+                });
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
     }, [id]);
     return <img className={className} src={path} alt="" />;
 }

@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import NewsSummary from "@models/news/NewsSummary";
 import ContentArea from "@components/ContentArea";
 import PageNation from "@components/search/PageNation";
+import { PageStatus } from "@util/index";
+import Loading from "@components/Loading";
 import NewsListViewModel from "./NewsListViewModel";
-
-
 
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faFileLines } from "@fortawesome/free-regular-svg-icons";
@@ -31,9 +31,7 @@ import NewsListViewModel from "./NewsListViewModel";
 //     }
 //   );
 
-
 function NewsItem({ newsData }: { newsData: NewsSummary }) {
-
     return (
         <Link
             to={`/news/${newsData.newsId}`}
@@ -57,11 +55,15 @@ function NewsView({ viewModel }: { viewModel: NewsListViewModel }) {
     return (
         <ContentArea>
             <div className="min-h-[40rem]">
-                <div className="grid grid-cols-[repeat(3,minmax(350px,auto))] gap-x-4 gap-y-6 mb-28">
-                    {viewModel.queryResult.news.map((news) => (
-                        <NewsItem key={news.newsId} newsData={news} />
-                    ))}
-                </div>
+                {viewModel.status === PageStatus.Loading ? (
+                    <Loading />
+                ) : (
+                    <div className="grid grid-cols-[repeat(3,minmax(350px,auto))] gap-x-4 gap-y-6 mb-28">
+                        {viewModel.queryResult.news.map((news) => (
+                            <NewsItem key={news.newsId} newsData={news} />
+                        ))}
+                    </div>
+                )}
             </div>
             <PageNation
                 curPage={viewModel.newsQueryOptions.pageNum}

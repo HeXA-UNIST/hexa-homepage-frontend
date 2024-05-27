@@ -26,6 +26,7 @@ function SeminarDetailView({ viewModel }: { viewModel: SeminarDetailViewModel })
                     title={viewModel.seminarDetail.title}
                     image={undefined}
                     contentTitle="세미나 설명"
+                    attachments={viewModel.seminarDetail.attachment}
                     content={
                         viewModel.seminarDetail.content ?? "내용이 없습니다."
                     }

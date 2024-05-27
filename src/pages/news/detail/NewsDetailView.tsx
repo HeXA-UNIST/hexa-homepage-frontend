@@ -27,6 +27,7 @@ function NewsDetailView({ viewModel }: { viewModel: NewsDetailViewModel }) {
                     title={viewModel.newsDetail.title}
                     image={undefined}
                     contentTitle="뉴스"
+                    attachments={undefined}
                     content={
                         viewModel.newsDetail.content ?? "내용이 없습니다."
                     }

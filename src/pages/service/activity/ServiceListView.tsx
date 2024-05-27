@@ -7,6 +7,8 @@ import ContentArea from "@components/ContentArea";
 // import Header from "@components/header/Header";
 // import Footer from "@components/footer/Footer";
 
+import { PageStatus } from "@util/index";
+import Loading from "@components/Loading";
 
 import ServiceSummary from "@models/service/ServiceSummary";
 import { Image } from "@components/ImageContent";
@@ -40,6 +42,9 @@ function ServiceView({ viewModel }: { viewModel: ServiceListViewModel }) {
     return (
         <ContentArea>
             <div className="min-h-[40rem]">
+            {viewModel.status === PageStatus.Loading ? (
+                    <Loading />
+                ) : (
                 <div className="grid grid-cols-[repeat(3,minmax(350px,auto))] gap-x-6 gap-y-8 mb-28">
                     {viewModel.queryResult.services.map((service) => (
                         <ServiceItem
@@ -48,6 +53,7 @@ function ServiceView({ viewModel }: { viewModel: ServiceListViewModel }) {
                         />
                     ))}
                 </div>
+                )}
             </div>
         </ContentArea>
     );

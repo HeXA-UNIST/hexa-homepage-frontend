@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { observer } from "mobx-react";
 
-import profileimg from "@img/profile_img.jpg";
+// import profileimg from "@img/profile_img.jpg";
 
 import ContentArea from "@components/ContentArea";
 import { Link } from "react-router-dom";
@@ -37,7 +37,7 @@ function Header(/* { transparent = false }: { transparent?: boolean } */) {
   //   });
 
   // TODO: 나중에 로그인 기능이 생기면 연동하기ㅋ
-  const isLoggedIn = false;
+//   const isLoggedIn = false;
 
   //   const height = scrollPosition === 0 ? "74px" : "114px";
 
@@ -65,7 +65,7 @@ function Header(/* { transparent = false }: { transparent?: boolean } */) {
                             >
                                 <div className="ml-1 mr-3">
                                     <img
-                                        src="images/icon/hexaLogo.svg"
+                                        src={`${process.env.PUBLIC_URL}/images/icon/hexaLogo.svg`}
                                         alt=""
                                     />
                                 </div>
@@ -105,7 +105,7 @@ function Header(/* { transparent = false }: { transparent?: boolean } */) {
                                     </Link>
                                 </div>
                             </div>
-                            <div className="ml-auto max-w-2xl flex justify-evenly flex-grow-0">
+                            {/* <div className="ml-auto max-w-2xl flex justify-evenly flex-grow-0">
                                 {isLoggedIn ? (
                                     [
                                         <div className="flex justify-center items-center w-32">
@@ -140,7 +140,7 @@ function Header(/* { transparent = false }: { transparent?: boolean } */) {
                                         </Link>
                                     </div>
                                 )}
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </ContentArea>

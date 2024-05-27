@@ -7,6 +7,8 @@ import { faFileLines } from "@fortawesome/free-regular-svg-icons";
 import SearchArea from "@components/search";
 import PageNation from "@components/search/PageNation";
 import ContentArea from "@components/ContentArea";
+import { PageStatus } from "@util/index";
+import Loading from "@components/Loading";
 
 // import Header from "@components/header/Header";
 // import Footer from "@components/footer/Footer";
@@ -31,9 +33,9 @@ const QueryFormPart = observer(
                             onTextChanged: (text: string) => {
                                 seminarPageViewModel.setSearchText(text);
                                 seminarPageViewModel.fetchSeminars();
-                            }
+                            },
                         },
-                        onYearChanged: seminarPageViewModel.setYear
+                        onYearChanged: seminarPageViewModel.setYear,
                     }}
                 />
             </div>
@@ -42,7 +44,6 @@ const QueryFormPart = observer(
 );
 
 function SeminarItem({ seminarData }: { seminarData: SeminarSummary }) {
-
     return (
         <Link
             to={`/seminar/${seminarData.seminarId}`}
@@ -72,16 +73,20 @@ function SeminarItem({ seminarData }: { seminarData: SeminarSummary }) {
 function SeminarView({ viewModel }: { viewModel: SeminarListViewModel }) {
     return (
         <ContentArea>
-            <QueryFormPart seminarPageViewModel={viewModel}/>
+            <QueryFormPart seminarPageViewModel={viewModel} />
             <div className="min-h-[40rem]">
-                <div className="grid grid-cols-[repeat(3,minmax(350px,auto))] gap-x-4 gap-y-6 mb-28">
-                    {viewModel.queryResult.seminars.map((seminar) => (
-                        <SeminarItem
-                            key={seminar.seminarId}
-                            seminarData={seminar}
-                        />
-                    ))}
-                </div>
+                {viewModel.status === PageStatus.Loading ? (
+                    <Loading />
+                ) : (
+                    <div className="grid grid-cols-[repeat(3,minmax(350px,auto))] gap-x-4 gap-y-6 mb-28">
+                        {viewModel.queryResult.seminars.map((seminar) => (
+                            <SeminarItem
+                                key={seminar.seminarId}
+                                seminarData={seminar}
+                            />
+                        ))}
+                    </div>
+                )}
             </div>
 
             <PageNation

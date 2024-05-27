@@ -40,12 +40,13 @@ class ProjectListViewModel extends PageViewModel {
       sort: "desc",
       includeTechStack: [],
       excludeTechStack: [],
-      year: "2023",
+      year: "2024",
       pageNum: 1,
       perPage: 15,
     };
     // this.setProjectSuccess = this.setProjectSuccess.bind(this);
     this.fetchTechList();
+    console.log("eee");
     this.fetchProjects();
   }
 
@@ -55,6 +56,7 @@ class ProjectListViewModel extends PageViewModel {
   }
 
   fetchProjects = async () => {
+    console.log("fetching");
     this.setLoading();
     try {
         const query = {
@@ -95,16 +97,19 @@ class ProjectListViewModel extends PageViewModel {
   }
 
   setSearchText = (searchText: string) => {
+    console.log("ee");
     this.projectQueryOptions.searchText = searchText;
     this.fetchProjects();
   }
 
   setStatus = (status: ProjectStatusString[]) => {
+    console.log("ee");
     this.projectQueryOptions.status = status;
     this.fetchProjects();
   }
 
   setSort = (sort: "asc" | "desc") => {
+    console.log("ee");
     runInAction(()=>{
         this.projectQueryOptions.sort = sort;
     })
@@ -112,6 +117,7 @@ class ProjectListViewModel extends PageViewModel {
   }
 
   setIncludeTechStack = (includeTechStack: string[]) => {
+    console.log("ee");
     const temp = {...this.projectQueryOptions};
     temp.includeTechStack = includeTechStack;
     this.projectQueryOptions = temp;
@@ -120,21 +126,25 @@ class ProjectListViewModel extends PageViewModel {
   }
 
   setExcludeTechStack = (excludeTechStack: string[]) => {
+    console.log("ee");
     this.projectQueryOptions.excludeTechStack = excludeTechStack;
     this.fetchProjects();
   }
 
   setYear = (year: string) => {
+    console.log("ee");
     this.projectQueryOptions.year = year;
     this.fetchProjects();
   }
 
   setPageNum = (pageNum: number) => {
+    console.log("ee");
     this.projectQueryOptions.pageNum = pageNum;
     this.fetchProjects();
   }
 
   setPerPage = (perPage: number) => {
+    console.log("ee");
     this.projectQueryOptions.perPage = perPage;
     this.fetchProjects();
   }

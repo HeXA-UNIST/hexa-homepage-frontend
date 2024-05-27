@@ -2,6 +2,7 @@ import "@css/home/Activities.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { Link } from "react-router-dom";
 import { faDesktop, faGraduationCap, faHome, faBolt, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import ContentFrame from "../content";
 
@@ -28,8 +29,8 @@ function ActivityItem({
         }
     };
     return (
-        <a
-            href={link}
+        <Link
+            to={link}
             className={`flex flex-row justify-center items-center w-full transition-all group/item cursor-pointer `}
             onClick={handleClick}
         >
@@ -52,7 +53,7 @@ function ActivityItem({
             >
                 <FontAwesomeIcon className="w-6 h-6 text-zinc-500" icon={faChevronRight} />
             </div>
-        </a>
+        </Link>
     );
 }
 
@@ -68,14 +69,14 @@ function Activities() {
                     <ActivityItem
                         title="프로젝트"
                         content="HeXA는 매학기 프로젝트를 진행하며 UNIST 학우들을 위한 서비스를 개발합니다."
-                        link="/projects"
+                        link="/activity/projects"
                         color="bg-emerald-500"
                         iconDef={faDesktop}
                     />
                     <ActivityItem
                         title="세미나"
                         content="HeXA에서 각종 스터디와 내외부 연사를 초청한 세미나가 이루어집니다."
-                        link="/services"
+                        link="/activity/services"
                         color="bg-rose-500"
                         iconDef={faGraduationCap}
                     />

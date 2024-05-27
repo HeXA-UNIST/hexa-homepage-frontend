@@ -11,22 +11,22 @@ function Supports() {
             >
                 <div className="flex flex-warp flex-row justify-between">
                     <div className="w-36 h-36">
-                        <img className="rounded-3xl w-36 h-36" src="images/sample1.png" alt="" />
+                        <img className="rounded-3xl w-36 h-36" src={`${process.env.PUBLIC_URL}/images/sample1.png`} alt="" />
                     </div>
                     <div className="w-36 h-36">
-                        <img className="rounded-3xl w-36 h-36" src="images/sample1.png" alt="" />
+                        <img className="rounded-3xl w-36 h-36" src={`${process.env.PUBLIC_URL}/images/sample1.png`} alt="" />
                     </div>
                     <div className="w-36 h-36">
-                        <img className="rounded-3xl w-36 h-36" src="images/sample1.png" alt="" />
+                        <img className="rounded-3xl w-36 h-36" src={`${process.env.PUBLIC_URL}/images/sample1.png`} alt="" />
                     </div>
                     <div className="w-36 h-36">
-                        <img className="rounded-3xl w-36 h-36" src="images/sample1.png" alt="" />
+                        <img className="rounded-3xl w-36 h-36" src={`${process.env.PUBLIC_URL}/images/sample1.png`} alt="" />
                     </div>
                     <div className="w-36 h-36">
-                        <img className="rounded-3xl w-36 h-36" src="images/sample1.png" alt="" />
+                        <img className="rounded-3xl w-36 h-36" src={`${process.env.PUBLIC_URL}/images/sample1.png`} alt="" />
                     </div>
                     <div className="w-36 h-36">
-                        <img className="rounded-3xl w-36 h-36" src="images/sample1.png" alt="" />
+                        <img className="rounded-3xl w-36 h-36" src={`${process.env.PUBLIC_URL}/images/sample1.png`} alt="" />
                     </div>
                 </div>
             </ContentFrame>

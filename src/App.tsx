@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { observer } from "mobx-react";
 
 import HomePage from "pages/home";
+import NotFound from "pages/notfound";
 
 import ActivityPage from "@pages/activities";
 
@@ -19,7 +20,7 @@ import ServiceDetailView from "@pages/service/detail";
 import NewsDetailView from "@pages/news/detail";
 import SeminarDetailView from "@pages/seminar/detail";
 
-import LoginPage from "@pages/login";
+// import LoginPage from "@pages/login";
 import { AdminRouter } from "@pages/admin";
 import { AuthenticationProvider } from "common/context/AuthenticationContext";
 import AdminNewsRouter from "@pages/admin/pages/news";
@@ -63,7 +64,7 @@ function App() {
                             element={<SeminarDetailView />}
                         />
 
-                        <Route path="/login" element={<LoginPage />} />
+                        {/* <Route path="/login" element={<LoginPage />} /> */}
                         <Route path="/admin" element={<AdminRouter />}>
                             <Route
                                 path="/admin/news"
@@ -83,6 +84,8 @@ function App() {
                             />
                         </Route>
                         <Route path="/" element={<HomePage />} />
+                        <Route path="/home" element={<HomePage />} />
+                        <Route path="/*" element={<NotFound />} />
                     </Routes>
                 </BrowserRouter>
             </AuthenticationProvider>

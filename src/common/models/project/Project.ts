@@ -22,12 +22,12 @@ export function convertState(stateString: ProjectStatusString): EProjectState {
 }
 
 export interface IProject {
-    projectId: number;
+    // projectId: number;
     title: string;
     thumbnail: number;
     startDate: string;
     endDate: string | null;
-    techStackList: string[]; // 따로 interface 지정을 해줄수 있지만, 관리자 페이지에 의해 종류가 달라지기 때문에 string으로 보존.
+    projectTechStacks: string[]; // 따로 interface 지정을 해줄수 있지만, 관리자 페이지에 의해 종류가 달라지기 때문에 string으로 보존.
     // memberList: IProjectMember[];
     state: ProjectStatusString;
     public_status: boolean;
@@ -35,7 +35,7 @@ export interface IProject {
 }
 
 export default class Project {
-    projectId: number;
+    // projectId: number;
 
     title: string;
 
@@ -45,7 +45,7 @@ export default class Project {
 
     endDate: string | null;
 
-    techStackList: string[];
+    projectTechStacks: string[];
 
     // memberList: ProjectMember[];
 
@@ -56,23 +56,23 @@ export default class Project {
     content: string | null;
 
     constructor({
-        projectId,
+        // projectId,
         title,
         thumbnail,
         startDate,
         endDate,
-        techStackList,
+        projectTechStacks,
         // memberList,
         state,
         public_status: isPublic,
         content,
     }: IProject) {
-        this.projectId = projectId;
+        // this.projectId = projectId;
         this.title = title;
         this.thumbnail = thumbnail;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.techStackList = techStackList;
+        this.projectTechStacks = projectTechStacks;
         // this.memberList = memberList.map(
         //     (item: IProjectMember) => new ProjectMember(item)
         // );
@@ -83,12 +83,12 @@ export default class Project {
 
     static empty() {
         return new Project({
-            projectId: 0,
+            // projectId: 0,
             title: "",
             thumbnail: 0,
             startDate: "",
             endDate: null,
-            techStackList: [],
+            projectTechStacks: [],
             // memberList: [],
             state: "승인중",
             public_status: false,

@@ -20,7 +20,7 @@ function Footer() {
                     <div className="mb-10 flex flex-row items-center">
                         <img
                             className="w-8 mr-2"
-                            src="images/icon/hexaLogo.svg"
+                            src={`${process.env.PUBLIC_URL}/images/icon/hexaLogo.svg`}
                             alt=""
                         />
                         <div className="mb-1 text-white font-semibold text-3xl">
