@@ -18,21 +18,25 @@ export function Image({ id, className }: { id: number; className: string }) {
         // })();
 
         const params = {
-            attachmentId: id,
+            attachmentId: id === 0 ? "" : id,
         };
-        try {
-            axios
-                .get(`${WebConstants.API_URL}/attachment`, {
-                    params,
-                    responseType: "blob",
-                })
-                .then((response) => {
-                    setPath(window.URL.createObjectURL(response.data));
-                });
-        } catch (error) {
-            console.log(error);
-            throw error;
+        if(id !== 0){
+            try {
+                axios
+                    .get(`${WebConstants.API_URL}/attachment`, {
+                        params,
+                        responseType: "blob",
+                    })
+                    .then((response) => {
+                        setPath(window.URL.createObjectURL(response.data));
+                    });
+            } catch (error) {
+                console.log(error);
+                throw error;
+            }
         }
+        console.log(id);
+        
     }, [id]);
     return <img className={className} src={path} alt="" />;
 }

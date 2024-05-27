@@ -30,8 +30,8 @@ class SeminarListViewModel extends PageViewModel {
 
     this.seminarQueryOptions = {
       searchText: "",
-      year: "",
-      pageNum: 1,
+      year: "2024",
+      pageNum: 0,
       perPage: 15,
     };
 

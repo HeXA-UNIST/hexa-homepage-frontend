@@ -41,7 +41,7 @@ class ProjectListViewModel extends PageViewModel {
       includeTechStack: [],
       excludeTechStack: [],
       year: "2024",
-      pageNum: 1,
+      pageNum: 0,
       perPage: 15,
     };
     // this.setProjectSuccess = this.setProjectSuccess.bind(this);

@@ -38,11 +38,11 @@ function PageNation({
     useEffect(() => {
         console.log(`curPage to ${curPage}`);
         const startPoint =
-            Math.floor((curPage - 1) / pageListUnit) * pageListUnit + 1;
+            Math.floor(curPage / pageListUnit) * pageListUnit;
         const lastPoint = Math.min(
-            Math.ceil(curPage / pageListUnit) * pageListUnit,
+            Math.ceil((curPage+1) / pageListUnit) * pageListUnit,
             maxPage
-        );
+        )-1;
         console.log(
             Array.from(
                 { length: lastPoint - startPoint + 1 },
@@ -56,8 +56,8 @@ function PageNation({
             )
         );
 
-        setHasLeft(startPoint !== 1);
-        setHasRight(lastPoint !== maxPage);
+        setHasLeft(startPoint !== 0);
+        setHasRight(lastPoint !== maxPage-1);
     }, [curPage, maxPage]);
 
     return (
@@ -104,7 +104,7 @@ function PageNation({
                                     : "font-normal text-zinc-400"
                             }`}
                         >
-                            <span className="hover:underline pb-1">{page}</span>
+                            <span className="hover:underline pb-1">{page+1}</span>
                         </button>
                     ))}
                 </div>

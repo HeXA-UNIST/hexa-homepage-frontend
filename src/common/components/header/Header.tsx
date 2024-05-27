@@ -65,7 +65,7 @@ function Header(/* { transparent = false }: { transparent?: boolean } */) {
                             >
                                 <div className="ml-1 mr-3">
                                     <img
-                                        src={`${process.env.PUBLIC_URL}/images/icon/hexaLogo.svg`}
+                                        src="/images/icon/hexaLogo.svg"
                                         alt=""
                                     />
                                 </div>

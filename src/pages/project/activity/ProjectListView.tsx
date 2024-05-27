@@ -1,6 +1,7 @@
 import { observer } from "mobx-react";
 import { Link } from "react-router-dom";
 import ProjectSummary from "@models/project/ProjectSummary";
+import { Image } from "@components/ImageContent";
 
 import ContentArea from "@components/ContentArea";
 // import SearchBox from "@components/search/SearchBox";
@@ -10,7 +11,6 @@ import { PageStatus } from "@util/index";
 import Loading from "@components/Loading";
 
 import ProjectListViewModel from "./ProjectListViewModel";
-
 
 const QueryFormPart = observer(
     ({
@@ -54,9 +54,10 @@ function ProjectItem({ projectData }: { projectData: ProjectSummary }) {
                     Project
                 </span>
             </div>
-            <div className="flex justify-center items-center bg-emerald-500 rounded-2xl h-44 mb-4">
-                <img className="" src={`${projectData.thumbnail}`} alt="" />
-            </div>
+            <Image
+                id={projectData.thumbnail}
+                className="flex justify-center items-center bg-emerald-500 rounded-2xl h-44 mb-4"
+            />
             <div className="text-base text-white font-light">
                 테스트 거시기입니다.
             </div>
@@ -70,7 +71,7 @@ function ProjectView({ viewModel }: { viewModel: ProjectListViewModel }) {
             <QueryFormPart projectPageViewModel={viewModel} />
             <div className="min-h-[40rem]">
                 {viewModel.status === PageStatus.Loading ? (
-                    <Loading/>
+                    <Loading />
                 ) : (
                     <div className="grid grid-cols-[repeat(3,minmax(350px,_1fr))] gap-x-6 gap-y-8 mb-28">
                         {viewModel.queryResult.projects.map((project) => (

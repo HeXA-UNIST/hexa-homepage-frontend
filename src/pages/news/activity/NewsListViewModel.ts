@@ -25,7 +25,7 @@ class NewsListViewModel extends PageViewModel {
 
         this.queryResult = NewsQueryResult.empty();
         this.newsQueryOptions = {
-            pageNum: 1,
+            pageNum: 0,
             perPage: 15,
         };
         
