@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import PageIndicator from "@pages/admin/components/PageIndicator";
 import { observer } from "mobx-react-lite";
 import {
   ServiceAdminProvider,
@@ -8,20 +7,6 @@ import {
 import Header from "./views/Header";
 import ServiceEditor from "./views/ServiceEditor";
 import ServiceList from "./views/ServiceList";
-
-const PageIndicatorPart = observer(() => {
-  const store = useServiceAdminStore();
-
-  return (
-    <PageIndicator
-      totalPage={store.data?.totalPage ?? 0}
-      currentIndex={store.pageNum}
-      onChange={(index) => {
-        store.setPageNum(index);
-      }}
-    />
-  );
-});
 
 const Inner = observer(() => {
   const IsFirstRef = useRef(true);
@@ -35,7 +20,7 @@ const Inner = observer(() => {
     IsFirstRef.current = false;
 
     store.loadData();
-  }, []);
+  }, [store]);
 
   return (
     <div className="w-full h-full flex flex-col relative gap-6">
@@ -45,12 +30,9 @@ const Inner = observer(() => {
           <ServiceEditor />
         </div>
       ) : (
-        <>
-          <div className="flex-1 w-full relative min-h-0 flex">
-            <ServiceList />
-          </div>
-          <PageIndicatorPart />
-        </>
+        <div className="flex-1 w-full relative min-h-0 flex">
+          <ServiceList />
+        </div>
       )}
     </div>
   );

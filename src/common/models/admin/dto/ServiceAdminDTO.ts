@@ -18,7 +18,6 @@ export interface CreateServiceAdminDTO {
 }
 
 export interface GetServiceListResultAdminDTO {
-  totalPage: number;
   list: {
     serviceId: number;
     title: number;

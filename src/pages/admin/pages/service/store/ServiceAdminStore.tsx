@@ -9,10 +9,6 @@ import ServiceEditorAdminStore from "./ServiceEditorAdminStore";
 export default class ServiceAdminStore {
   private _isLoading = false;
 
-  private _pageIndex = 0;
-
-  private _perPage = 10;
-
   private _data: GetServiceListResultAdmin | null = null;
 
   private _editorStore: ServiceEditorAdminStore; // Not controlled by MobX
@@ -35,10 +31,6 @@ export default class ServiceAdminStore {
     return this._isLoading;
   }
 
-  get pageNum() {
-    return this._pageIndex;
-  }
-
   get data() {
     return this._data;
   }
@@ -53,7 +45,7 @@ export default class ServiceAdminStore {
     });
 
     try {
-      const result = await getServiceListAdmin(this._pageIndex, this._perPage);
+      const result = await getServiceListAdmin();
 
       runInAction(() => {
         this._data = result;
@@ -70,14 +62,6 @@ export default class ServiceAdminStore {
     runInAction(() => {
       this._isLoading = false;
     });
-  };
-
-  setPageNum = async (pageNum: number) => {
-    runInAction(() => {
-      this._pageIndex = pageNum;
-    });
-
-    await this.loadData();
   };
 
   createService = () => {
