@@ -1,10 +1,16 @@
+export interface IAttachment{
+    fileId: number;
+    fileName: string;
+    fileSize: number;
+}
+
 export interface ISeminar {
     // seminarId: number;
     title: string;
     date: string;
     writer: string;
     content: string;
-    attachment: number[];
+    attachments: IAttachment[];
 }
 
 export default class Seminar {
@@ -18,7 +24,7 @@ export default class Seminar {
 
     content: string;
 
-    attachment: number[];
+    attachments: IAttachment[];
 
     constructor({
         // seminarId,
@@ -26,14 +32,14 @@ export default class Seminar {
         date,
         writer,
         content,
-        attachment,
+        attachments,
     }: ISeminar) {
         // this.seminarId = seminarId;
         this.title = title;
         this.date = date;
         this.writer = writer;
         this.content = content;
-        this.attachment = attachment;
+        this.attachments = attachments;
     }
 
     static empty() {
@@ -43,7 +49,7 @@ export default class Seminar {
             date: "",
             writer: "",
             content: "",
-            attachment: [],
+            attachments: [],
         });
     }
 }

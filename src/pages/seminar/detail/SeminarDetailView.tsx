@@ -17,6 +17,8 @@ function SeminarDetailView({ viewModel }: { viewModel: SeminarDetailViewModel })
         }
     }, []);
 
+    console.log(viewModel.seminarDetail);
+
     return (
         <ContentArea>
             <div className=" pt-[10rem] min-h-[50rem] mb-40">
@@ -26,7 +28,7 @@ function SeminarDetailView({ viewModel }: { viewModel: SeminarDetailViewModel })
                     title={viewModel.seminarDetail.title}
                     image={undefined}
                     contentTitle="세미나 설명"
-                    attachments={viewModel.seminarDetail.attachment}
+                    attachments={viewModel.seminarDetail.attachments}
                     content={
                         viewModel.seminarDetail.content ?? "내용이 없습니다."
                     }
