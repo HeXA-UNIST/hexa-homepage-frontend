@@ -6,27 +6,8 @@ const fs = require("fs");
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(path.join(__dirname, 'build/static')));
 
-app.get("/activity", (req, res) => {
-    console.log("request activity - ", req.url);
-    res.sendFile(filePath);
-});
-app.get("/project", (req, res) => {
-    console.log("request project - ", req.url);
-    res.sendFile(filePath);
-});
-app.get("/service", (req, res) => {
-    console.log("request service - ", req.url);
-    res.sendFile(filePath);
-});
-app.get("/news", (req, res) => {
-    console.log("request news - ", req.url);
-    res.sendFile(filePath);
-});
-app.get("/seminar", (req, res) => {
-    console.log("request seminar - ", req.url);
-    res.sendFile(filePath);
-});
 app.get("*", (req, res) => {
     const filePath = path.join(__dirname, "build", req.url);
     console.log("request", req.url);
