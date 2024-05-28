@@ -52,6 +52,7 @@ export async function getNewsListAdmin(
         pageNum,
         perPage,
       },
+      withCredentials: true,
     })
   ).data as GetNewsListResultAdminDTO;
 
