@@ -21,6 +21,7 @@
     "axios": "^1.6.8",
     "concurrently": "^8.2.2",
     "daisyui": "^3.9.4",
+    "express": "^4.19.2",
     "mobx": "^6.7.0",
     "mobx-react": "^7.6.0",
     "mobx-react-lite": "^4.0.7",
@@ -42,7 +43,8 @@
     "start": "concurrently \" craco start \"  \" npx tailwindcss -i ./src/static/css/tailwind.css -o ./src/static/css/tailwindCopy.css --watch  \"",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "node server.js"
   },
   "eslintConfig": {
     "extends": [

@@ -48,7 +48,7 @@ export function FileDownload({
     attachment: IAttachment;
     className: string;
 }) {
-    const [downloadUrl, setDownloadUrl] = useState<string>("/");
+    // const [downloadUrl, setDownloadUrl] = useState<string>("/");
 
     const handleDownload = async () => {
         const params = {
@@ -59,16 +59,17 @@ export function FileDownload({
                 params,
                 responseType: "blob",
             });
-            setDownloadUrl(window.URL.createObjectURL(new Blob([res.data])));
+            const link = document.createElement("a");
+            const url = window.URL.createObjectURL(new Blob([res.data]));
+            console.log("download", url);
+            link.href = url;
+            link.setAttribute("download", attachment.fileName);
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
         } catch (err) {
             console.error("파일 다운로드 실패:", err);
         }
-        const link = document.createElement("a");
-        link.href = downloadUrl;
-        link.setAttribute("download", attachment.fileName);
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
     };
 
     return (

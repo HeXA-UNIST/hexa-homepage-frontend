@@ -8,8 +8,9 @@ export default class MainPageRepository {
             url: `${WebConstants.API_URL}`,
             method: "GET",
             header: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
+                "Content-Type": `application/json;charset=UTF-8`,
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Credentials": "true",
             },
         };
 
@@ -20,7 +21,7 @@ export default class MainPageRepository {
             const response = await axios(option);
             return new MainPageData(response.data);
         } catch (error) {
-              console.log(error);
+            console.log(error);
             throw error;
         }
     }

@@ -57,6 +57,7 @@ export async function getProjectListAdmin(
         pageNum,
         perPage,
       },
+      withCredentials: true
     })
   ).data as GetProjectListResultAdminDTO;
 

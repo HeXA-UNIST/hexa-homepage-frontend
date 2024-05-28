@@ -22,7 +22,7 @@
 
 ::before,
 ::after {
-  --tw-content: "";
+  --tw-content: '';
 }
 
 /*
@@ -687,36 +687,6 @@ html {
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
-}
-
-.alert {
-  display: grid;
-  width: 100%;
-  grid-auto-flow: row;
-  align-content: flex-start;
-  align-items: center;
-  justify-items: center;
-  gap: 1rem;
-  text-align: center;
-  border-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--b2) / var(--tw-border-opacity));
-  padding: 1rem;
-  --tw-text-opacity: 1;
-  color: hsl(var(--bc) / var(--tw-text-opacity));
-  border-radius: var(--rounded-box, 1rem);
-  --alert-bg: hsl(var(--b2));
-  --alert-bg-mix: hsl(var(--b1));
-  background-color: var(--alert-bg);
-}
-
-@media (min-width: 640px) {
-  .alert {
-    grid-auto-flow: column;
-    grid-template-columns: auto minmax(auto,1fr);
-    justify-items: start;
-    text-align: left;
-  }
 }
 
 .avatar.placeholder > div {
@@ -2027,28 +1997,11 @@ html {
 }
 
 .grid-cols-\[repeat\(3\2c minmax\(350px\2c _1fr\)\)\] {
-  grid-template-columns: repeat(3, minmax(350px, 1fr));
+  grid-template-columns: repeat(3,minmax(350px, 1fr));
 }
 
 .grid-cols-\[repeat\(3\2c minmax\(350px\2c auto\)\)\] {
-  grid-template-columns: repeat(3, minmax(350px, auto));
-}
-
-.grid-rows-\[3rem_max-content_max-content_auto\] {
-  grid-template-rows: 3rem -webkit-max-content -webkit-max-content auto;
-  grid-template-rows: 3rem max-content max-content auto;
-}
-
-.grid-rows-\[3rem_minmax\(max-content_1fr\)_minmax\(max-content_1fr\)_auto\] {
-  grid-template-rows: 3rem minmax(-webkit-max-content 1fr) minmax(
-      -webkit-max-content 1fr
-    ) auto;
-  grid-template-rows: 3rem minmax(max-content 1fr) minmax(max-content 1fr) auto;
-}
-
-.grid-rows-\[3rem_auto_max-content_auto\] {
-  grid-template-rows: 3rem auto -webkit-max-content auto;
-  grid-template-rows: 3rem auto max-content auto;
+  grid-template-columns: repeat(3,minmax(350px,auto));
 }
 
 .grid-rows-\[3rem_min-content_min-content_auto\] {
@@ -2134,10 +2087,6 @@ html {
 
 .gap-6 {
   gap: 1.5rem;
-}
-
-.gap-8 {
-  gap: 2rem;
 }
 
 .gap-x-12 {
@@ -2394,6 +2343,10 @@ html {
   padding: 0.25rem;
 }
 
+.p-10 {
+  padding: 2.5rem;
+}
+
 .p-2 {
   padding: 0.5rem;
 }
@@ -2416,10 +2369,6 @@ html {
 
 .p-8 {
   padding: 2rem;
-}
-
-.p-10 {
-  padding: 2.5rem;
 }
 
 .px-1 {
@@ -2584,10 +2533,6 @@ html {
 
 .font-bold {
   font-weight: 700;
-}
-
-.font-light {
-  font-weight: 300;
 }
 
 .font-medium {
