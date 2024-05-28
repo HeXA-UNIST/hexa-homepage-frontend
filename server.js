@@ -8,19 +8,24 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, "build")));
 
 app.get("/activity", (req, res) => {
-    res.sendFile(path.join(__dirname, "build", "index.html"));
+    console.log("request activity - ", req.url);
+    res.sendFile(filePath);
 });
 app.get("/project", (req, res) => {
-    res.sendFile(path.join(__dirname, "build", "index.html"));
+    console.log("request project - ", req.url);
+    res.sendFile(filePath);
 });
 app.get("/service", (req, res) => {
-    res.sendFile(path.join(__dirname, "build", "index.html"));
+    console.log("request service - ", req.url);
+    res.sendFile(filePath);
 });
 app.get("/news", (req, res) => {
-    res.sendFile(path.join(__dirname, "build", "index.html"));
+    console.log("request news - ", req.url);
+    res.sendFile(filePath);
 });
 app.get("/seminar", (req, res) => {
-    res.sendFile(path.join(__dirname, "build", "index.html"));
+    console.log("request seminar - ", req.url);
+    res.sendFile(filePath);
 });
 app.get("*", (req, res) => {
     const filePath = path.join(__dirname, "build", req.url);
