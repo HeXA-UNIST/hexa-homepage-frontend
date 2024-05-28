@@ -9,6 +9,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('*', (req, res) => {
     const filePath = path.join(__dirname, 'build', req.url);
+    console.log("request", req.url);
     if (fs.existsSync(filePath) && !fs.lstatSync(filePath).isDirectory()) {
       res.sendFile(filePath);
     } else {
