@@ -58,9 +58,6 @@ function ProjectItem({ projectData }: { projectData: ProjectSummary }) {
                 id={projectData.thumbnail}
                 className="flex justify-center items-center bg-emerald-500 rounded-2xl h-44 mb-4"
             />
-            <div className="text-base text-white font-light">
-                테스트 거시기입니다.
-            </div>
         </Link>
     );
 }

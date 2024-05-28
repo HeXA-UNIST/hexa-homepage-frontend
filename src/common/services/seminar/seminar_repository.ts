@@ -60,7 +60,7 @@ export default class SeminarRepository {
         });
         return {
             totalPage: 1,
-            list: [
+            seminars: [
                 {
                     seminarId: 0,
                     title: "2022 Seminar 1",
@@ -96,7 +96,7 @@ export default class SeminarRepository {
             date: "2022.01.04",
             writer: "홍길동",
             content: "",
-            attachment: [1, 2, 3],
+            attachments: [],
         };
     }
 

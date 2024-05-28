@@ -103,12 +103,14 @@ export default class ProjectRepository {
                     title: "프로젝트 1",
                     thumbnail: 10,
                     status: "진행중",
+                    description: ""
                 },
                 {
                     projectId: 1,
                     title: "프로젝트 1",
                     thumbnail: 10,
                     status: "진행중",
+                    description: ""
                 },
             ],
         };

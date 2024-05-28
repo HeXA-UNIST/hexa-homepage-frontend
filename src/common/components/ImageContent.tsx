@@ -1,6 +1,7 @@
 import axios from "axios";
 import WebConstants from "@constants";
 
+import { IAttachment } from "@models/seminar/Seminar";
 import { useState, useEffect } from "react";
 
 export function Image({ id, className }: { id: number; className: string }) {
@@ -20,7 +21,7 @@ export function Image({ id, className }: { id: number; className: string }) {
         const params = {
             attachmentId: id === 0 ? "" : id,
         };
-        if(id !== 0){
+        if (id !== 0) {
             try {
                 axios
                     .get(`${WebConstants.API_URL}/attachment`, {
@@ -36,49 +37,45 @@ export function Image({ id, className }: { id: number; className: string }) {
             }
         }
         console.log(id);
-        
     }, [id]);
     return <img className={className} src={path} alt="" />;
 }
 
 export function FileDownload({
-    id,
+    attachment,
     className,
 }: {
-    id: number;
+    attachment: IAttachment;
     className: string;
 }) {
+    const [downloadUrl, setDownloadUrl] = useState<string>("/");
+
     const handleDownload = async () => {
         const params = {
-            attachmentId: id,
+            attachmentId: attachment.fileId,
         };
         try {
-            const response = await axios.get(
-                `${WebConstants.API_URL}/attachment`,
-                {
-                    params,
-                    method: "GET",
-                    responseType: "blob",
-                }
-            );
-
-            const downloadUrl = window.URL.createObjectURL(
-                new Blob([response.data])
-            );
-            const link = document.createElement("a");
-            link.href = downloadUrl;
-            link.setAttribute("download", "example.pdf");
-            document.body.appendChild(link);
-            link.click();
-            link.remove();
-        } catch (error) {
-            console.error("파일 다운로드 실패:", error);
+            const res = await axios.get(`${WebConstants.API_URL}/attachment`, {
+                params,
+                responseType: "blob",
+            });
+            setDownloadUrl(window.URL.createObjectURL(new Blob([res.data])));
+        } catch (err) {
+            console.error("파일 다운로드 실패:", err);
         }
+        const link = document.createElement("a");
+        link.href = downloadUrl;
+        link.setAttribute("download", attachment.fileName);
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
     };
 
     return (
         <div className={className}>
-            <button type="button" onClick={handleDownload}>파일 다운로드</button>
+            <button type="button" onClick={handleDownload}>
+                {attachment.fileName}
+            </button>
         </div>
     );
 }

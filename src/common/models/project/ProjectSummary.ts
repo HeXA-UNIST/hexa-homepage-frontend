@@ -8,6 +8,7 @@ export interface IProjectSummary{
     thumbnail: number;
     title: string;
     status: ProjectStatusString;
+    description: string;
 }
 
 export default class ProjectSummary {
@@ -19,11 +20,14 @@ export default class ProjectSummary {
 
     status: ProjectStatusString;
 
-    constructor({ projectId, thumbnail, title, status }: IProjectSummary) {
+    description: string;
+
+    constructor({ projectId, thumbnail, title, status, description }: IProjectSummary) {
         this.projectId = projectId;
         this.thumbnail = thumbnail;
         this.title = title;
         this.status = status;
+        this.description = description;
     }
 
 }
