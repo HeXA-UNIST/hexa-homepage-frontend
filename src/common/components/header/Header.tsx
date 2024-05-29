@@ -65,7 +65,8 @@ function Header(/* { transparent = false }: { transparent?: boolean } */) {
                             >
                                 <div className="ml-1 mr-3">
                                     <img
-                                        src="/images/icon/hexaLogo.svg"
+                                        className="w-8"
+                                        src="/images/icon/hexaLogo.png"
                                         alt=""
                                     />
                                 </div>

@@ -61,7 +61,7 @@ function DetailItem({
                 className="col-start-1 col-end-2 row-start-4 row-end-6 rounded-2xl p-4 bg-zinc-900 text-white flex flex-col gap-4"
             >
                 {attachments.map(at => (
-                   <FileDownload attachment={at} className="bg-zinc-800 rounded-xl p-2 text-left px-4"/>
+                   <FileDownload key={at.fileId} attachment={at} className="bg-zinc-800 rounded-xl p-2 text-left px-4"/>
                 ))}
             </div>
             )

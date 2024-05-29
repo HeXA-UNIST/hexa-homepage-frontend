@@ -1,9 +1,15 @@
 import "@css/home/Activities.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+// import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { Link } from "react-router-dom";
-import { faDesktop, faGraduationCap, faHome, faBolt, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import {
+    // faDesktop,
+    // faGraduationCap,
+    // faHome,
+    // faBolt,
+    faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 import ContentFrame from "../content";
 
 function ActivityItem({
@@ -12,14 +18,14 @@ function ActivityItem({
     content,
     link,
     color,
-    iconDef,
+    children,
 }: {
     // thumbnail: string;
     title: string;
     content: string;
     link: string;
     color: string;
-    iconDef: IconDefinition;
+    children: React.ReactNode;
 }) {
     const handleClick = (
         event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
@@ -35,12 +41,9 @@ function ActivityItem({
             onClick={handleClick}
         >
             <div
-                className={`flex justify-center items-center min-w-[8rem] w-32 h-32 rounded-2xl text-center ${color}`}
+                className={`flex justify-center items-center min-w-[8rem] w-32 h-32 rounded-2xl text-center ${color} overflow-hidden`}
             >
-                <FontAwesomeIcon
-                    icon={iconDef}
-                    className="w-12 h-12 text-white group-hover/item:scale-125 transition-all"
-                />
+                {children}
             </div>
             <div className="ml-8 flex flex-col text-left flex-grow">
                 <div className="text-3xl text-white mb-3">{title}</div>
@@ -51,7 +54,10 @@ function ActivityItem({
                     link !== "" ? "group-hover/item:visible" : ""
                 }`}
             >
-                <FontAwesomeIcon className="w-6 h-6 text-zinc-500" icon={faChevronRight} />
+                <FontAwesomeIcon
+                    className="w-6 h-6 text-zinc-500"
+                    icon={faChevronRight}
+                />
             </div>
         </Link>
     );
@@ -67,35 +73,37 @@ function Activities() {
             >
                 <div className="flex flex-col h-[50rem] flex-wrap justify-evenly content-evenly items-start font-bold ml-10">
                     <ActivityItem
+                        title="서비스"
+                        content="HeXA는 UNIST 학우들을 위한 서비스를 개발하고 있습니다."
+                        link="/activity/services"
+                        color="bg-purple-800"
+                    >
+                        <img className="w-20 group-hover/item:scale-125 transition-all" src="/images/icon/hexaLogoPurple.png" alt="" />
+                    </ActivityItem>
+                    <ActivityItem
                         title="프로젝트"
-                        content="HeXA는 매학기 프로젝트를 진행하며 UNIST 학우들을 위한 서비스를 개발합니다."
+                        content="HeXA는 매학기마다 흥미 위주의 다양한 토이프로젝트를 진행합니다."
                         link="/activity/projects"
-                        color="bg-emerald-500"
-                        iconDef={faDesktop}
-                    />
+                        color="bg-white"
+                        >
+                        <img className="w-20 bg-black group-hover/item:scale-125 transition-all" src="/images/icon/hexaLogoBackground.png" alt="" />
+                    </ActivityItem>
                     <ActivityItem
                         title="세미나"
                         content="HeXA에서 각종 스터디와 내외부 연사를 초청한 세미나가 이루어집니다."
-                        link="/activity/services"
-                        color="bg-rose-500"
-                        iconDef={faGraduationCap}
-                    />
+                        link="/activity/seminars"
+                        color="bg-blue-900"
+                        >
+                        <img className="w-20 group-hover/item:scale-125 transition-all" src="/images/icon/hexaLogo.png" alt="" />
+                    </ActivityItem>
                     <ActivityItem
-                        title="홈커밍데이"
-                        content="HeXA의 졸업생과 재학생이 만나는 자리입니다. UNIST
-                        컴퓨터공학과와 후원사의 지원을 통해 이루어지며 각종
-                        진로 조언을 얻을 수 있습니다."
+                        title="부트캠프"
+                        content="신입 부원들이 HeXA에 잘 적응할 수 있도록 준비한 교육 프로그램입니다."
                         link=""
-                        color="bg-cyan-500"
-                        iconDef={faHome}
-                    />
-                    <ActivityItem
-                        title="Coming Soon"
-                        content="무엇이 추가되어야 할까요?"
-                        link=""
-                        color="bg-amber-500"
-                        iconDef={faBolt}
-                    />
+                        color="bg-black"
+                        >
+                        <img className="w-20 group-hover/item:scale-125 transition-all" src="/images/icon/hexaLogoGold.png" alt="" />
+                    </ActivityItem>
                 </div>
             </ContentFrame>
         </div>

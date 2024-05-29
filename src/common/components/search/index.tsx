@@ -36,7 +36,7 @@ function SubSearchArea({
             <div className=" text-left text-xl text-white font-semibold mb-4">
                 {title}
             </div>
-            <div className="flex flex-row gap-3">{children}</div>
+            <div className="flex flex-row flex-wrap gap-3">{children}</div>
         </div>
     );
 }

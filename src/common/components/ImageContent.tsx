@@ -51,17 +51,16 @@ export function FileDownload({
     // const [downloadUrl, setDownloadUrl] = useState<string>("/");
 
     const handleDownload = async () => {
-        const params = {
-            attachmentId: attachment.fileId,
-        };
+        // const params = {
+        //     attachmentId: attachment.fileId,
+        // };
         try {
-            const res = await axios.get(`${WebConstants.API_URL}/attachment`, {
-                params,
-                responseType: "blob",
-            });
+            // const res = await axios.get(`${WebConstants.API_URL}/attachment`, {
+            //     params,
+            //     responseType: "blob",
+            // });
             const link = document.createElement("a");
-            const url = window.URL.createObjectURL(new Blob([res.data]));
-            console.log("download", url);
+            const url = `${WebConstants.API_URL}/attachment?attachmentId=${attachment.fileId}`;
             link.href = url;
             link.setAttribute("download", attachment.fileName);
             document.body.appendChild(link);

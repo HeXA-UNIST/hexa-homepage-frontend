@@ -49,15 +49,17 @@ function ProjectItem({ projectData }: { projectData: ProjectSummary }) {
             className="flex flex-col h-80 bg-neutral-900 rounded-3xl p-6 text-left font-bold"
         >
             <div className="flex flex-row items-center justify-between text-white text-2xl mb-3 px-1">
-                <div>{projectData.title}</div>
+                <div className=" overflow-hidden text-ellipsis whitespace-nowrap">{projectData.title}</div>
                 <span className="text-base font-medium text-zinc-500 float-right">
                     Project
                 </span>
             </div>
+            <div className="flex justify-center items-center bg-neutral-800 rounded-2xl h-44 mb-4 overflow-hidden">
             <Image
                 id={projectData.thumbnail}
-                className="flex justify-center items-center bg-emerald-500 rounded-2xl h-44 mb-4"
+                className=""
             />
+            </div>
         </Link>
     );
 }

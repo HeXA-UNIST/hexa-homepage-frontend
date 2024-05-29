@@ -115,7 +115,7 @@ function ToggleItems<T>({
         return ToggleState.Normal;
     }
     return (
-        <div className="flex flex-row gap-3">
+        <div className="flex flex-row flex-wrap gap-3">
             {items.map((item) => (
                 <ToggleItem
                     key={item.data.text}

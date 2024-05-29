@@ -20,7 +20,7 @@ function Footer() {
                     <div className="mb-10 flex flex-row items-center">
                         <img
                             className="w-8 mr-2"
-                            src="/images/icon/hexaLogo.svg"
+                            src="/images/icon/hexaLogo.png"
                             alt=""
                         />
                         <div className="mb-1 text-white font-semibold text-3xl">
@@ -49,7 +49,7 @@ function Footer() {
                                 icon={faGithub}
                             />
                         </a>
-                        <a href="hexa.unist@gmail.com" aria-label="mail">
+                        <a href="mailto:hexa.unist@gmail.com" aria-label="mail">
                             <FontAwesomeIcon
                                 className=" w-6 h-6 text-white"
                                 icon={faEnvelope}

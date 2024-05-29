@@ -1,23 +1,19 @@
 export interface IMainPageServiceItem {
     serviceId: number;
-    thumbnail: string;
+    thumbnail: number;
     title: string;
-    subTitle: string;
 }
 
 export default class MainPageServiceItem {
     serviceId: number;
 
-    thumbnail: string;
+    thumbnail: number;
 
     title: string;
 
-    subTitle: string;
-
-    constructor({ serviceId, thumbnail, title, subTitle }: IMainPageServiceItem) {
+    constructor({ serviceId, thumbnail, title }: IMainPageServiceItem) {
         this.serviceId = serviceId;
         this.thumbnail = thumbnail;
         this.title = title;
-        this.subTitle = subTitle;
     }
 }
