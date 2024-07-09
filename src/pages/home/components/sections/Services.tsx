@@ -29,7 +29,7 @@ function Services({ serviceList }: ServiceProps) {
     return (
         <div className="services-area">
             <ContentFrame
-                title="진행 프로젝트"
+                title="진행 프로젝트 "
                 subTitle="HEXA에서는 매 학기 프로젝트를 진행하고 있어요.
                 실제 부원들이 제작하고 배포한 서비스를 살펴보세요!"
                 // icon="🧭"

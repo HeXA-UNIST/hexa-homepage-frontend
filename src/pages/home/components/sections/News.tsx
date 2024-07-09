@@ -21,6 +21,10 @@ function NewsSummaryItem({ news }: { news: NewsSummary }) {
                 </div>
                 <div className="text-zinc-600 text-right text-lg font-medium">
                     <div>바로가기</div>
+
+                    <div>
+                        안녕
+                    </div>
                 </div>
             </div>
         </Link>
