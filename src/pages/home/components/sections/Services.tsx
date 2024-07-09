@@ -28,6 +28,7 @@ function Services({ serviceList }: ServiceProps) {
     const maxCnt = 6;
     return (
         <div className="services-area">
+            {/* ㄷㄹㄷㄹㄷ */}
             <ContentFrame
                 title="진행 프로젝트 "
                 subTitle="HEXA에서는 매 학기 프로젝트를 진행하고 있어요.
