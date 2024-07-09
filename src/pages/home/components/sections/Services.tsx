@@ -26,6 +26,7 @@ function ServiceItem({ service }: { service: MainPageServiceItem }) {
         </a>
     );
 }
+// 주석1
 function Services({ serviceList }: ServiceProps) {
     return (
         <div className="services-area">
