@@ -1,47 +1,28 @@
-import Service from "./Service";
+import ServiceSummary, { IServiceSummary } from "./ServiceSummary";
 
-export interface ServicesQueryType{
-    services: Service[];
-    page: number;
-    maxPage: number;
+export interface IServiceQueryResult{
+    list: IServiceSummary[];
+    totalPage: number;
 }
 
 
 export default class ServicesQueryResult {
-  services: Service[];
+  services: ServiceSummary[];
 
-  page: number;
-
-  maxPage: number;
+  totalPage: number;
 
   constructor({
-    services,
-    page,
-    maxPage,
-  }: {
-    services: Service[];
-    page: number;
-    maxPage: number;
-  }) {
-    this.services = services;
-    this.page = page;
-    this.maxPage = maxPage;
-  }
-
-  static fromJson(json: ServicesQueryType) {
-    console.log(json);
-    return new ServicesQueryResult({
-      services: json.services.map((item: any) => Service.fromJson(item)),
-      page: json.page,
-      maxPage: json.maxPage,
-    });
+    list,
+    totalPage
+  }: IServiceQueryResult) {
+    this.services = list.map((item: IServiceSummary) => new ServiceSummary(item));
+    this.totalPage = totalPage;
   }
 
   static empty() {
     return new ServicesQueryResult({
-      services: [],
-      page: 0,
-      maxPage: 0,
+      list: [],
+      totalPage: 0
     });
   }
 }

@@ -1,43 +1,34 @@
 import { observer } from "mobx-react";
 import {
-  ActivityMode,
-  ActivityViewModel,
+    //   ActivityMode,
+    ActivityViewModel,
 } from "@pages/activities/vm/activity_view_model";
 
-import Footer from "@components/footer/Footer";
-import Header from "@components/header/Header";
-import ModeSelectArea from "@pages/activities/components/ModeSelectArea";
+import { Outlet } from "react-router-dom";
 
-import ServicePage from "@pages/activities/view/ServicePage";
-import ProjectPage from "@pages/activities/view/ProjectPage";
-import SeminarPage from "@pages/activities/view/SeminarPage";
+// import Footer from "@components/footer/Footer";
+// import Header from "@components/header/Header";
+import Submain from "@components/subMain/SubMain";
+
+// import ServiceView from "@pages/activities/view/ServiceView";
+// import ProjectView from "@pages/activities/view/ProjectView";
+// import SeminarView from "@pages/activities/view/SeminarView";
+// import NewsView from "@pages/activities/view/NewsView";
 
 function ActivityView({ viewModel }: { viewModel: ActivityViewModel }) {
-    // console.log(viewModel.projectPageState.queryResult.projects);
-  const activityContents = {
-    [ActivityMode.Service]: (
-        <ServicePage servicePageViewModel={viewModel.servicePageState} />
-    ),
-    [ActivityMode.Project]: (
-      <ProjectPage projectPageViewModel={viewModel.projectPageState} />
-    ),
-    [ActivityMode.Seminar]: (
-        <SeminarPage seminarPageViewModel={viewModel.seminarPageState} />
-    ),
-  };
-  return (
-    <div>
-      <Header />
-      <ModeSelectArea
-        activityMode={viewModel.mode}
-        onModeChange={(mode) => {
-          viewModel.setMode(mode);
-        }}
-      />
-      {activityContents[viewModel.mode]}
-      <Footer />
-    </div>
-  );
+    return (
+        <div>
+            <Submain
+                activityMode={viewModel.mode}
+                onModeChange={(mode) => {
+                    viewModel.setMode(mode);
+                }}
+            />
+            <div className="min-h-[35rem]">
+                <Outlet />
+            </div>
+        </div>
+    );
 }
 
 export default observer(ActivityView);

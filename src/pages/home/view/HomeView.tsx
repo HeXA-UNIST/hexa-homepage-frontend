@@ -1,8 +1,8 @@
 import { observer } from "mobx-react";
-import { HomeViewModel } from "@pages/home/vm/home_view_model";
+import { HomeViewModel } from "@pages/home/vm/HomeViewModel";
 
-import Header from "@components/header/Header";
-import Footer from "@components/footer/Footer";
+// import Header from "@components/header/Header";
+// import Footer from "@components/footer/Footer";
 
 import Introduction from "@pages/home/components/sections/Introduction";
 import News from "@pages/home/components/sections/News";
@@ -14,14 +14,14 @@ import Main from "@pages/home/components/sections/Main";
 function HomeView({ viewModel }: { viewModel: HomeViewModel }) {
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <Main />
       <Introduction />
       <News newsList={viewModel.mainPageData.newsList} />
-      <Services serviceList={viewModel.mainPageData.serviceList}/> 
+      <Services serviceList={viewModel.mainPageData.serviceList} />
       <Activities />
       <Supports />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

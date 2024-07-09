@@ -1,39 +1,25 @@
-import Project from "./Project";
+// import Project, {IProject} from "./Project";
+import ProjectSummary, { IProjectSummary } from "./ProjectSummary";
+
+export interface IProejctQueryResult{
+    list: IProjectSummary[];
+    totalPage: number;
+}
 
 export default class ProjectsQueryResult {
-  projects: Project[];
+  projects: ProjectSummary[];
 
-  page: number;
+  totalPage: number;
 
-  maxPage: number;
-
-  constructor({
-    projects,
-    page,
-    maxPage,
-  }: {
-    projects: Project[];
-    page: number;
-    maxPage: number;
-  }) {
-    this.projects = projects;
-    this.page = page;
-    this.maxPage = maxPage;
-  }
-
-  static fromJson(json: { [key: string]: any }) {
-    return new ProjectsQueryResult({
-      projects: json.projects.map((item: any) => Project.fromJson(item)),
-      page: json.page,
-      maxPage: json.maxPage,
-    });
+  constructor(data: IProejctQueryResult) {
+    this.projects = data.list.map((item: IProjectSummary) => new ProjectSummary(item));
+    this.totalPage = data.totalPage;
   }
 
   static empty() {
     return new ProjectsQueryResult({
-      projects: [],
-      page: 0,
-      maxPage: 0,
+      list: [],
+      totalPage: 0
     });
   }
 }

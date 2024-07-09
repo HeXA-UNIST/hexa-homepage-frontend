@@ -1,78 +1,55 @@
-import SeminarAttachment from "@models/seminar/SeminarAttachment";
+export interface IAttachment{
+    fileId: number;
+    fileName: string;
+    fileSize: number;
+}
 
-export interface SeminarType{
-    seminarId: number;
+export interface ISeminar {
+    // seminarId: number;
     title: string;
     date: string;
-    writerUserId: number;
-    writerUserName: string;
-    writerName: string;
+    writer: string;
     content: string;
-    attachment: SeminarAttachment[];
+    attachments: IAttachment[];
 }
 
 export default class Seminar {
-  seminarId: number;
+    // seminarId: number;
 
-  title: string;
+    title: string;
 
-  date: string;
+    date: string;
 
-  writerUserId: number;
+    writer: string;
 
-  writerUserName: string;
+    content: string;
 
-  writerName: string;
+    attachments: IAttachment[];
 
-  content: string;
+    constructor({
+        // seminarId,
+        title,
+        date,
+        writer,
+        content,
+        attachments,
+    }: ISeminar) {
+        // this.seminarId = seminarId;
+        this.title = title;
+        this.date = date;
+        this.writer = writer;
+        this.content = content;
+        this.attachments = attachments;
+    }
 
-  attachment: SeminarAttachment[];
-
-  constructor({
-    seminarId,
-    title,
-    date,
-    writerUserId,
-    writerUserName,
-    writerName,
-    content,
-    attachment,
-  }: SeminarType) {
-    this.seminarId = seminarId;
-    this.title = title;
-    this.date = date;
-    this.writerUserId = writerUserId;
-    this.writerUserName = writerUserName;
-    this.writerName = writerName;
-    this.content = content;
-    this.attachment = attachment;
-  }
-
-  static fromJson(json: SeminarType) {
-    return new Seminar({
-      seminarId: json.seminarId,
-      title: json.title,
-      date: json.date,
-      writerUserId: json.writerUserId,
-      writerUserName: json.writerUserName,
-      writerName: json.writerName,
-      content: json.content,
-      attachment: json.attachment.map((item: any) =>
-        SeminarAttachment.fromJson(item)
-      )
-    });
-  }
-
-  static empty() {
-    return new Seminar({
-      seminarId: 0,
-      title: "",
-      date: "",
-      writerUserId: 0,
-      writerUserName: "",
-      writerName: "",
-      content: "",
-      attachment: []
-    });
-  }
+    static empty() {
+        return new Seminar({
+            // seminarId: 0,
+            title: "",
+            date: "",
+            writer: "",
+            content: "",
+            attachments: [],
+        });
+    }
 }

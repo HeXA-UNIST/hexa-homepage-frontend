@@ -7,11 +7,31 @@
 :root{
     --background-color: #141414;
     --component-color: #383838;
-    --component-transparent-color: #43434380;
+    --component-transparent-color: #181818d1;
     --component-up-color: #5A5A5A82;
     --component-down-color: #373737;
 }
 
+.customscrollbar::-webkit-scrollbar {
+    width: 6px;
+    background: transparent;
+}
+ 
+/* Track */
+.customscrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+ 
+/* Handle */
+.customscrollbar::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+ 
+/* Handle on hover */
+.customscrollbar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
 
 
 .App {

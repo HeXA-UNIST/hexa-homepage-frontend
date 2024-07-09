@@ -3,14 +3,15 @@
     "baseUrl": "./src",
     "paths": {
       "@pages/*": ["./src/pages/*"],
-      "@services/*": ["./src/services/*"],
+      "@services/*": ["./src/common/services/*"],
       "@css/*": ["./src/static/css/*"],
       "@img/*": ["./src/static/img/*"],
       "@constants" : ["./src/common/constants/web_constants.ts"],
       "@components/*": ["./src/common/components/*"],
       "@hooks/*": ["./src/common/hooks/*"],
       "@models/*": ["./src/common/models/*"],
-      "@stores/*": ["./src/common/stores/*"]
+      "@stores/*": ["./src/common/stores/*"],
+      "@util/*": ["./src/util/*"]
     }
   }
 }
