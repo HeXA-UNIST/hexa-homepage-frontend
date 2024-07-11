@@ -4,7 +4,7 @@
 
 ```
 $ docker build --tag homepage_frontend .
-$ docker run --network host --name homepage_frontend homepage_frontend
+$ docker run -d --network host --name homepage_frontend homepage_frontend
 ```
 
 홈페이지 배포 업데이트 방법
