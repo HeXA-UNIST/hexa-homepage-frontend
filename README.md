@@ -1,27 +1,10 @@
 # 헥사 서버 배포
 
-현재 pm2로 실행중인 것 확인
+도커를 사용합니다.
 
 ```
-sudo pm2 list
-```
-
-pm2로 실행중인 것 중지
-
-```
-sudo pm2 stop (id)
-```
-
-pm2로 실행중인 것 삭제
-
-```
-sudo pm2 delete (id)
-```
-
-pm2로 실행중인 것 재시작
-
-```
-sudo pm2 restart (id)
+$ docker build --tag homepage_frontend .
+$ docker run --network host --name homepage_frontend homepage_frontend
 ```
 
 홈페이지 배포 업데이트 방법

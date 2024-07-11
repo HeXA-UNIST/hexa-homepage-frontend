@@ -5,10 +5,10 @@ WORKDIR /app
 COPY ./package.json ./package-lock.json ./.eslintrc.json ./tsconfig.json ./
 
 RUN npm install
-RUN npm install -g serve
+RUN npm install pm2 -g
 
 COPY . .
 
-RUN npm run build   
+RUN npm run build  
 
-ENTRYPOINT [ "./node_modules/.bin/serve", "-s", "build" ]
+ENTRYPOINT [ "pm2-runtime", "start", "server.js" ]
