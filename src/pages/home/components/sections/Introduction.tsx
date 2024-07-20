@@ -26,7 +26,7 @@ function Introduction() {
                             동아리입니다. UNIST 학우의 생활을 개선하기 위한 많은
                             서비스를 개발하고 있습니다. HeXA는 프로그래밍에
                             관심있는 UNIST의 학부생이라면 누구나 지원
-                            불가능합니다.
+                            가능합니다.
                         </div>
                     </div>
                 </div>
