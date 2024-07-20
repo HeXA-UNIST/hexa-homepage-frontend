@@ -1,0 +1,9 @@
+.component{
+    background-color: var(--component-color);
+    border-radius: 40px;
+}
+
+.component-big{
+    border-radius: 100px;
+}
+

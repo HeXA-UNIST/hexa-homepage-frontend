@@ -1,0 +1,15 @@
+.seminar-page__title {
+  text-align: start;
+  margin-bottom: 34px;
+}
+
+.seminar-page__title h2 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.seminar-page__title span {
+  font-size: 14px;
+  font-weight: 500;
+}

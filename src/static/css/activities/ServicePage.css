@@ -1,0 +1,82 @@
+.service-page__title {
+  text-align: start;
+  margin-bottom: 34px;
+}
+
+.service-page__title h2 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.service-page__title span {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.service-page__item {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 36px;
+}
+
+.service-page__item img {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  margin-right: 24px;
+  border-radius: 10px;
+}
+
+.service-page__item__content {
+  flex: 1;
+  flex-shrink: 0;
+  text-align: left;
+}
+
+.service-page__item__content__title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.service-page__item__content__introduction {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 14px;
+  color: #2C2C2C;
+}
+
+.service-page__item__content__buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.service-page__item__content__button {
+  border-radius: 10px;
+  border: #cccccc 1px solid;
+  font-size: 16px;
+  height: 40px;
+  padding: 0 20px;
+  margin-right: 10px;
+  background-color: white;
+  font-weight: 500;
+  color: #2C2C2C;
+
+  transition: all 0.2s ease;
+}
+
+.service-page__item__content__button:hover {
+  background-color: #e3e3e3;
+}
+
+.service-page__item__content__button:active {
+  background-color: #cccccc;
+}
+
+.service-page__item__content__button:last-child {
+  margin-right: 0;
+}

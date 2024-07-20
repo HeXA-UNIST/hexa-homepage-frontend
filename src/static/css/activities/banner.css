@@ -1,0 +1,61 @@
+.headerArea{
+    width: 100%;
+    height: 10vh;
+    background-color: #0b0b60;
+}
+
+.bannerArea{
+    width: 100%;
+    height: 20vh;
+    background-color: #0b0b60;
+    margin-top: 2vh;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.bannerArea h1{
+    text-align: left;
+    font-size: 60px;
+    color: #fff;
+}
+
+.buttons{
+    padding-top: 10px;
+    display: flex;
+    align-content: space-between;
+}
+
+.bannerArea .h2{
+    text-align: left;
+    font-size: 30px;
+    color: #fff;
+    padding-left: 10px;
+}
+
+.customButton{
+  border-radius: 6%;
+  width: 200px;
+  height: 50px;
+  color: black;
+  background-color: #fff;
+  border-color: #0b0b60;
+  font-size: 20px;
+}
+
+.clicked {
+    background-color: skyblue;
+  }
+
+
+@media (max-width:700px){
+    .bannerArea{
+        padding-top: 2vh;
+        flex-direction: column;
+    }
+    .bannerArea h1{
+        font-size: 25pt;
+    }
+    .bannerArea .h2{
+        font-size: 15pt;
+    }
+}

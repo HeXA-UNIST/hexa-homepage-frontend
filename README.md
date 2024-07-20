@@ -1,3 +1,16 @@
+# 헥사 서버 배포
+
+도커를 사용합니다.
+
+```
+$ docker build --tag homepage_frontend .
+$ docker run -d --network host --name homepage_frontend homepage_frontend
+```
+
+홈페이지 배포 업데이트 방법
+/app/hexa-homepage-frontend
+에서 `sudo git pull`후, `sudo pm2 restart hexa-homepage-frontend` 실행
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +81,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### Docker file build & run
+
+build : docker build -t (new image name) .
+run : docker run --name (container name) -d -p 80:3000 (new image name)
