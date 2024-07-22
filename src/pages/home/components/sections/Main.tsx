@@ -9,7 +9,7 @@ function Main() {
             className="pt-[540px] pb-20 mb-40"
             style={{
                 backgroundImage:
-                    "linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1)), url('images/backgrounds/bg_size_test.png')",
+                    "linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1)), url('images/backgrounds/real_bg.png')",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center top",
                 backgroundSize: "auto 100%",
